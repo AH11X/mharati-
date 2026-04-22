@@ -58,7 +58,7 @@ body{background: var(--bg-grad); background-attachment: fixed; color: var(--text
 
 /* ===== HEADER ===== */
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--nav);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);position:sticky;top:0;z-index:60;border-bottom:1px solid var(--border);box-shadow:0 1px 10px var(--border-shadow)}
-.logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--input);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border); position:relative;}
 .hdr-icon:active{transform:scale(.93)}
 .hdr-title{font-size:17px;font-weight:900;color:var(--text)}
@@ -110,7 +110,7 @@ textarea.inp{height:110px;resize:none}
 .sort-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 0;}
 .sort-bar select{width:auto;padding:6px 12px;border-radius:10px;font-size:13px;margin:0;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border2);color:var(--text);outline:none;}
 
-/* ===== FEED ===== */
+/* ===== FEED & PROJECTS ===== */
 .feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
 .post{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r3);padding:18px;transition:.2s;box-shadow:var(--shadow)}
 .post:active{transform:scale(.99)}
@@ -131,7 +131,7 @@ textarea.inp{height:110px;resize:none}
 .pa:active{transform:scale(.97)}
 
 /* Project Card Specifics */
-.proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px; border-right:4px solid var(--accent); }
+.proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; border-right:4px solid var(--accent); }
 .proj-card:active { transform:scale(0.98); }
 .proj-title { font-size:16px; font-weight:900; color:var(--text); margin-bottom:4px; }
 .proj-comp { font-size:12px; color:var(--sub2); font-weight:700; display:flex; align-items:center; gap:6px; }
@@ -249,12 +249,12 @@ textarea.inp{height:110px;resize:none}
 .nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
 
 /* ===== SETTINGS & LEADERBOARD ===== */
-.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .set-row:active{background:var(--card2)}
 .set-label{font-size:15px;font-weight:700;color:var(--text)}
 .set-val{font-size:14px;font-weight:900;color:var(--accent)}
 
-.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .lb-item:active{background:var(--card2)}
 .lb-rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
 .lb-info{flex:1}
@@ -306,6 +306,7 @@ textarea.inp{height:110px;resize:none}
       </div>
 
       <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة</button>
+      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
   </div>
 </div>
@@ -448,16 +449,15 @@ textarea.inp{height:110px;resize:none}
     <p style="font-size:13px; color:var(--sub2);">استقطب أفضل المواهب الجامعية بأسعار تنافسية لمشاريعك.</p>
   </div>
 
-  <div style="padding:0 20px; display:flex; gap:12px; margin-bottom:24px;">
-    <button class="btn btn-p" style="flex:1;" onclick="go('comp-search-view', 1)">🔍 ابحث عن موهبة</button>
+  <div style="padding:0 20px; margin-bottom:24px;">
+    <button class="btn btn-p" style="width:100%;" onclick="go('comp-post-view', 2)">📝 اطرح مشروعاً عاماً</button>
   </div>
 
   <div class="sort-bar">
     <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك (AI Matches)</span>
   </div>
 
-  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;">
-    </div>
+  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;"></div>
 </div>
 
 <div id="comp-search-view" class="view">
@@ -492,7 +492,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="comp-post-view" class="view">
   <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء 🔙</div>
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
     <div class="hdr-title">طرح مشروع جديد</div>
     <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitProject()">نشر</div>
   </header>
@@ -527,7 +527,48 @@ textarea.inp{height:110px;resize:none}
     <span class="add-lbl">وصف المشروع بالتفصيل</span>
     <textarea class="inp" id="proj-desc" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
     
-    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع والبحث عن مواهب</button>
+    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر والبحث عن مواهب</button>
+  </div>
+</div>
+
+<div id="assign-task-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-title">إسناد مهمة</div>
+    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitAssignTask()">إرسال</div>
+  </header>
+  <div class="add-wrap">
+    <div style="background:var(--card); padding:16px; border-radius:var(--r); border:1px solid var(--border); margin-bottom:20px; display:flex; align-items:center; gap:12px;">
+      <div class="av" id="assign-av" style="width:48px;height:48px;font-size:20px;flex-shrink:0;"></div>
+      <div>
+        <div style="font-size:12px; color:var(--sub2); margin-bottom:4px;">إسناد المهمة إلى:</div>
+        <div style="font-size:16px; font-weight:900; color:var(--text);" id="assign-name"></div>
+      </div>
+    </div>
+
+    <span class="add-lbl">عنوان المهمة</span>
+    <input type="text" class="inp" placeholder="مثال: تصميم واجهات تطبيق">
+
+    <div style="display:flex; gap:12px; margin-top:16px;">
+      <div style="flex:1;">
+        <span class="add-lbl" style="margin-top:0;">الميزانية (ريال)</span>
+        <input type="number" class="inp" placeholder="مثال: 500">
+      </div>
+      <div style="flex:1;">
+        <span class="add-lbl" style="margin-top:0;">المدة</span>
+        <select class="inp">
+          <option>أيام</option>
+          <option>أسبوع</option>
+          <option>أسبوعين</option>
+          <option>شهر</option>
+        </select>
+      </div>
+    </div>
+
+    <span class="add-lbl">وصف المهمة المطلوبة</span>
+    <textarea class="inp" placeholder="اكتب تفاصيل المهمة بوضوح..."></textarea>
+    
+    <button class="btn btn-p" style="margin-top:24px" onclick="submitAssignTask()">إرسال المهمة للطالب</button>
   </div>
 </div>
 
@@ -727,6 +768,7 @@ let COMPANY_PROJECTS = [
 
 let navHist = ['login-view'];
 let curChat = '';
+let currentAssignee = '';
 let userType = 'student'; 
 let feedMode = 'talents'; 
 
@@ -856,7 +898,7 @@ function buildFeed(){
       </div>
       <div class="post-acts">
         <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
-        <button class="pa btn-p" onclick="showToast('تم طلب التعلم من الطالب')">طلب تعلّم المهارة</button>
+        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة للتعلم!')">طلب تعلّم المهارة</button>
       </div>`;
     fc.appendChild(el);
   });
@@ -963,7 +1005,6 @@ function openOffers(cat){
         const u = DB[uid];
         if(!u) return;
 
-        // إبراز الخدمة الأساسية
         let serviceName = u.title.split('|')[1] || u.title;
         let servicesHtml = '';
         if(u.taught && u.taught.length > 0) {
@@ -1057,7 +1098,7 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
         </div>
         <div style="display:flex; gap:8px;">
           <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل مبدئي</button>
-          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال دعوة للطالب لإنجاز المهمة')">إسناد مشروع</button>
+          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openAssignTask('${uid}')">إسناد مشروع</button>
         </div>
       </div>`;
   });
@@ -1099,6 +1140,21 @@ function submitProject() {
   document.getElementById('proj-desc').value = '';
 }
 
+// ===== ASSIGN TASK VIEW =====
+function openAssignTask(uid) {
+  currentAssignee = uid;
+  const u = DB[uid];
+  document.getElementById('assign-name').textContent = u.n;
+  const av = document.getElementById('assign-av');
+  av.style.background = u.bg;
+  av.textContent = u.i;
+  go('assign-task-view', -1);
+}
+
+function submitAssignTask() {
+  showToast('تم إرسال المهمة للطالب بنجاح!', 'var(--green)');
+  goBack();
+}
 
 // ========================= SHARED LOGIC & NOTIFICATIONS =========================
 function openNotifs() {
@@ -1254,7 +1310,7 @@ function openProfile(uid, ni=-1){
   const mb = document.getElementById('prof-msg-btn');
   mb.style.display = isMe ? 'none' : 'block';
   mb.textContent = userType === 'company' ? 'إسناد مشروع' : 'طلب تعلّم المهارة 🤝';
-  mb.onclick = () => openChat(uid);
+  mb.onclick = () => userType === 'company' ? openAssignTask(uid) : openChat(uid);
 
   document.getElementById('grid-taught').innerHTML = u.taught.length?u.taught.map(s=>`
     <div class="svc-card" onclick="showToast('تم الطلب')">
@@ -1384,7 +1440,7 @@ function go(vid, ni=-1){
   nbs.forEach(b=>b.classList.remove('active'));
   if(ni>=0&&ni<nbs.length) nbs[ni].classList.add('active');
   
-  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view', 'notif-view', 'wallet-view'];
+  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view', 'notif-view', 'wallet-view', 'assign-task-view'];
   let hideNav = alwaysHide.includes(vid);
   if(vid==='profile-view'){
     const profBtn = document.getElementById('prof-msg-btn');
@@ -1399,8 +1455,21 @@ function goBack(){
   if(navHist.length>1){
     navHist.pop();
     const prev = navHist[navHist.length-1];
-    const map={'feed-view':0,'search-view':1,'add-view':2,'dm-view':3,'profile-view':4, 'comp-dash-view':0, 'comp-search-view':1, 'comp-post-view':2};
-    go(prev, map[prev]!==undefined?map[prev]:-1);
+    go(prev, -1);
+    
+    // Update active state of bottom nav based on what view we returned to
+    const nbs = document.querySelectorAll('#bnav .nb');
+    nbs.forEach(b=>b.classList.remove('active'));
+    if(userType === 'student') {
+      if(prev === 'feed-view') nbs[0].classList.add('active');
+      if(prev === 'search-view') nbs[1].classList.add('active');
+      if(prev === 'dm-view') nbs[3].classList.add('active');
+    } else {
+      if(prev === 'comp-dash-view') nbs[0].classList.add('active');
+      if(prev === 'comp-search-view') nbs[1].classList.add('active');
+      if(prev === 'dm-view') nbs[3].classList.add('active');
+    }
+
   } else {
     go(userType === 'student' ? 'feed-view' : 'comp-dash-view', 0);
   }
