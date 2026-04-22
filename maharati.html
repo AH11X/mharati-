@@ -100,8 +100,10 @@ textarea.inp{height:110px;resize:none}
 /* ===== FEED ===== */
 .feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
 .post{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r3);padding:18px;transition:.2s;box-shadow:var(--shadow)}
+.post:active{transform:scale(.99)}
 .ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.av{border-radius:14px;font-weight:900;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-size:18px;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.av{border-radius:14px;font-weight:900;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-size:18px;transition:.15s;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.av:active{transform:scale(.93)}
 .ph-info{flex:1;cursor:pointer}
 .ph-info h3{font-size:15px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .ph-info p{font-size:12px;color:var(--sub2);margin-top:3px;font-weight:500}
@@ -116,11 +118,13 @@ textarea.inp{height:110px;resize:none}
 
 /* ===== SEARCH ===== */
 .sbox{margin:14px 18px;position:relative}
-.sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--r2);background:var(--input);backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;}
+.sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--r2);background:var(--input);backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;box-shadow:inset 0 2px 5px rgba(0,0,0,0.02)}
+.sbox input:focus{border-color:var(--accent);background:var(--card)}
 .sico{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--sub2);pointer-events:none}
 .sec-t{padding:10px 20px;font-size:14px;font-weight:900;color:var(--sub2);text-transform:uppercase;}
 .skill-list{padding:0 18px 20px;display:flex;flex-direction:column;gap:10px}
 .skill-item{display:flex;align-items:center;justify-content:space-between;padding:15px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.skill-item:active{transform:scale(.98)}
 .skill-l{display:flex;align-items:center;gap:14px}
 
 /* ===== ADD ===== */
@@ -135,6 +139,7 @@ textarea.inp{height:110px;resize:none}
 /* ===== DM LIST ===== */
 .dm-list{display:flex;flex-direction:column;padding:0 8px}
 .dm-item{display:flex;align-items:center;padding:14px 12px;cursor:pointer;border-radius:18px;transition:.2s;gap:14px;margin-bottom:5px}
+.dm-item:active{background:var(--card2)}
 .dm-info{flex:1;min-width:0}
 .dm-name{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .dm-msg{font-size:13px;color:var(--sub2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
@@ -151,6 +156,8 @@ textarea.inp{height:110px;resize:none}
 .msg-row.out .msg{background:var(--accentG);color:#fff;border-top-left-radius:5px;box-shadow:0 4px 16px rgba(234,88,12,.25)}
 .msg-time{font-size:11px;color:var(--sub);margin-top:5px;font-weight:700}
 .chat-bar{position:fixed;bottom:0;width:100%;background:var(--nav);padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;z-index:100;align-items:center;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.chat-inp{flex:1;padding:13px 18px;border-radius:24px;background:var(--input);border:1px solid var(--border2);color:var(--text);outline:none;font-size:15px;transition:.2s}
+.chat-inp:focus{border-color:var(--accent)}
 .chat-send{background:var(--text);color:var(--bg);border:none;border-radius:50%;width:46px;height:46px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .typing-ind{display:none;gap:5px;padding:13px 17px;background:var(--card);border:1px solid var(--border);border-radius:20px;border-top-right-radius:5px;align-self:flex-start;width:fit-content;backdrop-filter:var(--blur)}
 .td{width:8px;height:8px;background:var(--sub2);border-radius:50%;animation:typ 1.4s infinite ease-in-out both}
@@ -176,6 +183,7 @@ textarea.inp{height:110px;resize:none}
 
 .svc-list{display:flex;flex-direction:column;gap:14px;padding:0 18px 24px}
 .svc-card{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer;box-shadow:var(--shadow)}
+.svc-card:active{background:var(--card2)}
 .svc-icon{font-size:26px;background:var(--input);width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--border2);flex-shrink:0}
 .svc-det{flex:1;text-align:right}
 .svc-t{font-size:14px;font-weight:900;color:var(--text);margin-bottom:5px}
@@ -322,6 +330,20 @@ textarea.inp{height:110px;resize:none}
       </div>
       <span style="color:var(--sub2); font-weight:bold;">←</span>
     </div>
+    <div class="skill-item" onclick="openOffers('math')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#15803d,#22c55e);width:52px;height:52px;font-size:22px;border-radius:14px">🔢</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">العلوم والرياضيات</div><div style="font-size:12px;color:var(--sub2)">Calculus, فيزياء, طب, محاسبة</div></div>
+      </div>
+      <span style="color:var(--sub2); font-weight:bold;">←</span>
+    </div>
+    <div class="skill-item" onclick="openOffers('other')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#e11d48,#f43f5e);width:52px;height:52px;font-size:22px;border-radius:14px">✨</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">تطوير شخصي وأخرى</div><div style="font-size:12px;color:var(--sub2)">CV, مقابلات, كتابة إبداعية</div></div>
+      </div>
+      <span style="color:var(--sub2); font-weight:bold;">←</span>
+    </div>
   </div>
   <div class="sec-t" style="margin-top:8px">جميع الطلاب المسجلين (<span id="total-count"></span>)</div>
   <div class="skill-list" id="all-users-list"></div>
@@ -330,7 +352,7 @@ textarea.inp{height:110px;resize:none}
 <div id="offers-view" class="view">
   <header class="hdr">
     <div class="hdr-icon" onclick="goBack()">🔙</div>
-    <div class="hdr-title" id="offers-title">الخدمات</div>
+    <div class="hdr-title" id="offers-title">الخدمات المتاحة</div>
     <div style="width:28px"></div>
   </header>
   <div class="skill-list" id="offers-list" style="margin-top:20px"></div>
@@ -434,7 +456,7 @@ textarea.inp{height:110px;resize:none}
     <div class="hdr-title">🏆 المتصدرون</div>
     <div style="width:28px"></div>
   </header>
-  <div id="lb-list" style="padding:16px 18px"></div>
+  <div id="lb-list" style="padding:16px 18px; display:flex; flex-direction:column; gap:10px;"></div>
 </div>
 
 <div id="settings-view" class="view">
@@ -498,7 +520,26 @@ const DB = {
   jana:{n:'جنى عبدالله',bg:'linear-gradient(135deg,#a21caf,#701a75)',i:'ج',rank:'فضي',ri:'🥈',title:'جرافيك | Illustrator & Brand Identity',bio:'تصميم الهويات البصرية ورسم الشعارات باستخدام Illustrator.',learn:12,teach:25,cat:'design',post:{emoji:'✒️',type:'جلسة جرافيك',desc:'نصمم هوية بصرية كاملة: شعار، ألوان، خطوط. باستخدام Adobe Illustrator من الصفر.'},taught:[{icon:'✒️',n:'Adobe Illustrator',st:25}],learned:[{icon:'🎨',n:'UI/UX Design'}],reviews:[]},
   sami:{n:'سامي عبدالرحمن',bg:'linear-gradient(135deg,#15803d,#064e3b)',i:'س',rank:'ماسي',ri:'💎',title:'رياضيات | Calculus & Physics',bio:'مراجعة وتأسيس في مواد التفاضل والتكامل والفيزياء.',learn:3,teach:150,cat:'math',post:{emoji:'🔢',type:'مراجعة مكثفة',desc:'مراجعة Calculus 1 و 2 وفيزياء. نحل نماذج اختبارات ونفهم الفكرة لا نحفظها.'},taught:[{icon:'🔢',n:'مراجعة Calculus 1',st:90},{icon:'➗',n:'مراجعة Calculus 2',st:60}],learned:[{icon:'💻',n:'برمجة C'}],reviews:[{n:'ماجد فهد',s:'⭐⭐⭐⭐⭐',t:'أنقذني في الميدتيرم، شرحه يوصل للمخ فوراً.'}]},
   reem:{n:'ريم محمد',bg:'linear-gradient(135deg,#e11d48,#9f1239)',i:'ر',rank:'فضي',ri:'🥈',title:'طب | إسعافات أولية',bio:'جلسات في الإسعافات الأولية والتثقيف الصحي.',learn:15,teach:10,cat:'other',post:{emoji:'🩺',type:'ورشة صحة',desc:'تعلم الإسعافات الأولية الأساسية: التنفس الاصطناعي، الكسور، الإغماء. كل طالب يحتاجه.'},taught:[{icon:'🩺',n:'إسعافات أولية',st:10}],learned:[{icon:'🗣️',n:'لغة إشارة'}],reviews:[]},
-  nasser:{n:'ناصر العلي',bg:'linear-gradient(135deg,#ea580c,#9a3412)',i:'ن',rank:'ذهبي',ri:'🌟',title:'كتابة إبداعية | سيناريو ومحتوى',bio:'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',learn:8,teach:35,cat:'other',post:{emoji:'✍️',type:'ورشة كتابة',desc:'ورشة كتابة السيناريو وصياغة المحتوى الرقمي. نكتب قصة قصيرة ونطوّرها خطوة بخطوة.'},taught:[{icon:'✍️',n:'كتابة السيناريو',st:20},{icon:'📚',n:'Content Writing',st:15}],learned:[{icon:'🎬',n:'مونتاج'}],reviews:[]}
+  nasser:{n:'ناصر العلي',bg:'linear-gradient(135deg,#ea580c,#9a3412)',i:'ن',rank:'ذهبي',ri:'🌟',title:'كتابة إبداعية | سيناريو ومحتوى',bio:'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',learn:8,teach:35,cat:'other',post:{emoji:'✍️',type:'ورشة كتابة',desc:'ورشة كتابة السيناريو وصياغة المحتوى الرقمي. نكتب قصة قصيرة ونطوّرها خطوة بخطوة.'},taught:[{icon:'✍️',n:'كتابة السيناريو',st:20},{icon:'📚',n:'Content Writing',st:15}],learned:[{icon:'🎬',n:'مونتاج'}],reviews:[]},
+  bader:{n:'بدر الشمري',bg:'linear-gradient(135deg,#0ea5e9,#0284c7)',i:'ب',rank:'ذهبي',ri:'🌟',title:'شبكات | CCNA & Network+',bio:'أدرّب الطلاب على مهارات الشبكات وأساسيات الأمن السيبراني.',learn:8,teach:50,cat:'coding',post:{emoji:'🌐',type:'دورة شبكات',desc:'CCNA للمبتدئين: عناوين IP، routing، switching. نبني توبولوجيا شبكة كاملة في Cisco Packet Tracer.'},taught:[{icon:'🌐',n:'CCNA Routing',st:30},{icon:'🔒',n:'Network Security Basics',st:20}],learned:[{icon:'🛡️',n:'Ethical Hacking'}],reviews:[{n:'ماجد فهد',s:'⭐⭐⭐⭐⭐',t:'بدر متمكن من الشبكات بشكل لا يصدق.'}]},
+  dima:{n:'ديمة الزهراني',bg:'linear-gradient(135deg,#f43f5e,#fb7185)',i:'د',rank:'فضي',ri:'🥈',title:'تسويق رقمي | Social Media',bio:'أخطط حملات التسويق الرقمي وأدير الحسابات على منصات التواصل.',learn:12,teach:28,cat:'business',post:{emoji:'📱',type:'ورشة تسويق',desc:'تعلم تخطيط حملات التسويق على انستقرام وتيك توك. نحسب الـ ROI ونصمم المحتوى الصحيح.'},taught:[{icon:'📱',n:'Social Media Marketing',st:18},{icon:'📊',n:'تحليل الأداء Analytics',st:10}],learned:[{icon:'🎨',n:'Canva Design'}],reviews:[]},
+  omar:{n:'عمر المطيري',bg:'linear-gradient(135deg,#7c3aed,#6d28d9)',i:'ع',rank:'ذهبي',ri:'🌟',title:'موبايل | Flutter & React Native',bio:'أطور تطبيقات موبايل بـ Flutter. أعلّمك من الصفر للنشر على المتجر.',learn:9,teach:55,cat:'coding',post:{emoji:'📲',type:'دورة تطوير',desc:'تطوير تطبيق موبايل كامل بـ Flutter من الصفر. نبني تطبيق real estate أو e-commerce.'},taught:[{icon:'📲',n:'Flutter Development',st:35},{icon:'⚛️',n:'React Native Basics',st:20}],learned:[{icon:'🎨',n:'UI/UX'}],reviews:[{n:'زياد طارق',s:'⭐⭐⭐⭐⭐',t:'أفضل مدرب Flutter في الجامعة.'}]},
+  nada:{n:'ندى القحطاني',bg:'linear-gradient(135deg,#10b981,#059669)',i:'ن',rank:'فضي',ri:'🥈',title:'غذاء وتغذية | تثقيف صحي',bio:'أوعّي الطلاب بالتغذية السليمة وبناء عادات صحية مستدامة.',learn:20,teach:15,cat:'other',post:{emoji:'🥗',type:'جلسة تثقيف',desc:'تعلم أساسيات التغذية الصحيحة ووضع خطة وجبات متوازنة تناسب ميزانية الطالب.'},taught:[{icon:'🥗',n:'التغذية الصحية',st:15}],learned:[{icon:'🩺',n:'إسعافات أولية'}],reviews:[]},
+  hamad:{n:'حمد العنزي',bg:'linear-gradient(135deg,#f59e0b,#d97706)',i:'ح',rank:'ذهبي',ri:'🌟',title:'ريادة أعمال | Startup & Business Plan',bio:'ساعدت ٣ مشاريع طلابية تحصل على تمويل. أعلمك كيف تبني خطة عمل احترافية.',learn:6,teach:42,cat:'business',post:{emoji:'🚀',type:'ورشة ريادة',desc:'بناء خطة عمل (Business Plan) كاملة لمشروعك الريادي. نتعلم الـ Business Model Canvas وتحليل السوق.'},taught:[{icon:'🚀',n:'Business Plan',st:30},{icon:'💡',n:'Startup Fundamentals',st:12}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ديمة الزهراني',s:'⭐⭐⭐⭐⭐',t:'ساعدني أطوّر فكرتي وأعرضها للمستثمرين.'}]},
+  weam:{n:'وئام السلمي',bg:'linear-gradient(135deg,#d946ef,#a21caf)',i:'و',rank:'فضي',ri:'🥈',title:'إنفوجرافيك | Canva & Data Viz',bio:'أصمم إنفوجرافيكات ومواد بصرية جذابة للعروض والأبحاث.',learn:10,teach:20,cat:'design',post:{emoji:'📊',type:'ورشة Canva',desc:'تعلم تصميم إنفوجرافيكات احترافية بـ Canva. نصمم عرض بحثي كامل وإنفوجرافيك تفاعلي.'},taught:[{icon:'📊',n:'Canva Infographics',st:20}],learned:[{icon:'🎨',n:'Figma'}],reviews:[]},
+  khalil:{n:'خليل الرشيد',bg:'linear-gradient(135deg,#06b6d4,#0891b2)',i:'خ',rank:'ذهبي',ri:'🌟',title:'صوتيات | Podcast & Voiceover',bio:'أنتج بودكاست وأدرّب الطلاب على مهارات التحدث والـ voiceover.',learn:7,teach:33,cat:'media',post:{emoji:'🎙️',type:'ورشة صوت',desc:'تعلم إنتاج بودكاست احترافي: التسجيل، المونتاج الصوتي، والتوزيع على المنصات.'},taught:[{icon:'🎙️',n:'Podcast Production',st:20},{icon:'🎤',n:'Voiceover & Narration',st:13}],learned:[{icon:'🎬',n:'مونتاج فيديو'}],reviews:[]},
+  sara2:{n:'سارة الغامدي',bg:'linear-gradient(135deg,#a78bfa,#7c3aed)',i:'سـ',rank:'فضي',ri:'🥈',title:'Python | Automation & Web Scraping',bio:'أدرّس Python وتطبيقاتها في Automation وجمع البيانات.',learn:11,teach:24,cat:'coding',post:{emoji:'🐍',type:'دورة Python',desc:'Python للأتمتة والـ web scraping. نكتب scripts تجمع بيانات حقيقية من الإنترنت تلقائياً.'},taught:[{icon:'🐍',n:'Python Automation',st:14},{icon:'🕷️',n:'Web Scraping',st:10}],learned:[{icon:'📊',n:'Data Visualization'}],reviews:[]},
+  fahad:{n:'فهد العسيري',bg:'linear-gradient(135deg,#1e3a8a,#1e40af)',i:'فـ',rank:'فضي',ri:'🥈',title:'تسعير مالي | Financial Modeling',bio:'أدرّب الطلاب على النماذج المالية واتخاذ قرارات الاستثمار.',learn:9,teach:17,cat:'business',post:{emoji:'💹',type:'جلسة مالية',desc:'بناء نموذج مالي بسيط في Excel: الإيرادات والتكاليف والتدفقات النقدية. مهارة مطلوبة جداً.'},taught:[{icon:'💹',n:'Financial Modeling',st:17}],learned:[{icon:'📊',n:'Data Analysis'}],reviews:[]},
+  lujain:{n:'لجين الشهري',bg:'linear-gradient(135deg,#f97316,#ea580c)',i:'لـ',rank:'ذهبي',ri:'🌟',title:'تعليم | IELTS & Academic English',bio:'أساعد الطلاب يحصلون على درجات IELTS عالية ويكتبون بحوث أكاديمية.',learn:14,teach:70,cat:'lang',post:{emoji:'🇬🇧',type:'دورة IELTS',desc:'تحضير IELTS من الصفر للـ 7 bands. نغطي الـ Writing, Speaking, Listening, Reading.'},taught:[{icon:'🇬🇧',n:'IELTS Preparation',st:50},{icon:'📝',n:'Academic Writing',st:20}],learned:[{icon:'🇫🇷',n:'French Basics'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'رفعت درجتي من 5.5 إلى 7 خلال شهرين.'}]},
+  talal:{n:'طلال الحربي',bg:'linear-gradient(135deg,#65a30d,#4d7c0f)',i:'ط',rank:'فضي',ri:'🥈',title:'بيئة | استدامة وطاقة متجددة',bio:'أعرّف الطلاب بمفاهيم الاستدامة وتقنيات الطاقة المتجددة.',learn:18,teach:12,cat:'other',post:{emoji:'🌱',type:'جلسة تثقيف',desc:'مقدمة في الاستدامة والطاقة المتجددة (شمسية وريحية). كيف يصبح مشروعك التخرجي صديقاً للبيئة.'},taught:[{icon:'🌱',n:'مفاهيم الاستدامة',st:12}],learned:[{icon:'📐',n:'AutoCAD'}],reviews:[]},
+  reema:{n:'ريما فيصل',bg:'linear-gradient(135deg,#be185d,#9d174d)',i:'ر',rank:'ذهبي',ri:'🌟',title:'علاج نطق | مهارات تواصل',bio:'أساعد الطلاب يطورون مهارات التحدث العام (Public Speaking) وتجاوز رهاب المواجهة.',learn:6,teach:38,cat:'other',post:{emoji:'🎤',type:'ورشة Public Speaking',desc:'تجاوز الخوف من التحدث أمام الجمهور. نتعلم تقنيات TED talks ونطبق أمام المجموعة.'},taught:[{icon:'🎤',n:'Public Speaking',st:25},{icon:'🗣️',n:'مهارات التواصل',st:13}],learned:[{icon:'📄',n:'كتابة CV'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'ريما غيّرت نظرتي للتحدث العام كلياً.'}]},
+  abdulaziz:{n:'عبدالعزيز العمر',bg:'linear-gradient(135deg,#0f172a,#1e293b)',i:'عـ',rank:'فضي',ri:'🥈',title:'ميكاترونيكس | Arduino & Robotics',bio:'أبني روبوتات وأدرّس Arduino والإلكترونيات.',learn:8,teach:20,cat:'coding',post:{emoji:'🤖',type:'ورشة روبوتات',desc:'بناء مشاريع Arduino من الصفر: نبني روبوت بسيط يتجنب العوائق في ورشة واحدة.'},taught:[{icon:'🤖',n:'Arduino Projects',st:12},{icon:'⚙️',n:'Robotics Basics',st:8}],learned:[{icon:'💻',n:'Python'}],reviews:[]},
+  rana:{n:'رنا الدوسري',bg:'linear-gradient(135deg,#7c2d12,#c2410c)',i:'ر',rank:'فضي',ri:'🥈',title:'فرنسي | مستوى A1-B1',bio:'أدرّس الفرنسية للمبتدئين. معي الأساس حتى مستوى B1.',learn:20,teach:16,cat:'lang',post:{emoji:'🇫🇷',type:'جلسة فرنسي',desc:'تعلم الفرنسية من الصفر. نبدأ بالنطق الصحيح، ثم المحادثة اليومية، ثم القواعد الأساسية.'},taught:[{icon:'🇫🇷',n:'French A1-B1',st:16}],learned:[{icon:'🗣️',n:'English Speaking'}],reviews:[]},
+  sultan:{n:'سلطان المالكي',bg:'linear-gradient(135deg,#3730a3,#4338ca)',i:'سـ',rank:'ذهبي',ri:'🌟',title:'تطوير ويب | React & Node.js',bio:'أطوّر مواقع Full Stack وأعلّم الطلاب من البداية للاحتراف.',learn:7,teach:60,cat:'coding',post:{emoji:'🌐',type:'دورة Full Stack',desc:'بناء موقع ويب كامل بـ React و Node.js و MongoDB. من الصفر لـ deployment على Vercel.'},taught:[{icon:'🌐',n:'React.js',st:40},{icon:'🗄️',n:'Node.js & MongoDB',st:20}],learned:[{icon:'📲',n:'Flutter'}],reviews:[{n:'عمر المطيري',s:'⭐⭐⭐⭐⭐',t:'سلطان من أفضل المدربين الي اخذت منهم.'}]},
+  hajar:{n:'هاجر الحكمي',bg:'linear-gradient(135deg,#9f1239,#e11d48)',i:'هـ',rank:'فضي',ri:'🥈',title:'أحياء | بيولوجيا ووراثة',bio:'أشرح مواد البيولوجيا والوراثة لطلاب الصحة والعلوم.',learn:22,teach:14,cat:'math',post:{emoji:'🧬',type:'جلسة علوم',desc:'شرح مادة الوراثة والجينوم بأسلوب مبسط. نستخدم الرسوم البيانية لفهم التراكيب الجيني.'},taught:[{icon:'🧬',n:'الوراثة والجينوم',st:14}],learned:[{icon:'🩺',n:'إسعافات أولية'}],reviews:[]},
+  mohammed:{n:'محمد الزهراني',bg:'linear-gradient(135deg,#164e63,#0e7490)',i:'م',rank:'ذهبي',ri:'🌟',title:'إحصاء | SPSS & R',bio:'أساعد طلاب الأبحاث في التحليل الإحصائي بـ SPSS وR.',learn:5,teach:48,cat:'math',post:{emoji:'📉',type:'جلسة إحصاء',desc:'تحليل بيانات بحثك الجامعي بـ SPSS. من إدخال البيانات للتحليل الوصفي والاستدلالي.'},taught:[{icon:'📉',n:'SPSS Analysis',st:30},{icon:'📈',n:'R for Statistics',st:18}],learned:[{icon:'📊',n:'Excel متقدم'}],reviews:[{n:'سارة أحمد',s:'⭐⭐⭐⭐⭐',t:'إنجز معي التحليل الإحصائي لأطروحتي في ساعات!'}]},
+  afnan:{n:'أفنان العمري',bg:'linear-gradient(135deg,#be185d,#f43f5e)',i:'أ',rank:'فضي',ri:'🥈',title:'فنون | رسم ورسوم متحركة',bio:'أدرّس أساسيات الرسم الرقمي والرسوم المتحركة.',learn:11,teach:22,cat:'design',post:{emoji:'🎭',type:'ورشة فنون',desc:'رسم ديجيتال من الصفر بـ Procreate. نرسم شخصية كرتونية كاملة في جلسة واحدة.'},taught:[{icon:'🎭',n:'Procreate Digital Art',st:15},{icon:'🎬',n:'رسوم متحركة 2D',st:7}],learned:[{icon:'✒️',n:'Illustrator'}],reviews:[]},
+  yazeed:{n:'يزيد المقبل',bg:'linear-gradient(135deg,#1d4ed8,#3b82f6)',i:'يـ',rank:'ذهبي',ri:'🌟',title:'DevOps | Docker & Cloud',bio:'أدرّب الطلاب على DevOps: Docker وCI/CD والـ Cloud.',learn:4,teach:35,cat:'coding',post:{emoji:'☁️',type:'ورشة Cloud',desc:'Docker وCloud Computing للمبتدئين. نرفع تطبيق كامل على AWS أو Azure في الورشة.'},taught:[{icon:'☁️',n:'Cloud & Docker',st:20},{icon:'🔄',n:'CI/CD Pipelines',st:15}],learned:[{icon:'🌐',n:'React.js'}],reviews:[{n:'سلطان المالكي',s:'⭐⭐⭐⭐⭐',t:'يزيد جعل Docker سهل فعلاً!'}]},
 };
 
 const USERS = Object.keys(DB);
@@ -525,12 +566,10 @@ function buildFeed(){
   
   let usersArr = USERS.filter(id=>id!=='me' && DB[id].post);
 
-  // Filter
   if(activeCat && activeCat !== 'all') {
     usersArr = usersArr.filter(id => (DB[id].cat || 'other') === activeCat);
   }
 
-  // Sort
   if(sortType === 'trainees') {
     usersArr.sort((a,b) => DB[b].teach - DB[a].teach);
   } else if (sortType === 'rank') {
@@ -701,24 +740,30 @@ function searchDMs(q){
   });
 }
 
-// ===== OFFERS =====
+// ===== OFFERS (تصحيح الخطأ هنا) =====
 const offerMap = {
-  design:['lama','shahad','yasser','nouf','jana','weam','afnan'],
-  coding:['sara','ziyad','majed','bader','omar','sara2','sultan','yazeed','abdulaziz'],
-  business:['faisal','raghad','hamad','dima','fahad'],
+  Design:['lama','shahad','yasser','nouf','jana','weam','afnan'],
+  Coding:['sara','ziyad','majed','bader','omar','sara2','sultan','yazeed','abdulaziz'],
+  Admin:['faisal','raghad','hamad','dima','fahad'],
   lang:['mona','lujain','rana'],
   media:['tariq','huda','khalil'],
   math:['sami','amal','khaled','mohammed','hajar'],
   other:['raghad','saad','reem','nasser','nada','talal','reema']
 };
-const offerTitles = {design:'🎨 التصميم والهندسة',coding:'💻 البرمجة والبيانات',business:'📂 الإدارة والأعمال',lang:'🌍 اللغات والترجمة',media:'🎬 المونتاج والتصوير',math:'🔢 العلوم والرياضيات',other:'✨ تطوير شخصي'};
+const offerTitles = {Design:'🎨 التصميم والهندسة',Coding:'💻 البرمجة والبيانات',Admin:'📂 الإدارة والأعمال',lang:'🌍 اللغات والترجمة',media:'🎬 المونتاج والتصوير',math:'🔢 العلوم والرياضيات',other:'✨ تطوير شخصي'};
 
 function openOffers(cat){
-  document.getElementById('offers-title').textContent = offerTitles[cat]||'الخدمات المتاحة';
+  // تحديث العنوان
+  document.getElementById('offers-title').textContent = offerTitles[cat] || 'الخدمات المتاحة';
+  
   const list = document.getElementById('offers-list');
   list.innerHTML = '';
-  (offerMap[cat]||[]).forEach(uid=>{
+  
+  const users = offerMap[cat] || [];
+  
+  users.forEach(uid=>{
     const u = DB[uid];
+    if(!u) return;
     list.innerHTML += `
       <div class="offer-item" onclick="openProfile('${uid}')">
         <div class="skill-l">
@@ -856,7 +901,7 @@ function submitSkill(){
   setTimeout(()=>showToast('✅ تم نشر خدمتك في نُول بنجاح!'),300);
 }
 
-// ===== SETTINGS (Theme Toggle updated) =====
+// ===== SETTINGS =====
 function toggleTheme(){
   isLight = !isLight;
   if(isLight) {
