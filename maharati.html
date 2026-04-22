@@ -1,969 +1,901 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مهاراتي - النسخة الشاملة ٢٠ طالب</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #09090b; --bg2: #121217; --card: rgba(255,255,255,0.03); 
-            --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.1); 
-            --text: #f8fafc; --sub: #94a3b8;
-            --nav: rgba(9, 9, 11, 0.85); --input: rgba(255,255,255,0.04); 
-            --accent: #4f46e5; --accent2: #a855f7;
-            --gold: #fbbf24; --green: #10b981; --red: #ef4444; 
-        }
-        .light-mode {
-            --bg: #f8fafc; --bg2: #f1f5f9; --card: #ffffff; 
-            --border: #e2e8f0; --border2: #cbd5e1; 
-            --text: #0f172a; --sub: #64748b;
-            --nav: rgba(255, 255, 255, 0.85); --input: #ffffff;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal',sans-serif; -webkit-tap-highlight-color:transparent;}
-        body { background: var(--bg); color: var(--text); min-height:100vh; overflow-x:hidden; transition: 0.3s; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>مهاراتي – سوق المهارات الجامعي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#09090b; --bg2:#111116; --bg3:#1a1a22;
+  --card:rgba(255,255,255,0.04); --card2:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+  --text:#f1f5f9; --sub:#64748b; --sub2:#94a3b8;
+  --nav:rgba(9,9,11,0.88); --input:rgba(255,255,255,0.05);
+  --accent:#5b4fce; --accent2:#8b5cf6; --accentG:linear-gradient(135deg,#5b4fce,#8b5cf6);
+  --gold:#f59e0b; --green:#10b981; --red:#ef4444; --blue:#3b82f6;
+  --r:16px; --r2:22px; --r3:28px;
+  --shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.lm{
+  --bg:#f8fafc; --bg2:#f1f5f9; --bg3:#e8edf5;
+  --card:#ffffff; --card2:#f8fafc;
+  --border:#e2e8f0; --border2:#cbd5e1;
+  --text:#0f172a; --sub:#64748b; --sub2:#94a3b8;
+  --nav:rgba(255,255,255,0.92); --input:#ffffff;
+  --shadow:0 8px 32px rgba(0,0,0,0.1);
+}
 
-        .view { display:none; min-height:100vh; padding-bottom:110px; animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        .view.active { display:block; }
-        #login-view.active { display:flex; justify-content:center; align-items:center; }
-        @keyframes slideIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+*{margin:0;padding:0;box-sizing:border-box;font-family:‘Tajawal’,sans-serif;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(–bg);color:var(–text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s}
 
-        .hdr { display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:var(--nav); backdrop-filter:blur(24px); position:sticky; top:0; z-index:50; border-bottom:1px solid var(--border); }
-        .logo { font-size:24px; font-weight:900; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .hdr-icon { font-size:22px; cursor:pointer; color:var(--text); transition:0.2s;}
-        .hdr-icon:active { transform: scale(0.9); }
-        .hdr-title { font-size:18px; font-weight:900; color:var(--text); }
+/* ===== VIEWS ===== */
+.view{display:none;min-height:100vh;padding-bottom:115px;animation:fadeUp .35s cubic-bezier(.16,1,.3,1)}
+.view.active{display:block}
+#login-view.active{display:flex;justify-content:center;align-items:center;padding-bottom:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
-        .input-box { width:100%; padding:16px 20px; margin:8px 0; border-radius:14px; background:var(--input); border:1px solid var(--border2); color:var(--text); font-size:15px; outline:none; transition:0.2s;}
-        .input-box:focus { border-color:var(--accent); background:var(--card);}
-        select.input-box option { background:var(--bg2); color:var(--text); }
-        
-        .btn-primary { display:inline-flex; justify-content:center; align-items:center; gap:8px; padding:16px 24px; border-radius:14px; border:none; font-size:15px; font-weight:900; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer; width:100%; transition:0.2s; box-shadow:0 6px 20px rgba(79,70,229,0.25);}
-        .btn-primary:active { transform:translateY(2px); }
-        .btn-outline { background:transparent; border:1px solid var(--border2); color:var(--text); box-shadow:none;}
+/* ===== HEADER ===== */
+.hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(–nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);position:sticky;top:0;z-index:60;border-bottom:1px solid var(–border)}
+.logo{font-size:22px;font-weight:900;background:var(–accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdr-icon{font-size:21px;cursor:pointer;color:var(–text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px}
+.hdr-icon:active{opacity:.6;transform:scale(.93)}
+.hdr-title{font-size:17px;font-weight:900;color:var(–text)}
+.hdr-row{display:flex;gap:4px;align-items:center}
 
-        .login-wrap { width:90%; max-width:400px; text-align:center; }
-        .login-card { background:var(--card); border:1px solid var(--border); border-radius:28px; padding:40px 24px; backdrop-filter:blur(24px); box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+/* ===== INPUTS ===== */
+.inp{width:100%;padding:14px 18px;margin:6px 0;border-radius:var(–r);background:var(–input);border:1.5px solid var(–border2);color:var(–text);font-size:15px;outline:none;transition:.2s;font-family:‘Tajawal’,sans-serif}
+.inp:focus{border-color:var(–accent);background:var(–card2)}
+select.inp option{background:var(–bg2);color:var(–text)}
+textarea.inp{height:110px;resize:none}
 
-        .cats { display:flex; gap:10px; padding:16px 20px; overflow-x:auto; border-bottom:1px solid var(--border);}
-        .cats::-webkit-scrollbar { display:none; }
-        .cat { padding:10px 20px; border-radius:24px; font-size:14px; font-weight:700; white-space:nowrap; cursor:pointer; border:1px solid var(--border2); color:var(--sub); background:var(--card); transition:0.2s; }
-        .cat.active { background:var(--text); color:var(--bg); border-color:var(--text); }
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:14px 22px;border-radius:var(–r);border:none;font-size:15px;font-weight:900;cursor:pointer;width:100%;transition:.2s;font-family:‘Tajawal’,sans-serif}
+.btn:active{transform:translateY(2px);opacity:.85}
+.btn-p{background:var(–accentG);color:#fff;box-shadow:0 6px 20px rgba(91,79,206,.3)}
+.btn-o{background:transparent;border:1.5px solid var(–border2);color:var(–text)}
+.btn-sm{padding:9px 16px;font-size:13px;border-radius:10px;width:auto}
+.btn-g{background:linear-gradient(135deg,#059669,#10b981);color:#fff}
+.btn-danger{color:var(–red);border-color:rgba(239,68,68,.3);background:transparent;border:1.5px solid rgba(239,68,68,.3)}
 
-        .feed { padding:16px 20px; display:flex; flex-direction:column; gap:24px; }
-        .post-card { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:20px; transition:0.3s; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
-        .post-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
-        .avatar { width:48px; height:48px; border-radius:14px; font-size:20px; font-weight:900; color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer; }
-        .post-header-info { flex:1; cursor:pointer; }
-        .post-header-info h3 { font-size:16px; font-weight:900; color:var(--text); display:flex; align-items:center; gap:6px;}
-        .verified-badge { background:var(--accent); color:#fff; font-size:10px; padding:2px 6px; border-radius:6px; font-weight:900;}
-        .post-header-info p { font-size:13px; color:var(--sub); margin-top:2px; font-weight:500;}
-        
-        .post-media { width:100%; aspect-ratio:21/9; border-radius:16px; display:flex; justify-content:center; align-items:center; font-size:48px; margin-bottom:16px; background:var(--bg2); border:1px solid var(--border); position:relative; overflow:hidden;}
-        .course-meta { position:absolute; bottom:10px; left:10px; right:10px; display:flex; justify-content:space-between; }
-        .meta-pill { background:rgba(0,0,0,0.7); backdrop-filter:blur(8px); color:#fff; font-size:11px; font-weight:900; padding:6px 10px; border-radius:10px; display:flex; align-items:center; gap:4px; border:1px solid rgba(255,255,255,0.1);}
-        
-        .post-body { margin-bottom:16px; }
-        .post-body p { font-size:14px; color:var(--text); line-height:1.7; font-weight:500;}
-        .post-tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-        .tag { background:var(--bg2); border:1px solid var(--border2); color:var(--sub); padding:6px 12px; border-radius:10px; font-size:12px; font-weight:700; }
-        
-        .post-actions { display:flex; gap:12px; }
-        .post-action-btn { flex:1; padding:14px; border-radius:12px; font-size:14px; font-weight:900; cursor:pointer; text-align:center; transition:0.2s; }
+/* ===== LOGIN ===== */
+.login-wrap{width:92%;max-width:420px;text-align:center}
+.login-card{background:var(–card);border:1px solid var(–border);border-radius:var(–r3);padding:44px 28px;backdrop-filter:blur(24px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.login-logo{font-size:44px;font-weight:900;background:var(–accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.login-sub{color:var(–sub2);font-size:14px;margin-bottom:32px;font-weight:500;line-height:1.6}
 
-        .search-box { margin:16px 20px; position:relative; }
-        .search-box input { width:100%; padding:16px 48px 16px 20px; border-radius:16px; background:var(--input); border:1px solid var(--border2); color:var(--text); font-size:15px; outline:none; transition:0.3s;}
-        .search-icon { position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--sub); }
-        .section-title { padding:12px 20px; font-size:15px; font-weight:900; color:var(--text); }
-        
-        .search-list { padding:0 20px 20px; display:flex; flex-direction:column; gap:12px; }
-        .search-item { display:flex; align-items:center; justify-content:space-between; padding:16px; background:var(--card); border:1px solid var(--border); border-radius:16px; cursor:pointer; transition:0.2s;}
-        .search-item:hover { background:var(--card-hover); border-color:var(--border2); transform:translateY(-2px);}
+/* ===== BADGES ===== */
+.badge{font-size:10px;font-weight:900;padding:3px 8px;border-radius:7px;display:inline-flex;align-items:center;gap:3px}
+.badge-pro{background:rgba(245,158,11,.15);color:var(–gold);border:1px solid rgba(245,158,11,.2)}
+.badge-expert{background:var(–accentG);color:#fff}
+.badge-verified{background:rgba(91,79,206,.15);color:var(–accent2);border:1px solid rgba(91,79,206,.2)}
+.unread{background:var(–accent);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;min-width:22px;text-align:center}
 
-        .add-container { padding:24px 20px; }
-        .add-type-grid { display:flex; gap:16px; margin-bottom:24px; }
-        .add-type-card { flex:1; background:var(--card); border:2px solid var(--border); border-radius:20px; padding:24px 10px; text-align:center; cursor:pointer; transition:0.3s; display:flex; flex-direction:column; align-items:center; gap:10px;}
-        .add-type-card.active { border-color:var(--accent); background:rgba(79,70,229,0.05); }
-        .add-type-icon { font-size:36px; }
-        .add-type-title { font-size:15px; font-weight:900; color:var(--text); }
-        .add-label { font-size:14px; font-weight:900; color:var(--text); margin-bottom:8px; display:block; margin-top:20px;}
-        textarea.input-box { height:120px; resize:none; }
+/* ===== CATS ===== */
+.cats{display:flex;gap:8px;padding:14px 20px;overflow-x:auto;border-bottom:1px solid var(–border);scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat{padding:9px 18px;border-radius:30px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;border:1.5px solid var(–border2);color:var(–sub2);background:var(–card);transition:.2s;flex-shrink:0}
+.cat.active,.cat:active{background:var(–text);color:var(–bg);border-color:var(–text)}
 
-        .dm-list { display:flex; flex-direction:column; padding:0 10px;}
-        .dm-item { display:flex; align-items:center; justify-content:space-between; padding:16px 12px; cursor:pointer; border-radius:20px; transition:0.2s; }
-        .dm-item:hover { background:var(--card); }
-        .dm-info { flex:1; margin:0 16px; }
-        .dm-name { font-size:16px; font-weight:900; color:var(--text); margin-bottom:6px; }
-        .dm-msg { font-size:14px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; font-weight:500;}
-        .dm-meta { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
-        .dm-time { font-size:12px; color:var(--sub); font-weight:700; }
+/* ===== FEED ===== */
+.feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
+.post{background:var(–card);border:1px solid var(–border);border-radius:var(–r3);padding:18px;transition:.2s;overflow:hidden}
+.post:active{transform:scale(.99)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.av{border-radius:14px;font-weight:900;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;font-size:18px;transition:.15s}
+.av:active{transform:scale(.93)}
+.ph-info{flex:1;cursor:pointer}
+.ph-info h3{font-size:15px;font-weight:900;color:var(–text);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ph-info p{font-size:12px;color:var(–sub2);margin-top:3px;font-weight:500}
+.post-media{width:100%;aspect-ratio:21/9;border-radius:18px;display:flex;justify-content:center;align-items:center;font-size:44px;margin-bottom:14px;position:relative;overflow:hidden;border:1px solid var(–border)}
+.cm{position:absolute;bottom:10px;left:10px;right:10px;display:flex;justify-content:space-between;pointer-events:none}
+.pill{background:rgba(0,0,0,.75);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:900;padding:6px 11px;border-radius:10px;display:flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.1)}
+.post-body p{font-size:14px;color:var(–text);line-height:1.75;font-weight:400}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.tag{background:var(–bg3);border:1px solid var(–border2);color:var(–sub2);padding:5px 11px;border-radius:9px;font-size:11px;font-weight:700}
+.post-acts{display:flex;gap:10px;margin-top:14px}
+.pa{flex:1;padding:13px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;text-align:center;transition:.2s;border:none;font-family:‘Tajawal’,sans-serif}
+.pa:active{transform:scale(.97)}
 
-        .chat-area { padding:24px; display:flex; flex-direction:column; gap:16px; height:calc(100vh - 150px); overflow-y:auto; background:var(--bg2);}
-        .msg-row { display:flex; flex-direction:column; max-width:85%; animation: slideIn 0.2s ease;}
-        .msg-row.in { align-self:flex-start; }
-        .msg-row.out { align-self:flex-end; }
-        .msg { padding:14px 18px; font-size:15px; line-height:1.6; border-radius:20px; font-weight:500;}
-        .msg-in .msg { background:var(--card); border:1px solid var(--border); border-top-right-radius:4px; color:var(--text);}
-        .msg-out .msg { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border-top-left-radius:4px; box-shadow:0 4px 15px rgba(79,70,229,0.2);}
-        .msg-time { font-size:11px; color:var(--sub); margin-top:6px; font-weight:700;}
-        
-        .chat-bar { position:fixed; bottom:0; width:100%; background:var(--nav); padding:16px 20px; border-top:1px solid var(--border); display:flex; gap:12px; z-index:100; align-items:center; backdrop-filter:blur(24px);}
-        .chat-bar input { flex:1; padding:14px 20px; border-radius:24px; background:var(--input); border:1px solid var(--border2); color:var(--text); outline:none; font-size:15px;}
-        .chat-send { background:var(--text); color:var(--bg); border:none; border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:0.2s;}
+/* ===== SEARCH ===== */
+.sbox{margin:14px 18px;position:relative}
+.sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(–r2);background:var(–input);border:1.5px solid var(–border2);color:var(–text);font-size:15px;outline:none;transition:.2s;font-family:‘Tajawal’,sans-serif}
+.sbox input:focus{border-color:var(–accent)}
+.sico{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:17px;color:var(–sub2);pointer-events:none}
+[dir=ltr] .sico{right:auto;left:18px}
+[dir=ltr] .sbox input{padding:14px 18px 14px 46px}
+.sec-t{padding:10px 20px;font-size:14px;font-weight:900;color:var(–sub2);text-transform:uppercase;letter-spacing:.5px}
+.skill-list{padding:0 18px 20px;display:flex;flex-direction:column;gap:10px}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:15px;background:var(–card);border:1px solid var(–border);border-radius:var(–r2);cursor:pointer;transition:.2s}
+.skill-item:active{transform:scale(.98)}
+.skill-l{display:flex;align-items:center;gap:14px}
 
-        .typing-indicator { display:none; gap:6px; padding:16px 20px; background:var(--card); border:1px solid var(--border); border-radius:20px; border-top-right-radius:4px; align-self:flex-start; width:fit-content; margin-top:4px;}
-        .typing-dot { width:8px; height:8px; background:var(--sub); border-radius:50%; animation:typing 1.4s infinite ease-in-out both; }
-        .typing-dot:nth-child(1) { animation-delay:-0.32s; }
-        .typing-dot:nth-child(2) { animation-delay:-0.16s; }
-        @keyframes typing { 0%, 80%, 100% { transform:scale(0); } 40% { transform:scale(1); } }
+/* ===== ADD ===== */
+.add-wrap{padding:22px 18px}
+.type-grid{display:flex;gap:12px;margin-bottom:20px}
+.type-card{flex:1;background:var(–card);border:2px solid var(–border);border-radius:20px;padding:20px 8px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.type-card.active{border-color:var(–accent);background:rgba(91,79,206,.06)}
+.type-icon{font-size:32px}
+.type-t{font-size:14px;font-weight:900;color:var(–text)}
+.add-lbl{font-size:14px;font-weight:900;color:var(–text);margin-bottom:7px;display:block;margin-top:18px}
 
-        .profile-header { position:relative; margin-bottom:65px;}
-        .profile-cover { height:140px; width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-bottom-left-radius:32px; border-bottom-right-radius:32px; opacity:0.9;}
-        .profile-avatar-wrapper { position:absolute; bottom:-50px; left:50%; transform:translateX(-50%); width:100px; height:100px; border-radius:28px; background:var(--bg2); border:4px solid var(--bg); display:flex; justify-content:center; align-items:center; font-size:40px; font-weight:900; color:#fff; box-shadow:0 12px 24px rgba(0,0,0,0.3); z-index:10;}
-        
-        .profile-info-center { display:flex; flex-direction:column; align-items:center; padding:0 24px; text-align:center;}
-        .profile-name { font-size:22px; font-weight:900; color:var(--text); margin-bottom:6px; display:flex; align-items:center; gap:6px;}
-        .profile-title { font-size:14px; color:var(--accent); font-weight:700; margin-bottom:16px; background:rgba(79,70,229,0.1); padding:6px 16px; border-radius:12px; border:1px solid rgba(79,70,229,0.2);}
-        .profile-bio { font-size:14px; color:var(--sub); line-height:1.7; max-width:95%; margin-bottom:24px;}
-        
-        .stats-row { display:flex; justify-content:center; width:100%; max-width:360px; margin-bottom:24px; border:1px solid var(--border); border-radius:20px; background:var(--card); overflow:hidden;}
-        .stat { display:flex; flex-direction:column; align-items:center; flex:1; padding:16px 10px; border-left:1px solid var(--border);}
-        .stat:first-child { border-left:none; }
-        .stat-val { font-size:20px; font-weight:900; color:var(--text); margin-bottom:4px;}
-        .stat-lbl { font-size:11px; color:var(--sub); font-weight:700;}
+/* ===== DM LIST ===== */
+.dm-list{display:flex;flex-direction:column;padding:0 8px}
+.dm-item{display:flex;align-items:center;padding:14px 12px;cursor:pointer;border-radius:18px;transition:.2s;gap:14px}
+.dm-item:active{background:var(–card2)}
+.dm-info{flex:1;min-width:0}
+.dm-name{font-size:15px;font-weight:900;color:var(–text);margin-bottom:4px}
+.dm-msg{font-size:13px;color:var(–sub2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:400}
+.dm-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.dm-time{font-size:11px;color:var(–sub);font-weight:700}
 
-        .profile-tabs { display:flex; border-bottom:1px solid var(--border); padding:0 20px; margin-bottom:16px;}
-        .ptab { flex:1; text-align:center; padding:16px 0; font-size:14px; font-weight:900; color:var(--sub); cursor:pointer; border-bottom:2px solid transparent; transition:0.2s;}
-        .ptab.active { color:var(--accent); border-bottom:2px solid var(--accent); }
+/* ===== CHAT ===== */
+.chat-area{padding:20px 18px;display:flex;flex-direction:column;gap:14px;min-height:calc(100vh - 145px);overflow-y:auto;background:var(–bg2)}
+.msg-row{display:flex;flex-direction:column;max-width:82%}
+.msg-row.in{align-self:flex-start}
+.msg-row.out{align-self:flex-end}
+.msg{padding:13px 17px;font-size:15px;line-height:1.65;border-radius:20px;font-weight:400;word-break:break-word}
+.msg-row.in .msg{background:var(–card);border:1px solid var(–border);border-top-right-radius:5px;color:var(–text)}
+.msg-row.out .msg{background:var(–accentG);color:#fff;border-top-left-radius:5px;box-shadow:0 4px 16px rgba(91,79,206,.25)}
+.msg-time{font-size:11px;color:var(–sub);margin-top:5px;font-weight:700}
+.msg-row.out .msg-time{text-align:left}
+.chat-bar{position:fixed;bottom:0;width:100%;background:var(–nav);padding:14px 18px;border-top:1px solid var(–border);display:flex;gap:10px;z-index:100;align-items:center;backdrop-filter:blur(24px)}
+.chat-inp{flex:1;padding:13px 18px;border-radius:24px;background:var(–input);border:1.5px solid var(–border2);color:var(–text);outline:none;font-size:15px;font-family:‘Tajawal’,sans-serif;transition:.2s}
+.chat-inp:focus{border-color:var(–accent)}
+.chat-send{background:var(–text);color:var(–bg);border:none;border-radius:50%;width:46px;height:46px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.chat-send:active{transform:scale(.9)}
+.typing-ind{display:none;gap:5px;padding:13px 17px;background:var(–card);border:1px solid var(–border);border-radius:20px;border-top-right-radius:5px;align-self:flex-start;width:fit-content}
+.td{width:8px;height:8px;background:var(–sub2);border-radius:50%;animation:typ 1.4s infinite ease-in-out both}
+.td:nth-child(1){animation-delay:-.32s}.td:nth-child(2){animation-delay:-.16s}
+@keyframes typ{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 
-        .services-list { display:flex; flex-direction:column; gap:16px; padding:0 20px 24px; }
-        .service-card { display:flex; align-items:center; gap:16px; background:var(--card); border:1px solid var(--border); padding:16px; border-radius:20px; transition:0.3s; cursor:pointer;}
-        .service-icon { font-size:28px; background:var(--bg2); width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:16px; border:1px solid var(--border);}
-        .service-details { flex:1; text-align:right;}
-        .service-title { font-size:15px; font-weight:900; color:var(--text); margin-bottom:6px;}
-        .students-badge { color:var(--green); background:rgba(16,185,129,0.1); padding:4px 10px; border-radius:8px; font-size:11px; font-weight:900; display:inline-block;}
+/* ===== PROFILE ===== */
+.prof-hdr{position:relative;margin-bottom:62px}
+.prof-cover{height:140px;width:100%;border-bottom-left-radius:32px;border-bottom-right-radius:32px}
+.prof-av-wrap{position:absolute;bottom:-48px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:26px;background:var(–bg2);border:4px solid var(–bg);display:flex;justify-content:center;align-items:center;font-size:36px;font-weight:900;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.35);z-index:10}
+.prof-info{display:flex;flex-direction:column;align-items:center;padding:0 22px;text-align:center}
+.prof-name{font-size:21px;font-weight:900;color:var(–text);margin-bottom:5px;display:flex;align-items:center;gap:7px}
+.prof-title{font-size:13px;color:var(–accent2);font-weight:700;margin-bottom:14px;background:rgba(91,79,206,.12);padding:5px 14px;border-radius:10px;border:1px solid rgba(91,79,206,.2)}
+.prof-bio{font-size:13px;color:var(–sub2);line-height:1.75;max-width:96%;margin-bottom:22px}
+.stats-row{display:flex;justify-content:center;width:100%;max-width:360px;margin-bottom:22px;border:1px solid var(–border);border-radius:20px;background:var(–card);overflow:hidden}
+.stat{display:flex;flex-direction:column;align-items:center;flex:1;padding:14px 8px;border-left:1px solid var(–border)}
+.stat:first-child{border-left:none}
+[dir=ltr] .stat{border-left:none;border-right:1px solid var(–border)}
+[dir=ltr] .stat:last-child{border-right:none}
+.sv{font-size:19px;font-weight:900;color:var(–text);margin-bottom:3px}
+.sl{font-size:11px;color:var(–sub2);font-weight:700}
+.ptabs{display:flex;border-bottom:1px solid var(–border);padding:0 18px;margin-bottom:14px}
+.ptab{flex:1;text-align:center;padding:14px 0;font-size:13px;font-weight:900;color:var(–sub2);cursor:pointer;border-bottom:2px solid transparent;transition:.2s}
+.ptab.active{color:var(–accent2);border-bottom-color:var(–accent2)}
+.svc-list{display:flex;flex-direction:column;gap:14px;padding:0 18px 24px}
+.svc-card{display:flex;align-items:center;gap:14px;background:var(–card);border:1px solid var(–border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer}
+.svc-card:active{background:var(–card2)}
+.svc-icon{font-size:26px;background:var(–bg3);width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(–border);flex-shrink:0}
+.svc-det{flex:1;text-align:right}
+[dir=ltr] .svc-det{text-align:left}
+.svc-t{font-size:14px;font-weight:900;color:var(–text);margin-bottom:5px}
+.stud-b{color:var(–green);background:rgba(16,185,129,.1);padding:4px 9px;border-radius:7px;font-size:11px;font-weight:900;display:inline-block}
+.rev-card{background:var(–bg3);border:1px solid var(–border);padding:15px;border-radius:14px;margin-bottom:10px;text-align:right}
+[dir=ltr] .rev-card{text-align:left}
+.rev-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.rev-name{font-size:14px;font-weight:900;color:var(–text)}
+.rev-txt{font-size:13px;color:var(–sub2);line-height:1.6}
 
-        .review-card { background:var(--bg2); border:1px solid var(--border); padding:16px; border-radius:16px; margin-bottom:12px; text-align:right;}
-        .review-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
-        .review-name { font-size:14px; font-weight:900; color:var(--text); }
-        .review-text { font-size:13px; color:var(--sub); line-height:1.6;}
+/* ===== BOTTOM NAV ===== */
+.bnav{position:fixed;bottom:18px;left:5%;width:90%;background:var(–nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:none;justify-content:space-around;align-items:center;padding:10px;border-radius:26px;border:1px solid var(–border);box-shadow:0 16px 40px rgba(0,0,0,.45);z-index:100}
+.nb{color:var(–sub2);font-size:22px;cursor:pointer;padding:10px 18px;transition:.25s;border-radius:14px}
+.nb.active{color:var(–text);background:var(–card2)}
+.nb-add{font-size:22px;color:#fff!important;background:var(–accentG);box-shadow:0 8px 20px rgba(91,79,206,.35);border-radius:14px;padding:10px 22px}
 
-        .bottom-nav { position:fixed; bottom:20px; left:5%; width:90%; background:var(--nav); backdrop-filter:blur(24px); display:none; justify-content:space-around; align-items:center; padding:12px; border-radius:24px; border:1px solid var(--border); box-shadow:0 15px 35px rgba(0,0,0,0.4); z-index:100; }
-        .nav-btn { color:var(--sub); font-size:24px; cursor:pointer; padding:10px 20px; transition:0.3s; border-radius:16px;}
-        .nav-btn.active { color:var(--text); background:var(--card); transform:translateY(-2px);}
-        .nav-add { font-size:24px; color:#fff !important; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 8px 20px rgba(79,70,229,0.3); border-radius:14px; padding:10px 24px; }
+/* ===== SETTINGS ===== */
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(–card);border:1px solid var(–border);border-radius:var(–r);margin-bottom:10px;cursor:pointer;transition:.2s}
+.set-row:active{background:var(–card2)}
+.set-label{font-size:15px;font-weight:700;color:var(–text)}
+.set-val{font-size:14px;font-weight:900;color:var(–accent2)}
 
-        html[dir="ltr"] .search-icon { right:auto; left:20px; }
-        html[dir="ltr"] .search-box input { padding:16px 20px 16px 48px; }
-        html[dir="ltr"] .hdr-icon:first-child { transform:scaleX(-1); }
-        html[dir="ltr"] .stat { border-left:none; border-right:1px solid var(--border); }
-        html[dir="ltr"] .stat:last-child { border-right:none; }
-        html[dir="ltr"] .service-details { text-align: left; }
-        html[dir="ltr"] .review-card { text-align: left; }
-    </style>
+/* ===== OFFERS VIEW ===== */
+.offer-item{display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(–card);border:1px solid var(–border);border-radius:var(–r2);cursor:pointer;transition:.2s}
+.offer-item:active{background:var(–card2)}
+
+/* ===== LEADERBOARD ===== */
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(–card);border:1px solid var(–border);border-radius:var(–r2);margin-bottom:10px;cursor:pointer;transition:.2s}
+.lb-item:active{background:var(–card2)}
+.lb-rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
+.lb-info{flex:1}
+.lb-name{font-size:15px;font-weight:900;color:var(–text);margin-bottom:3px}
+.lb-sub{font-size:12px;color:var(–sub2);font-weight:500}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(–green);color:#fff;padding:12px 24px;border-radius:14px;font-size:14px;font-weight:900;z-index:999;opacity:0;transition:.3s;white-space:nowrap;box-shadow:0 8px 24px rgba(16,185,129,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== LTR FIXES ===== */
+[dir=ltr] .sico{right:auto;left:18px}
+[dir=ltr] .sbox input{padding:14px 18px 14px 46px}
+[dir=ltr] .msg-row.in .msg{border-top-right-radius:20px;border-top-left-radius:5px}
+[dir=ltr] .msg-row.out .msg{border-top-left-radius:20px;border-top-right-radius:5px}
+[dir=ltr] .msg-row.out .msg-time{text-align:right}
+</style>
+
 </head>
 <body>
 
+<!-- TOAST -->
+
+<div id="toast" class="toast"></div>
+
+<!-- ===== LOGIN ===== -->
+
 <div id="login-view" class="view active">
-    <div class="login-wrap">
-        <div class="login-card">
-            <div class="logo" style="font-size:36px; margin-bottom:12px;">مهاراتي</div>
-            <p style="color:var(--sub);font-size:14px;margin-bottom:32px;font-weight:500;">سوق المهارات والخدمات الجامعية الشامل</p>
-            
-            <select class="input-box" id="univ-select">
-                <option value="" disabled selected>اختر جامعتك...</option>
-                <option value="pmu">جامعة الأمير مقرن بن عبدالعزيز</option>
-                <option value="ksu">جامعة الملك سعود</option>
-                <option value="kfupm">جامعة الملك فهد للبترول والمعادن</option>
-                <option value="kau">جامعة الملك عبدالعزيز</option>
-                <option value="iau">جامعة الإمام عبدالرحمن بن فيصل</option>
-                <option value="qu">جامعة القصيم</option>
-            </select>
-            <input type="number" class="input-box" placeholder="الرقم الجامعي">
-            <button class="btn-primary" style="margin-top:16px;" onclick="login()">دخول للمنصة</button>
-        </div>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">مهاراتي</div>
+      <p class="login-sub">سوق المهارات والخدمات الجامعي<br>تعلّم من زملائك، علّم من حولك</p>
+      <select class="inp" id="univ-sel">
+        <option value="" disabled selected>اختر جامعتك...</option>
+        <option value="pmu">جامعة الأمير مقرن بن عبدالعزيز</option>
+        <option value="ksu">جامعة الملك سعود</option>
+        <option value="kfupm">جامعة الملك فهد للبترول والمعادن</option>
+        <option value="kau">جامعة الملك عبدالعزيز</option>
+        <option value="iau">جامعة الإمام عبدالرحمن بن فيصل</option>
+        <option value="qu">جامعة القصيم</option>
+        <option value="ut">جامعة الطائف</option>
+        <option value="kku">جامعة الملك خالد</option>
+      </select>
+      <input type="number" class="inp" id="sid" placeholder="الرقم الجامعي">
+      <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة 🚀</button>
+      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
+  </div>
 </div>
+
+<!-- ===== FEED ===== -->
 
 <div id="feed-view" class="view">
-    <header class="hdr">
-        <div class="logo">مهاراتي</div>
-        <div style="display:flex; gap:16px;">
-            <div class="hdr-icon" onclick="go('search-view', 1)">🔍</div>
-            <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
-        </div>
-    </header>
-
-    <div class="cats">
-        <div class="cat active" onclick="filterCat(this, 'all')">الكل</div>
-        <div class="cat" onclick="filterCat(this, 'coding')">برمجة وبيانات</div>
-        <div class="cat" onclick="filterCat(this, 'design')">تصميم وهندسة</div>
-        <div class="cat" onclick="filterCat(this, 'business')">إدارة وتسويق</div>
-        <div class="cat" onclick="filterCat(this, 'other')">تخصصات أخرى</div>
+  <header class="hdr">
+    <div class="logo">مهاراتي</div>
+    <div class="hdr-row">
+      <div class="hdr-icon" onclick="go('search-view',1)" title="بحث">🔍</div>
+      <div class="hdr-icon" onclick="go('lb-view')" title="المتصدرون">🏆</div>
+      <div class="hdr-icon" onclick="go('settings-view')" title="إعدادات">⚙️</div>
     </div>
-
-    <div class="feed" id="feed-container">
-        <div class="post-card" data-cat="design">
-            <div class="post-header" onclick="openProfile('lama')">
-                <div class="avatar" style="background:linear-gradient(135deg,#0d9488,#3b82f6);">ل</div>
-                <div class="post-header-info">
-                    <h3>لمى سعد <span class="verified-badge" style="background:var(--gold);">PRO</span></h3>
-                    <p>التصميم الداخلي • 💎 ماسي</p>
-                </div>
-            </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#115e59,#1e3a8a);">
-                🛋️
-                <div class="course-meta">
-                    <div class="meta-pill">⏱️ جلسة ساعتين</div>
-                </div>
-            </div>
-            <div class="post-body">
-                <p>جلسة فردية لتعلم استايلات التصميم المستقبلية (Solarpunk & Space Age). وكيف ندمج الطبيعة مع التكنولوجيا في الفراغ المعماري. 🌿✨</p>
-                <div class="post-tags">
-                    <span class="tag">Solarpunk</span>
-                    <span class="tag">تصميم داخلي</span>
-                </div>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn btn-outline" onclick="openChat('lama')">استفسار</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">طلب خدمة</button>
-            </div>
-        </div>
-
-        <div class="post-card" data-cat="business">
-            <div class="post-header" onclick="openProfile('faisal')">
-                <div class="avatar" style="background:linear-gradient(135deg,#eab308,#ef4444);">ف</div>
-                <div class="post-header-info">
-                    <h3>فيصل خالد <span class="verified-badge">EXPERT</span></h3>
-                    <p>إدارة أعمال • 🌟 ذهبي</p>
-                </div>
-            </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#713f12,#4c1d95);">
-                📂
-                <div class="course-meta">
-                    <div class="meta-pill">⏱️ ورشة ٤ أيام</div>
-                </div>
-            </div>
-            <div class="post-body">
-                <p>ورشة: المهارات الإدارية للعمل عن بُعد. هنتعلم كيف تدير الملفات (Clerical work) وتستخدم أدوات التنظيم السحابية للشركات. 💻</p>
-                <div class="post-tags">
-                    <span class="tag">عمل عن بُعد</span>
-                    <span class="tag">إدارة ملفات</span>
-                </div>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn btn-outline" onclick="openChat('faisal')">تواصل</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم تسجيلك ✅')">حجز مقعد</button>
-            </div>
-        </div>
-
-        <div class="post-card" data-cat="coding">
-            <div class="post-header" onclick="openProfile('sara')">
-                <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#c084fc);">س</div>
-                <div class="post-header-info">
-                    <h3>سارة أحمد</h3>
-                    <p>تحليل بيانات • 💎 ماسي</p>
-                </div>
-            </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#312e81,#0f172a);">
-                📊
-            </div>
-            <div class="post-body">
-                <p>معسكر مكثف لتحليل البيانات باستخدام Excel و Python. يركز المعسكر على بناء Dashboards احترافية تفيدك في الـ CV. 📈</p>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn btn-primary" style="background:var(--card); color:var(--text); border:1px solid var(--border);" onclick="openProfile('sara')">تصفح الملف</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">تسجيل</button>
-            </div>
-        </div>
-
-        <div class="post-card" data-cat="other">
-            <div class="post-header" onclick="openProfile('raghad')">
-                <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f43f5e);">ر</div>
-                <div class="post-header-info">
-                    <h3>رغد صالح <span class="verified-badge">PRO</span></h3>
-                    <p>موارد بشرية • 🌟 ذهبي</p>
-                </div>
-            </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#831843,#4c1d95);">
-                📄
-            </div>
-            <div class="post-body">
-                <p>مراجعة شاملة لسيرتك الذاتية (CV Review) وتجهيزك للمقابلات الشخصية. بعطيك أهم الأسئلة وكيف تجاوب عليها بذكاء. 🎯</p>
-                <div class="post-tags">
-                    <span class="tag">تطوير مهني</span>
-                    <span class="tag">سيرة ذاتية</span>
-                </div>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn btn-outline" onclick="openChat('raghad')">استفسار</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">حجز استشارة</button>
-            </div>
-        </div>
-    </div>
+  </header>
+  <div class="cats" id="feed-cats">
+    <div class="cat active" onclick="filterCat(this,'all')">الكل</div>
+    <div class="cat" onclick="filterCat(this,'coding')">💻 برمجة وبيانات</div>
+    <div class="cat" onclick="filterCat(this,'design')">🎨 تصميم وهندسة</div>
+    <div class="cat" onclick="filterCat(this,'business')">📂 إدارة وأعمال</div>
+    <div class="cat" onclick="filterCat(this,'lang')">🌍 لغات</div>
+    <div class="cat" onclick="filterCat(this,'media')">🎬 مونتاج وتصوير</div>
+    <div class="cat" onclick="filterCat(this,'math')">🔢 علوم ورياضيات</div>
+    <div class="cat" onclick="filterCat(this,'other')">✨ أخرى</div>
+  </div>
+  <div class="feed" id="feed-container"></div>
 </div>
+
+<!-- ===== SEARCH ===== -->
 
 <div id="search-view" class="view">
-    <header class="hdr" style="border-bottom:none;">
-        <div style="width:28px;"></div>
-        <div class="hdr-title">سوق الخدمات</div>
-        <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
-    </header>
-    <div class="search-box" style="margin-top:0;">
-        <span class="search-icon">🔍</span>
-        <input type="text" onkeyup="searchSkills(this.value)" placeholder="عن أي مهارة تبحث اليوم؟...">
+  <header class="hdr" style="border-bottom:none">
+    <div style="width:28px"></div>
+    <div class="hdr-title">اكتشف المهارات</div>
+    <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
+  </header>
+  <div class="sbox" style="margin-top:0">
+    <span class="sico">🔍</span>
+    <input type="text" oninput="searchSkills(this.value)" placeholder="ابحث عن مهارة أو طالب...">
+  </div>
+  <div class="sec-t">تخصصات مقترحة</div>
+  <div class="skill-list" id="skills-list">
+    <div class="skill-item" onclick="openOffers('design')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#0d9488,#3b82f6);width:52px;height:52px;font-size:22px;border-radius:14px">🎨</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">التصميم والهندسة</div><div style="font-size:12px;color:var(--sub2)">UI/UX, 3D, AutoCAD, Figma</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
     </div>
-    
-    <div class="section-title">تخصصات مقترحة لك</div>
-    <div class="search-list" id="skills-list">
-        <div class="search-item" onclick="openSkillOffers('Design')">
-            <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#0d9488;border-radius:14px;width:56px;height:56px;font-size:24px;">🎨</div>
-                <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">التصميم والهندسة</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">UI/UX, 3D, AutoCAD</div>
-                </div>
-            </div>
-            <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
-        </div>
-        
-        <div class="search-item" onclick="openSkillOffers('Admin')">
-            <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#eab308;border-radius:14px;width:56px;height:56px;font-size:24px;">📂</div>
-                <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">المهارات الإدارية</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">إدارة ملفات، أعمال عن بُعد</div>
-                </div>
-            </div>
-            <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
-        </div>
-        
-        <div class="search-item" onclick="openSkillOffers('Coding')">
-            <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#4f46e5;border-radius:14px;width:56px;height:56px;font-size:24px;">💻</div>
-                <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">البرمجة والبيانات</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">Python, Excel, AI</div>
-                </div>
-            </div>
-            <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
-        </div>
+    <div class="skill-item" onclick="openOffers('coding')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#4f46e5,#8b5cf6);width:52px;height:52px;font-size:22px;border-radius:14px">💻</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">البرمجة والبيانات</div><div style="font-size:12px;color:var(--sub2)">Python, Excel, AI, شبكات</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
     </div>
+    <div class="skill-item" onclick="openOffers('business')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#eab308,#f59e0b);width:52px;height:52px;font-size:22px;border-radius:14px">📂</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">الإدارة والأعمال</div><div style="font-size:12px;color:var(--sub2)">إدارة ملفات، عمل عن بُعد، تسويق</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="skill-item" onclick="openOffers('lang')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#8b5cf6,#c084fc);width:52px;height:52px;font-size:22px;border-radius:14px">🌍</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">اللغات والترجمة</div><div style="font-size:12px;color:var(--sub2)">إنجليزي، فرنسي، إيميلات رسمية</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="skill-item" onclick="openOffers('media')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);width:52px;height:52px;font-size:22px;border-radius:14px">🎬</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">المونتاج والتصوير</div><div style="font-size:12px;color:var(--sub2)">Premiere, Lightroom, محتوى</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="skill-item" onclick="openOffers('math')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#15803d,#22c55e);width:52px;height:52px;font-size:22px;border-radius:14px">🔢</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">العلوم والرياضيات</div><div style="font-size:12px;color:var(--sub2)">Calculus, فيزياء, طب, محاسبة</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="skill-item" onclick="openOffers('other')">
+      <div class="skill-l">
+        <div class="av" style="background:linear-gradient(135deg,#e11d48,#f43f5e);width:52px;height:52px;font-size:22px;border-radius:14px">✨</div>
+        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">تطوير شخصي وأخرى</div><div style="font-size:12px;color:var(--sub2)">CV, مقابلات, كتابة إبداعية</div></div>
+      </div>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+  </div>
+  <div class="sec-t" style="margin-top:8px">جميع الطلاب المسجلين (<span id="total-count"></span>)</div>
+  <div class="skill-list" id="all-users-list"></div>
 </div>
 
-<div id="skill-offers-view" class="view">
-    <header class="hdr">
-        <div class="hdr-icon" onclick="goBack()">🔙</div>
-        <div class="hdr-title" id="offer-skill-title">الخدمات المتاحة</div>
-        <div style="width:28px;"></div>
-    </header>
-    <div class="search-list" id="offers-list" style="margin-top:24px;"></div>
+<!-- ===== SKILL OFFERS ===== -->
+
+<div id="offers-view" class="view">
+  <header class="hdr">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title" id="offers-title">الخدمات</div>
+    <div style="width:28px"></div>
+  </header>
+  <div class="skill-list" id="offers-list" style="margin-top:20px"></div>
 </div>
+
+<!-- ===== ADD ===== -->
 
 <div id="add-view" class="view">
-    <header class="hdr" style="border-bottom:none;">
-        <div class="hdr-icon" onclick="goBack()" style="font-size:15px; font-weight:700; color:var(--sub);">إلغاء</div>
-        <div class="hdr-title">تقديم خدمة جديدة</div>
-        <div class="hdr-icon" style="color:var(--accent); font-size:15px; font-weight:900;" onclick="submitSkill()">نشر</div>
-    </header>
-    <div class="add-container">
-        <span class="add-label">نوع الخدمة</span>
-        <div class="add-type-grid">
-            <div class="add-type-card active" onclick="selType(this)">
-                <div class="add-type-icon">👤</div>
-                <div class="add-type-title">جلسة فردية</div>
-            </div>
-            <div class="add-type-card" onclick="selType(this)">
-                <div class="add-type-icon">👥</div>
-                <div class="add-type-title">ورشة جماعية</div>
-            </div>
-        </div>
-
-        <span class="add-label">عنوان الخدمة</span>
-        <input type="text" class="input-box" placeholder="مثال: تعليم التصميم ببرنامج...">
-
-        <span class="add-label">التصنيف المهني</span>
-        <select class="input-box">
-            <option>برمجة وبيانات</option>
-            <option>تصميم وهندسة</option>
-            <option>أعمال وإدارة</option>
-            <option>لغات وترجمة</option>
-            <option>أخرى</option>
-        </select>
-
-        <span class="add-label">التفاصيل والمخرجات</span>
-        <textarea class="input-box" placeholder="اشرح بالتفصيل وش راح تقدم، وماذا سيستفيد الطالب..."></textarea>
-        
-        <button class="btn-primary" style="margin-top:24px;" onclick="submitSkill()">اعتماد ونشر في السوق</button>
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-title">تقديم خدمة جديدة</div>
+    <div class="hdr-icon" style="color:var(--accent2);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
+  </header>
+  <div class="add-wrap">
+    <span class="add-lbl">نوع الخدمة</span>
+    <div class="type-grid">
+      <div class="type-card active" onclick="selType(this)"><div class="type-icon">👤</div><div class="type-t">جلسة فردية</div></div>
+      <div class="type-card" onclick="selType(this)"><div class="type-icon">👥</div><div class="type-t">ورشة جماعية</div></div>
+      <div class="type-card" onclick="selType(this)"><div class="type-icon">📱</div><div class="type-t">محتوى رقمي</div></div>
     </div>
+    <span class="add-lbl">عنوان الخدمة</span>
+    <input type="text" class="inp" placeholder="مثال: دروس Python للمبتدئين">
+    <span class="add-lbl">التصنيف</span>
+    <select class="inp">
+      <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
+      <option>إدارة وأعمال</option><option>لغات وترجمة</option>
+      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
+    </select>
+    <span class="add-lbl">السعر (ريال)</span>
+    <input type="number" class="inp" placeholder="0 = مجاني">
+    <span class="add-lbl">التفاصيل والمخرجات</span>
+    <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في السوق ✅</button>
+  </div>
 </div>
+
+<!-- ===== DMS ===== -->
 
 <div id="dm-view" class="view">
-    <header class="hdr" style="border-bottom:none;">
-        <div class="hdr-title" style="font-size:24px;">صندوق الوارد</div>
-        <div class="hdr-icon">📝</div>
-    </header>
-    <div class="search-box" style="margin-top:0;">
-        <span class="search-icon">🔍</span>
-        <input type="text" onkeyup="searchDMs(this.value)" placeholder="البحث في المحادثات...">
-    </div>
-    
-    <div id="dm-list" class="dm-list">
-        <div class="dm-item" onclick="openChat('lama')">
-            <div class="avatar" style="background:linear-gradient(135deg,#0d9488,#3b82f6);width:56px;height:56px;">ل</div>
-            <div class="dm-info">
-                <div class="dm-name">لمى سعد</div>
-                <div class="dm-msg" style="color:var(--text); font-weight:700;">أهلاً بك، متى يناسبك وقت الجلسة؟</div>
-            </div>
-            <div class="dm-meta">
-                <div class="dm-time">١٠:٣٠ ص</div>
-                <div class="unread-badge">1</div>
-            </div>
-        </div>
-        <div class="dm-item" onclick="openChat('faisal')">
-            <div class="avatar" style="background:linear-gradient(135deg,#eab308,#ef4444);width:56px;height:56px;">ف</div>
-            <div class="dm-info">
-                <div class="dm-name">فيصل خالد</div>
-                <div class="dm-msg">أرسلت لك ملفات الورشة الإدارية.</div>
-            </div>
-            <div class="dm-meta">
-                <div class="dm-time">أمس</div>
-            </div>
-        </div>
-        <div class="dm-item" onclick="openChat('sara')">
-            <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#c084fc);width:56px;height:56px;">س</div>
-            <div class="dm-info">
-                <div class="dm-name">سارة أحمد</div>
-                <div class="dm-msg">يعطيك العافية، شكراً لك.</div>
-            </div>
-            <div class="dm-meta">
-                <div class="dm-time">الأحد</div>
-            </div>
-        </div>
-    </div>
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-title" style="font-size:21px">الرسائل</div>
+    <div class="hdr-icon">✏️</div>
+  </header>
+  <div class="sbox" style="margin-top:0">
+    <span class="sico">🔍</span>
+    <input type="text" oninput="searchDMs(this.value)" placeholder="البحث في المحادثات...">
+  </div>
+  <div id="dm-list" class="dm-list"></div>
 </div>
 
-<div id="chat-view" class="view">
-    <header class="hdr">
-        <div style="display:flex;align-items:center;gap:12px;">
-            <div class="hdr-icon" onclick="goBack()">🔙</div>
-            <div class="avatar" id="chat-avatar" style="width:40px;height:40px;font-size:16px;"></div>
-            <div>
-                <div class="hdr-title" id="chat-name" style="font-size:16px;">-</div>
-                <div style="font-size:11px; color:var(--green); font-weight:700; margin-top:2px;">متصل الآن</div>
-            </div>
-        </div>
-        <div class="hdr-icon" style="font-size:20px;">📞</div>
-    </header>
-    <div class="chat-area" id="chat-area"></div>
-    
-    <div class="typing-indicator" id="typing-ind">
-        <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
-    </div>
+<!-- ===== CHAT ===== -->
 
-    <div class="chat-bar">
-        <div class="hdr-icon" style="color:var(--sub); font-size:22px;">📎</div>
-        <input type="text" id="chat-input" placeholder="رسالتك...">
-        <button class="chat-send" onclick="sendMsg()">➤</button>
+<div id="chat-view" class="view" style="padding-bottom:80px">
+  <header class="hdr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="hdr-icon" onclick="goBack()">🔙</div>
+      <div class="av" id="chat-av" style="width:38px;height:38px;font-size:15px;cursor:pointer"></div>
+      <div>
+        <div class="hdr-title" id="chat-name" style="font-size:15px">-</div>
+        <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:1px">● متصل الآن</div>
+      </div>
     </div>
+    <div class="hdr-row">
+      <div class="hdr-icon" style="font-size:19px">📞</div>
+      <div class="hdr-icon" style="font-size:19px" onclick="openCurrentProfile()">👤</div>
+    </div>
+  </header>
+  <div class="chat-area" id="chat-area"></div>
+  <div class="typing-ind" id="typing-ind"><div class="td"></div><div class="td"></div><div class="td"></div></div>
+  <div class="chat-bar">
+    <div class="hdr-icon" style="color:var(--sub2);font-size:20px">📎</div>
+    <input class="chat-inp" id="chat-inp" placeholder="رسالتك..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="chat-send" onclick="sendMsg()">↑</button>
+  </div>
 </div>
+
+<!-- ===== PROFILE ===== -->
 
 <div id="profile-view" class="view">
-    <header class="hdr" style="border-bottom:none; background:transparent; position:absolute; width:100%; z-index:100;">
-        <div class="hdr-icon" id="prof-back-btn" onclick="goBack()" style="background:rgba(0,0,0,0.4); border-radius:50%; width:40px; height:40px; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(10px);">🔙</div>
-        <div class="hdr-icon" id="prof-settings-btn" onclick="go('settings-view')" style="background:rgba(0,0,0,0.4); border-radius:50%; width:40px; height:40px; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(10px);">⚙️</div>
-    </header>
-
-    <div class="profile-header">
-        <div class="profile-cover" id="prof-cover"></div>
-        <div class="profile-avatar-wrapper" id="prof-avatar">-</div>
+  <header class="hdr" style="border-bottom:none;background:transparent;position:absolute;width:100%;z-index:100">
+    <div class="hdr-icon" id="prof-back" onclick="goBack()" style="background:rgba(0,0,0,.45);border-radius:50%;width:40px;height:40px;backdrop-filter:blur(10px)">🔙</div>
+    <div class="hdr-icon" id="prof-set" onclick="go('settings-view')" style="background:rgba(0,0,0,.45);border-radius:50%;width:40px;height:40px;backdrop-filter:blur(10px)">⚙️</div>
+  </header>
+  <div class="prof-hdr">
+    <div class="prof-cover" id="prof-cover"></div>
+    <div class="prof-av-wrap" id="prof-av">-</div>
+  </div>
+  <div class="prof-info">
+    <div class="prof-name" id="prof-name">-</div>
+    <div class="prof-title" id="prof-title">-</div>
+    <p class="prof-bio" id="prof-bio">-</p>
+    <button class="btn btn-p" id="prof-msg-btn" style="width:100%;max-width:300px;display:none;margin-bottom:22px" onclick="">طلب خدمة / تواصل 💬</button>
+    <div class="stats-row">
+      <div class="stat"><div class="sv" id="ps-learn">0</div><div class="sl">خدمات أُنجزت</div></div>
+      <div class="stat"><div class="sv" id="ps-teach">0</div><div class="sl">إجمالي المتدربين</div></div>
+      <div class="stat"><div class="sv" id="ps-icon">🌟</div><div class="sl" id="ps-rank" style="color:var(--gold)">تصنيف</div></div>
     </div>
-
-    <div class="profile-info-center">
-        <div class="profile-name" id="prof-name">-</div>
-        <div class="profile-title" id="prof-title">-</div>
-        <p class="profile-bio" id="prof-bio">-</p>
-        
-        <button class="btn-primary" id="prof-msg-btn" style="width:100%; max-width:300px; display:none; margin-bottom:24px;" onclick="">طلب خدمة أو تواصل 💬</button>
-
-        <div class="stats-row">
-            <div class="stat"><div class="stat-val" id="prof-stat-learn">0</div><div class="stat-lbl">خدمات أُنجزت</div></div>
-            <div class="stat"><div class="stat-val" id="prof-stat-teach">0</div><div class="stat-lbl">إجمالي المتدربين</div></div>
-            <div class="stat"><div class="stat-val" id="prof-rank-icon">🌟</div><div class="stat-lbl" id="prof-rank" style="color:var(--gold);">ذهبي</div></div>
-        </div>
-    </div>
-
-    <div class="profile-tabs">
-        <div class="ptab active" id="tab-taught" onclick="toggleGrid('taught')">الخدمات المُقدمة</div>
-        <div class="ptab" id="tab-learned" onclick="toggleGrid('learned')">المهارات المكتسبة</div>
-        <div class="ptab" id="tab-reviews" onclick="toggleGrid('reviews')">التقييمات</div>
-    </div>
-
-    <div class="services-list" id="grid-taught"></div>
-    <div class="services-list" id="grid-learned" style="display:none;"></div>
-    <div class="services-list" id="grid-reviews" style="display:none;"></div>
+  </div>
+  <div class="ptabs">
+    <div class="ptab active" id="tab-taught" onclick="toggleGrid('taught')">الخدمات</div>
+    <div class="ptab" id="tab-learned" onclick="toggleGrid('learned')">المكتسبات</div>
+    <div class="ptab" id="tab-reviews" onclick="toggleGrid('reviews')">التقييمات</div>
+  </div>
+  <div class="svc-list" id="grid-taught"></div>
+  <div class="svc-list" id="grid-learned" style="display:none"></div>
+  <div id="grid-reviews" style="display:none;padding:0 18px 24px"></div>
 </div>
+
+<!-- ===== LEADERBOARD ===== -->
+
+<div id="lb-view" class="view">
+  <header class="hdr">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title">🏆 المتصدرون</div>
+    <div style="width:28px"></div>
+  </header>
+  <div id="lb-list" style="padding:16px 18px"></div>
+</div>
+
+<!-- ===== SETTINGS ===== -->
 
 <div id="settings-view" class="view">
-    <header class="hdr">
-        <div class="hdr-icon" onclick="goBack()">🔙</div>
-        <div class="hdr-title">إعدادات الحساب</div>
-        <div style="width:28px;"></div>
-    </header>
-    <div style="padding:24px;">
-        <div class="input-box" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; cursor:pointer;" onclick="toggleTheme()">
-            <span style="font-weight:900;">المظهر (Dark/Light)</span>
-            <span id="theme-btn" style="font-weight:900; color:var(--accent);">فاتح ☀️</span>
-        </div>
-        <button class="btn-outline" style="width:100%; padding:16px; border-radius:14px; color:var(--red); font-weight:900; border-color:rgba(239,68,68,0.3);" onclick="location.reload()">تسجيل الخروج</button>
+  <header class="hdr">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title">الإعدادات</div>
+    <div style="width:28px"></div>
+  </header>
+  <div style="padding:24px 18px;display:flex;flex-direction:column;gap:10px">
+    <div class="set-row" onclick="toggleTheme()">
+      <span class="set-label">🎨 المظهر</span>
+      <span class="set-val" id="theme-lbl">فاتح ☀️</span>
     </div>
+    <div class="set-row" onclick="toggleLang()">
+      <span class="set-label">🌐 اللغة</span>
+      <span class="set-val" id="lang-lbl">English</span>
+    </div>
+    <div class="set-row" onclick="openProfile('me',4)">
+      <span class="set-label">👤 ملفي الشخصي</span>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="set-row" onclick="go('lb-view')">
+      <span class="set-label">🏆 لوحة المتصدرين</span>
+      <span style="color:var(--sub2)">←</span>
+    </div>
+    <div class="set-row" style="margin-top:12px" onclick="location.reload()">
+      <span class="set-label" style="color:var(--red)">🚪 تسجيل الخروج</span>
+    </div>
+  </div>
 </div>
 
-<nav id="bottom-nav" class="bottom-nav">
-    <div class="nav-btn active" onclick="go('feed-view', 0)">🏠</div>
-    <div class="nav-btn" onclick="go('search-view', 1)">🔍</div>
-    <div class="nav-btn nav-add" onclick="go('add-view', 2)">➕</div>
-    <div class="nav-btn" onclick="go('dm-view', 3)">💬</div>
-    <div class="nav-btn" onclick="openProfile('me', 4)">👤</div>
+<!-- ===== BOTTOM NAV ===== -->
+
+<nav id="bnav" class="bnav">
+  <div class="nb active" onclick="go('feed-view',0)">🏠</div>
+  <div class="nb" onclick="go('search-view',1)">🔍</div>
+  <div class="nb nb-add" onclick="go('add-view',2)">＋</div>
+  <div class="nb" onclick="go('dm-view',3)">💬</div>
+  <div class="nb" onclick="openProfile('me',4)">👤</div>
 </nav>
 
 <script>
-let navHistory = ['login-view']; 
-let currentChatUser = '';
-
-// ================= قاعدة البيانات الشاملة ٢٠ طالب =================
-const db = {
-    // 1
-    'me': {
-        arName: 'أحمد خالد', bg: 'linear-gradient(135deg,var(--accent),var(--accent2))', arInit: 'أ',
-        arRank: 'تصنيف ذهبي', rankIcon: '🌟', arTitle: 'طالب معماري | مهتم بـ 70s Retro',
-        arBio: 'شغوف بتصميم الفراغات وتطوير المخططات (Solarpunk). أقدم ورش عمل مبسطة لزملائي.',
-        learn: 2, teach: 28,
-        taught: [{icon: '📐', n: 'أساسيات 3D Modeling', st: 15}, {icon: '🛋️', n: 'تصميم مساحات بـ Coohom', st: 13}],
-        learned: [{icon: '📊', n: 'تحليل بيانات'}, {icon: '🇬🇧', n: 'إنجليزي أعمال'}],
-        reviews: [{n: 'ياسر فهد', stars: '⭐⭐⭐⭐⭐', txt: 'أحمد مبدع جداً، الورشة كانت مفيدة 100%.'}]
-    },
-    // 2
-    'lama': {
-        arName: 'لمى سعد', bg: 'linear-gradient(135deg,#0d9488,#3b82f6)', arInit: 'ل',
-        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'تصميم داخلي | Space Age',
-        arBio: 'مهتمة بالأنماط المستقبلية والعصرية. أساعدك تصمم فراغات مستوحاة من الطبيعة.',
-        learn: 5, teach: 55,
-        taught: [{icon: '🌿', n: 'مقدمة في نمط Solarpunk', st: 30}, {icon: '🚀', n: 'تصاميم Space Age', st: 25}],
-        learned: [{icon: '🎨', n: 'Color Theory'}],
-        reviews: [{n: 'نوف العبدالله', stars: '⭐⭐⭐⭐⭐', txt: 'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]
-    },
-    // 3
-    'faisal': {
-        arName: 'فيصل خالد', bg: 'linear-gradient(135deg,#eab308,#ef4444)', arInit: 'ف',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'إدارة أعمال | أعمال عن بُعد',
-        arBio: 'متخصص في التنظيم الإداري وإدارة الملفات السحابية. أعلمك كيف تشتغل Remote File Clerk بكفاءة.',
-        learn: 4, teach: 40,
-        taught: [{icon: '📂', n: 'إدارة وتنظيم الملفات السحابية', st: 25}, {icon: '💻', n: 'مهارات العمل الإداري عن بُعد', st: 15}],
-        learned: [{icon: '🇬🇧', n: 'كتابة إيميلات رسمية'}],
-        reviews: [{n: 'رغد صالح', stars: '⭐⭐⭐⭐⭐', txt: 'نظم لي طريقة عملي بالكامل.'}]
-    },
-    // 4
-    'sara': {
-        arName: 'سارة أحمد', bg: 'linear-gradient(135deg,#6366f1,#c084fc)', arInit: 'س',
-        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'محللة بيانات | خبيرة Excel',
-        arBio: 'أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',
-        learn: 10, teach: 120,
-        taught: [{icon: '📊', n: 'تحليل البيانات بـ Excel', st: 70}, {icon: '🐍', n: 'بناء نماذج بـ Python', st: 50}],
-        learned: [{icon: '🎨', n: 'تصميم جرافيك'}],
-        reviews: [{n: 'أحمد خالد', stars: '⭐⭐⭐⭐⭐', txt: 'دورة الإكسل خرافية.'}]
-    },
-    // 5
-    'yasser': {
-        arName: 'ياسر فهد', bg: 'linear-gradient(135deg,#2563eb,#06b6d4)', arInit: 'ي',
-        arRank: 'ممارس ذهبي', rankIcon: '🌟', arTitle: 'هندسة | AutoCAD',
-        arBio: 'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',
-        learn: 6, teach: 30,
-        taught: [{icon: '⚙️', n: 'أساسيات AutoCAD', st: 20}, {icon: '💻', n: 'C++ Basics', st: 10}],
-        learned: [{icon: '🤖', n: 'AI Concepts'}],
-        reviews: [{n: 'سعد العتيبي', stars: '⭐⭐⭐⭐', txt: 'شرح عملي.'}]
-    },
-    // 6
-    'raghad': {
-        arName: 'رغد صالح', bg: 'linear-gradient(135deg,#ec4899,#f43f5e)', arInit: 'ر',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'موارد بشرية | تطوير وظيفي',
-        arBio: 'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات الشخصية بنجاح.',
-        learn: 8, teach: 60,
-        taught: [{icon: '📄', n: 'كتابة CV احترافي', st: 40}, {icon: '🎯', n: 'تجاوز المقابلات', st: 20}],
-        learned: [{icon: '💼', n: 'إدارة مشاريع'}],
-        reviews: [{n: 'منى اليوسف', stars: '⭐⭐⭐⭐⭐', txt: 'بفضل الله ثم رغد انقبلت في تدريب تعاوني.'}]
-    },
-    // 7
-    'shahad': {
-        arName: 'شهد محمد', bg: 'linear-gradient(135deg,#10b981,#3b82f6)', arInit: 'ش',
-        arRank: 'مدربة ذهبية', rankIcon: '🌟', arTitle: 'مصممة واجهات | UI/UX',
-        arBio: 'متخصصة في بناء تجربة مستخدم سلسة واحترافية (Figma).',
-        learn: 5, teach: 45,
-        taught: [{icon: '🎨', n: 'تصميم واجهات Figma', st: 30}],
-        learned: [{icon: '📈', n: 'تسويق رقمي'}],
-        reviews: [{n: 'لمى سعد', stars: '⭐⭐⭐⭐⭐', txt: 'استشارة ممتازة.'}]
-    },
-    // 8
-    'khaled': {
-        arName: 'خالد الدوسري', bg: 'linear-gradient(135deg,#e11d48,#be123c)', arInit: 'خ',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'هندسة مدنية | رسام هندسي',
-        arBio: 'شرح مواد التخصص للهندسة المدنية والاستاتيكا.',
-        learn: 10, teach: 15,
-        taught: [{icon: '🏗️', n: 'مراجعة استاتيكا', st: 15}],
-        learned: [{icon: '⚙️', n: 'AutoCAD'}],
-        reviews: []
-    },
-    // 9
-    'mona': {
-        arName: 'منى اليوسف', bg: 'linear-gradient(135deg,#8b5cf6,#6d28d9)', arInit: 'م',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'لغات | ترجمة',
-        arBio: 'طالبة لغات وترجمة، أقدم جلسات محادثة باللغة الإنجليزية.',
-        learn: 15, teach: 35,
-        taught: [{icon: '🗣️', n: 'محادثة إنجليزي', st: 20}, {icon: '📝', n: 'أساسيات الترجمة', st: 15}],
-        learned: [{icon: '🇫🇷', n: 'لغة فرنسية'}],
-        reviews: [{n: 'هدى محمد', stars: '⭐⭐⭐⭐⭐', txt: 'أسلوبها ممتع جداً بالتعليم.'}]
-    },
-    // 10
-    'saad': {
-        arName: 'سعد العتيبي', bg: 'linear-gradient(135deg,#1e40af,#1e3a8a)', arInit: 'س',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'قانون | صياغة عقود',
-        arBio: 'مراجعة للمواد القانونية وتدريب على صياغة العقود التجارية.',
-        learn: 5, teach: 12,
-        taught: [{icon: '⚖️', n: 'صياغة العقود', st: 12}],
-        learned: [{icon: '💼', n: 'إدارة أعمال'}],
-        reviews: []
-    },
-    // 11
-    'huda': {
-        arName: 'هدى محمد', bg: 'linear-gradient(135deg,#f43f5e,#be123c)', arInit: 'هـ',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'تصوير | Lightroom',
-        arBio: 'تعديل الصور الاحترافي وأساسيات التصوير التجاري.',
-        learn: 8, teach: 40,
-        taught: [{icon: '📸', n: 'أساسيات التصوير', st: 25}, {icon: '🖼️', n: 'تعديل Lightroom', st: 15}],
-        learned: [{icon: '🎨', n: 'Photoshop'}],
-        reviews: []
-    },
-    // 12
-    'majed': {
-        arName: 'ماجد فهد', bg: 'linear-gradient(135deg,#047857,#064e3b)', arInit: 'م',
-        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'أمن سيبراني | شبكات',
-        arBio: 'معسكرات في أساسيات الشبكات والـ Ethical Hacking.',
-        learn: 20, teach: 90,
-        taught: [{icon: '🛡️', n: 'أساسيات الأمن السيبراني', st: 50}, {icon: '🌐', n: 'شبكات CCNA', st: 40}],
-        learned: [{icon: '💻', n: 'Linux'}],
-        reviews: [{n: 'سعد العتيبي', stars: '⭐⭐⭐⭐⭐', txt: 'معلومات دسمة ومفيدة.'}]
-    },
-    // 13
-    'amal': {
-        arName: 'أمل سعود', bg: 'linear-gradient(135deg,#b45309,#713f12)', arInit: 'أ',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'محاسبة | Bookkeeping',
-        arBio: 'شرح مبادئ المحاسبة المالية واستخدام برامج المحاسبة السحابية.',
-        learn: 10, teach: 22,
-        taught: [{icon: '🧮', n: 'مبادئ المحاسبة', st: 22}],
-        learned: [{icon: '📊', n: 'Excel متقدم'}],
-        reviews: []
-    },
-    // 14
-    'ziyad': {
-        arName: 'زياد طارق', bg: 'linear-gradient(135deg,#4338ca,#312e81)', arInit: 'ز',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'ذكاء اصطناعي | ML',
-        arBio: 'هندسة الأوامر (Prompt Engineering) وأساسيات تعلم الآلة.',
-        learn: 15, teach: 65,
-        taught: [{icon: '🤖', n: 'هندسة الأوامر', st: 40}, {icon: '🧠', n: 'تعلم الآلة', st: 25}],
-        learned: [{icon: '🐍', n: 'Python'}],
-        reviews: [{n: 'فيصل خالد', stars: '⭐⭐⭐⭐⭐', txt: 'اختصر علي وقت طويل في فهم الـ AI.'}]
-    },
-    // 15
-    'nouf': {
-        arName: 'نوف العبدالله', bg: 'linear-gradient(135deg,#c026d3,#9d174d)', arInit: 'ن',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'عمارة | 3D Max',
-        arBio: 'ورش عمل في الإظهار المعماري باستخدام 3D Max & Vray.',
-        learn: 7, teach: 18,
-        taught: [{icon: '🏢', n: 'إظهار معماري Vray', st: 18}],
-        learned: [{icon: '📐', n: 'Revit'}],
-        reviews: []
-    },
-    // 16
-    'tariq': {
-        arName: 'طارق زياد', bg: 'linear-gradient(135deg,#0369a1,#1e3a8a)', arInit: 'ط',
-        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'مونتاج | Premiere',
-        arBio: 'تعلم المونتاج السينمائي وصناعة المحتوى المرئي.',
-        learn: 5, teach: 45,
-        taught: [{icon: '🎬', n: 'Premiere Pro', st: 30}, {icon: '📱', n: 'صناعة محتوى تيك توك', st: 15}],
-        learned: [{icon: '📸', n: 'تصوير'}],
-        reviews: [{n: 'أحمد خالد', stars: '⭐⭐⭐⭐', txt: 'شرح بطل وسريع.'}]
-    },
-    // 17
-    'jana': {
-        arName: 'جنى عبدالله', bg: 'linear-gradient(135deg,#a21caf,#701a75)', arInit: 'ج',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'تصميم جرافيك | Illustrator',
-        arBio: 'تصميم الهويات البصرية ورسم الشعارات.',
-        learn: 12, teach: 25,
-        taught: [{icon: '✒️', n: 'أساسيات Illustrator', st: 25}],
-        learned: [{icon: '🎨', n: 'UI/UX'}],
-        reviews: []
-    },
-    // 18
-    'sami': {
-        arName: 'سامي عبدالرحمن', bg: 'linear-gradient(135deg,#15803d,#064e3b)', arInit: 'س',
-        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'رياضيات | دروس خصوصية',
-        arBio: 'مراجعة وتأسيس في مواد التفاضل والتكامل (Calculus).',
-        learn: 3, teach: 150,
-        taught: [{icon: '🔢', n: 'مراجعة Calculus 1', st: 90}, {icon: '➗', n: 'مراجعة Calculus 2', st: 60}],
-        learned: [{icon: '💻', n: 'برمجة C'}],
-        reviews: [{n: 'ماجد فهد', stars: '⭐⭐⭐⭐⭐', txt: 'أنقذني في الميدتيرم، شرحه يوصل للمخ فوراً.'}]
-    },
-    // 19
-    'reem': {
-        arName: 'ريم محمد', bg: 'linear-gradient(135deg,#e11d48,#9f1239)', arInit: 'ر',
-        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'طب | إسعافات أولية',
-        arBio: 'جلسات في الإسعافات الأولية والتثقيف الصحي.',
-        learn: 15, teach: 10,
-        taught: [{icon: '🩺', n: 'إسعافات أولية', st: 10}],
-        learned: [{icon: '🗣️', n: 'لغة إشارة'}],
-        reviews: []
-    },
-    // 20
-    'nasser': {
-        arName: 'ناصر العلي', bg: 'linear-gradient(135deg,#ea580c,#9a3412)', arInit: 'ن',
-        arRank: 'ممارس ذهبي', rankIcon: '🌟', arTitle: 'كتابة إبداعية | سيناريو',
-        arBio: 'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',
-        learn: 8, teach: 35,
-        taught: [{icon: '✍️', n: 'كتابة السيناريو', st: 20}, {icon: '📚', n: 'كتابة المحتوى', st: 15}],
-        learned: [{icon: '🎬', n: 'مونتاج'}],
-        reviews: []
-    }
+/* ======================================================
+   DATABASE – 40 STUDENTS
+   ====================================================== */
+const DB = {
+  me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#5b4fce,#8b5cf6)',i:'أ',rank:'ذهبي',ri:'🌟',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات المستقبلية. أشارك زملائي مهارات 3D Modeling وأتعلم منهم ما أحتاجه.',learn:2,teach:28,cat:'design',post:{emoji:'📐',type:'جلسة فردية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين. نبني نموذج كامل من الصفر.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'},{icon:'🇬🇧',n:'إنجليزي أعمال'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة وعملية.'}]},
+  lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية. أساعدك تصمم فراغات تدمج الطبيعة مع التكنولوجيا.',learn:5,teach:55,cat:'design',post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية (Solarpunk & Space Age) وكيف ندمج الطبيعة مع التكنولوجيا.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'🚀',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]},
+  faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري. أعلمك كيف تشتغل Remote File Clerk بكفاءة.',learn:4,teach:40,cat:'business',post:{emoji:'📂',type:'ورشة ٤ أيام',desc:'ورشة المهارات الإدارية للعمل عن بُعد. ندرس Clerical work وأدوات التنظيم السحابية.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل، أنصح به.'}]},
+  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',learn:10,teach:120,cat:'coding',post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python. نبني Dashboards احترافية تفيدك في الـ CV.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
+  yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,cat:'design',post:{emoji:'⚙️',type:'جلسة تطبيقية',desc:'أساسيات AutoCAD للطلاب الجدد. نرسم مشروعاً كاملاً من الصفر خطوة بخطوة.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
+  raghad:{n:'رغد صالح',bg:'linear-gradient(135deg,#ec4899,#f43f5e)',i:'ر',rank:'ذهبي',ri:'🌟',title:'موارد بشرية | تطوير وظيفي',bio:'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات الشخصية بنجاح.',learn:8,teach:60,cat:'other',post:{emoji:'📄',type:'استشارة شخصية',desc:'مراجعة شاملة لـ CV وتجهيزك للمقابلات. بعطيك أهم الأسئلة وكيف تجاوب بذكاء.'},taught:[{icon:'📄',n:'كتابة CV احترافي',st:40},{icon:'🎯',n:'تجاوز المقابلات',st:20}],learned:[{icon:'💼',n:'إدارة مشاريع'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'بفضل الله ثم رغد انقبلت في تدريب تعاوني.'}]},
+  shahad:{n:'شهد محمد',bg:'linear-gradient(135deg,#10b981,#3b82f6)',i:'ش',rank:'ذهبي',ri:'🌟',title:'مصممة واجهات | UI/UX & Figma',bio:'متخصصة في بناء تجربة مستخدم سلسة واحترافية.',learn:5,teach:45,cat:'design',post:{emoji:'🎨',type:'ورشة Figma',desc:'تصميم واجهات تطبيقات موبايل باستخدام Figma. نصمم شاشات كاملة من الـ wireframe للـ prototype.'},taught:[{icon:'🎨',n:'UI/UX Figma',st:30},{icon:'📱',n:'تصميم تطبيقات موبايل',st:15}],learned:[{icon:'📈',n:'تسويق رقمي'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'استشارة ممتازة، شهد متمكنة جداً.'}]},
+  khaled:{n:'خالد الدوسري',bg:'linear-gradient(135deg,#e11d48,#be123c)',i:'خ',rank:'فضي',ri:'🥈',title:'هندسة مدنية | استاتيكا',bio:'شرح مواد التخصص للهندسة المدنية والاستاتيكا.',learn:10,teach:15,cat:'math',post:{emoji:'🏗️',type:'مراجعة ميدتيرم',desc:'مراجعة مكثفة لمادة الاستاتيكا قبل الاختبارات. نحل نماذج فعلية من اختبارات سابقة.'},taught:[{icon:'🏗️',n:'مراجعة استاتيكا',st:15}],learned:[{icon:'⚙️',n:'AutoCAD'}],reviews:[]},
+  mona:{n:'منى اليوسف',bg:'linear-gradient(135deg,#8b5cf6,#6d28d9)',i:'م',rank:'ذهبي',ri:'🌟',title:'لغات | محادثة إنجليزي',bio:'طالبة لغات وترجمة. أقدم جلسات محادثة إنجليزي ومراجعة أساسيات الترجمة.',learn:15,teach:35,cat:'lang',post:{emoji:'🗣️',type:'جلسة محادثة',desc:'جلسات محادثة باللغة الإنجليزية لتقوية المهارات الشفهية. نناقش مواضيع أعمال وتقنية.'},taught:[{icon:'🗣️',n:'محادثة إنجليزي',st:20},{icon:'📝',n:'أساسيات الترجمة',st:15}],learned:[{icon:'🇫🇷',n:'لغة فرنسية'}],reviews:[{n:'هدى محمد',s:'⭐⭐⭐⭐⭐',t:'أسلوبها ممتع جداً بالتعليم.'}]},
+  saad:{n:'سعد العتيبي',bg:'linear-gradient(135deg,#1e40af,#1e3a8a)',i:'س',rank:'فضي',ri:'🥈',title:'قانون | صياغة عقود',bio:'مراجعة المواد القانونية وتدريب على صياغة العقود التجارية.',learn:5,teach:12,cat:'other',post:{emoji:'⚖️',type:'جلسة قانونية',desc:'تعلم صياغة العقود التجارية الأساسية وأهم البنود القانونية التي يحتاجها الطالب.'},taught:[{icon:'⚖️',n:'صياغة العقود',st:12}],learned:[{icon:'💼',n:'إدارة أعمال'}],reviews:[]},
+  huda:{n:'هدى محمد',bg:'linear-gradient(135deg,#f43f5e,#be123c)',i:'هـ',rank:'ذهبي',ri:'🌟',title:'تصوير | Lightroom & Content',bio:'تعديل الصور الاحترافي وأساسيات التصوير التجاري.',learn:8,teach:40,cat:'media',post:{emoji:'📸',type:'ورشة تصوير',desc:'أساسيات التصوير الاحترافي وتعديل الصور في Lightroom. نصور ونعدل جلسة كاملة.'},taught:[{icon:'📸',n:'أساسيات التصوير',st:25},{icon:'🖼️',n:'Lightroom Editing',st:15}],learned:[{icon:'🎨',n:'Photoshop'}],reviews:[]},
+  majed:{n:'ماجد فهد',bg:'linear-gradient(135deg,#047857,#064e3b)',i:'م',rank:'ماسي',ri:'💎',title:'أمن سيبراني | شبكات & Ethical Hacking',bio:'معسكرات في أساسيات الشبكات والـ Ethical Hacking للطلاب.',learn:20,teach:90,cat:'coding',post:{emoji:'🛡️',type:'معسكر 5 أيام',desc:'معسكر أمن سيبراني: أساسيات الشبكات CCNA وطرق الاختراق الأخلاقي. مناسب للمبتدئين.'},taught:[{icon:'🛡️',n:'Ethical Hacking',st:50},{icon:'🌐',n:'CCNA Networking',st:40}],learned:[{icon:'💻',n:'Linux'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐⭐',t:'معلومات دسمة ومفيدة جداً.'}]},
+  amal:{n:'أمل سعود',bg:'linear-gradient(135deg,#b45309,#713f12)',i:'أ',rank:'فضي',ri:'🥈',title:'محاسبة | Cloud Bookkeeping',bio:'شرح مبادئ المحاسبة المالية وبرامج المحاسبة السحابية.',learn:10,teach:22,cat:'math',post:{emoji:'🧮',type:'جلسة محاسبة',desc:'مبادئ المحاسبة المالية للمبتدئين، واستخدام برامج المحاسبة السحابية الشائعة.'},taught:[{icon:'🧮',n:'مبادئ المحاسبة',st:22}],learned:[{icon:'📊',n:'Excel متقدم'}],reviews:[]},
+  ziyad:{n:'زياد طارق',bg:'linear-gradient(135deg,#4338ca,#312e81)',i:'ز',rank:'ذهبي',ri:'🌟',title:'ذكاء اصطناعي | AI & Prompt Engineering',bio:'هندسة الأوامر (Prompt Engineering) وأساسيات تعلم الآلة.',learn:15,teach:65,cat:'coding',post:{emoji:'🤖',type:'ورشة AI',desc:'كيف تستخدم الذكاء الاصطناعي في دراستك وعملك؟ نتعلم Prompt Engineering وأدوات AI الأهم.'},taught:[{icon:'🤖',n:'Prompt Engineering',st:40},{icon:'🧠',n:'Machine Learning Basics',st:25}],learned:[{icon:'🐍',n:'Python'}],reviews:[{n:'فيصل خالد',s:'⭐⭐⭐⭐⭐',t:'اختصر علي وقت طويل في فهم الـ AI.'}]},
+  nouf:{n:'نوف العبدالله',bg:'linear-gradient(135deg,#c026d3,#9d174d)',i:'ن',rank:'فضي',ri:'🥈',title:'عمارة | 3D Max & Vray',bio:'ورش عمل في الإظهار المعماري باستخدام 3D Max & Vray.',learn:7,teach:18,cat:'design',post:{emoji:'🏢',type:'ورشة 3D',desc:'تعلم الإظهار المعماري الاحترافي بـ 3D Max و Vray. ننجز مشروعاً كاملاً بالإضاءة والمواد.'},taught:[{icon:'🏢',n:'3D Max & Vray',st:18}],learned:[{icon:'📐',n:'Revit'}],reviews:[]},
+  tariq:{n:'طارق زياد',bg:'linear-gradient(135deg,#0369a1,#1e3a8a)',i:'ط',rank:'ذهبي',ri:'🌟',title:'مونتاج | Premiere & Content Creation',bio:'تعلم المونتاج السينمائي وصناعة المحتوى المرئي.',learn:5,teach:45,cat:'media',post:{emoji:'🎬',type:'دورة مونتاج',desc:'تعلم Premiere Pro من الصفر. نصمم intro، ورياكشن، وreels احترافية لتيك توك وانستقرام.'},taught:[{icon:'🎬',n:'Adobe Premiere Pro',st:30},{icon:'📱',n:'صناعة محتوى تيك توك',st:15}],learned:[{icon:'📸',n:'تصوير احترافي'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐',t:'شرح بطل وسريع الاستيعاب.'}]},
+  jana:{n:'جنى عبدالله',bg:'linear-gradient(135deg,#a21caf,#701a75)',i:'ج',rank:'فضي',ri:'🥈',title:'جرافيك | Illustrator & Brand Identity',bio:'تصميم الهويات البصرية ورسم الشعارات باستخدام Illustrator.',learn:12,teach:25,cat:'design',post:{emoji:'✒️',type:'جلسة جرافيك',desc:'نصمم هوية بصرية كاملة: شعار، ألوان، خطوط. باستخدام Adobe Illustrator من الصفر.'},taught:[{icon:'✒️',n:'Adobe Illustrator',st:25}],learned:[{icon:'🎨',n:'UI/UX Design'}],reviews:[]},
+  sami:{n:'سامي عبدالرحمن',bg:'linear-gradient(135deg,#15803d,#064e3b)',i:'س',rank:'ماسي',ri:'💎',title:'رياضيات | Calculus & Physics',bio:'مراجعة وتأسيس في مواد التفاضل والتكامل والفيزياء.',learn:3,teach:150,cat:'math',post:{emoji:'🔢',type:'مراجعة مكثفة',desc:'مراجعة Calculus 1 و 2 وفيزياء. نحل نماذج اختبارات ونفهم الفكرة لا نحفظها.'},taught:[{icon:'🔢',n:'Calculus 1 & 2',st:90},{icon:'⚛️',n:'Physics مراجعة',st:60}],learned:[{icon:'💻',n:'برمجة C'}],reviews:[{n:'ماجد فهد',s:'⭐⭐⭐⭐⭐',t:'أنقذني في الميدتيرم، شرحه يوصل للمخ فوراً.'}]},
+  reem:{n:'ريم محمد',bg:'linear-gradient(135deg,#e11d48,#9f1239)',i:'ر',rank:'فضي',ri:'🥈',title:'طب | إسعافات أولية',bio:'جلسات في الإسعافات الأولية والتثقيف الصحي.',learn:15,teach:10,cat:'other',post:{emoji:'🩺',type:'ورشة صحة',desc:'تعلم الإسعافات الأولية الأساسية: التنفس الاصطناعي، الكسور، الإغماء. كل طالب يحتاجه.'},taught:[{icon:'🩺',n:'إسعافات أولية',st:10}],learned:[{icon:'🗣️',n:'لغة إشارة'}],reviews:[]},
+  nasser:{n:'ناصر العلي',bg:'linear-gradient(135deg,#ea580c,#9a3412)',i:'ن',rank:'ذهبي',ri:'🌟',title:'كتابة إبداعية | سيناريو ومحتوى',bio:'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',learn:8,teach:35,cat:'other',post:{emoji:'✍️',type:'ورشة كتابة',desc:'ورشة كتابة السيناريو وصياغة المحتوى الرقمي. نكتب قصة قصيرة ونطوّرها خطوة بخطوة.'},taught:[{icon:'✍️',n:'كتابة السيناريو',st:20},{icon:'📚',n:'Content Writing',st:15}],learned:[{icon:'🎬',n:'مونتاج'}],reviews:[]},
+  // NEW 20 STUDENTS
+  bader:{n:'بدر الشمري',bg:'linear-gradient(135deg,#0ea5e9,#0284c7)',i:'ب',rank:'ذهبي',ri:'🌟',title:'شبكات | CCNA & Network+',bio:'أدرّب الطلاب على مهارات الشبكات وأساسيات الأمن السيبراني.',learn:8,teach:50,cat:'coding',post:{emoji:'🌐',type:'دورة شبكات',desc:'CCNA للمبتدئين: عناوين IP، routing، switching. نبني توبولوجيا شبكة كاملة في Cisco Packet Tracer.'},taught:[{icon:'🌐',n:'CCNA Routing',st:30},{icon:'🔒',n:'Network Security Basics',st:20}],learned:[{icon:'🛡️',n:'Ethical Hacking'}],reviews:[{n:'ماجد فهد',s:'⭐⭐⭐⭐⭐',t:'بدر متمكن من الشبكات بشكل لا يصدق.'}]},
+  dima:{n:'ديمة الزهراني',bg:'linear-gradient(135deg,#f43f5e,#fb7185)',i:'د',rank:'فضي',ri:'🥈',title:'تسويق رقمي | Social Media',bio:'أخطط حملات التسويق الرقمي وأدير الحسابات على منصات التواصل.',learn:12,teach:28,cat:'business',post:{emoji:'📱',type:'ورشة تسويق',desc:'تعلم تخطيط حملات التسويق على انستقرام وتيك توك. نحسب الـ ROI ونصمم المحتوى الصحيح.'},taught:[{icon:'📱',n:'Social Media Marketing',st:18},{icon:'📊',n:'تحليل الأداء Analytics',st:10}],learned:[{icon:'🎨',n:'Canva Design'}],reviews:[]},
+  omar:{n:'عمر المطيري',bg:'linear-gradient(135deg,#7c3aed,#6d28d9)',i:'ع',rank:'ذهبي',ri:'🌟',title:'موبايل | Flutter & React Native',bio:'أطور تطبيقات موبايل بـ Flutter. أعلّمك من الصفر للنشر على المتجر.',learn:9,teach:55,cat:'coding',post:{emoji:'📲',type:'دورة تطوير',desc:'تطوير تطبيق موبايل كامل بـ Flutter من الصفر. نبني تطبيق real estate أو e-commerce.'},taught:[{icon:'📲',n:'Flutter Development',st:35},{icon:'⚛️',n:'React Native Basics',st:20}],learned:[{icon:'🎨',n:'UI/UX'}],reviews:[{n:'زياد طارق',s:'⭐⭐⭐⭐⭐',t:'أفضل مدرب Flutter في الجامعة.'}]},
+  nada:{n:'ندى القحطاني',bg:'linear-gradient(135deg,#10b981,#059669)',i:'ن',rank:'فضي',ri:'🥈',title:'غذاء وتغذية | تثقيف صحي',bio:'أوعّي الطلاب بالتغذية السليمة وبناء عادات صحية مستدامة.',learn:20,teach:15,cat:'other',post:{emoji:'🥗',type:'جلسة تثقيف',desc:'تعلم أساسيات التغذية الصحيحة ووضع خطة وجبات متوازنة تناسب ميزانية الطالب.'},taught:[{icon:'🥗',n:'التغذية الصحية',st:15}],learned:[{icon:'🩺',n:'إسعافات أولية'}],reviews:[]},
+  hamad:{n:'حمد العنزي',bg:'linear-gradient(135deg,#f59e0b,#d97706)',i:'ح',rank:'ذهبي',ri:'🌟',title:'ريادة أعمال | Startup & Business Plan',bio:'ساعدت ٣ مشاريع طلابية تحصل على تمويل. أعلمك كيف تبني خطة عمل احترافية.',learn:6,teach:42,cat:'business',post:{emoji:'🚀',type:'ورشة ريادة',desc:'بناء خطة عمل (Business Plan) كاملة لمشروعك الريادي. نتعلم الـ Business Model Canvas وتحليل السوق.'},taught:[{icon:'🚀',n:'Business Plan',st:30},{icon:'💡',n:'Startup Fundamentals',st:12}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ديمة الزهراني',s:'⭐⭐⭐⭐⭐',t:'ساعدني أطوّر فكرتي وأعرضها للمستثمرين.'}]},
+  weam:{n:'وئام السلمي',bg:'linear-gradient(135deg,#d946ef,#a21caf)',i:'و',rank:'فضي',ri:'🥈',title:'إنفوجرافيك | Canva & Data Viz',bio:'أصمم إنفوجرافيكات ومواد بصرية جذابة للعروض والأبحاث.',learn:10,teach:20,cat:'design',post:{emoji:'📊',type:'ورشة Canva',desc:'تعلم تصميم إنفوجرافيكات احترافية بـ Canva. نصمم عرض بحثي كامل وإنفوجرافيك تفاعلي.'},taught:[{icon:'📊',n:'Canva Infographics',st:20}],learned:[{icon:'🎨',n:'Figma'}],reviews:[]},
+  khalil:{n:'خليل الرشيد',bg:'linear-gradient(135deg,#06b6d4,#0891b2)',i:'خ',rank:'ذهبي',ri:'🌟',title:'صوتيات | Podcast & Voiceover',bio:'أنتج بودكاست وأدرّب الطلاب على مهارات التحدث والـ voiceover.',learn:7,teach:33,cat:'media',post:{emoji:'🎙️',type:'ورشة صوت',desc:'تعلم إنتاج بودكاست احترافي: التسجيل، المونتاج الصوتي، والتوزيع على المنصات.'},taught:[{icon:'🎙️',n:'Podcast Production',st:20},{icon:'🎤',n:'Voiceover & Narration',st:13}],learned:[{icon:'🎬',n:'مونتاج فيديو'}],reviews:[]},
+  sara2:{n:'سارة الغامدي',bg:'linear-gradient(135deg,#a78bfa,#7c3aed)',i:'سـ',rank:'فضي',ri:'🥈',title:'Python | Automation & Web Scraping',bio:'أدرّس Python وتطبيقاتها في Automation وجمع البيانات.',learn:11,teach:24,cat:'coding',post:{emoji:'🐍',type:'دورة Python',desc:'Python للأتمتة والـ web scraping. نكتب scripts تجمع بيانات حقيقية من الإنترنت تلقائياً.'},taught:[{icon:'🐍',n:'Python Automation',st:14},{icon:'🕷️',n:'Web Scraping',st:10}],learned:[{icon:'📊',n:'Data Visualization'}],reviews:[]},
+  fahad:{n:'فهد العسيري',bg:'linear-gradient(135deg,#1e3a8a,#1e40af)',i:'فـ',rank:'فضي',ri:'🥈',title:'تسعير مالي | Financial Modeling',bio:'أدرّب الطلاب على النماذج المالية واتخاذ قرارات الاستثمار.',learn:9,teach:17,cat:'business',post:{emoji:'💹',type:'جلسة مالية',desc:'بناء نموذج مالي بسيط في Excel: الإيرادات والتكاليف والتدفقات النقدية. مهارة مطلوبة جداً.'},taught:[{icon:'💹',n:'Financial Modeling',st:17}],learned:[{icon:'📊',n:'Data Analysis'}],reviews:[]},
+  lujain:{n:'لجين الشهري',bg:'linear-gradient(135deg,#f97316,#ea580c)',i:'لـ',rank:'ذهبي',ri:'🌟',title:'تعليم | IELTS & Academic English',bio:'أساعد الطلاب يحصلون على درجات IELTS عالية ويكتبون بحوث أكاديمية بشكل صحيح.',learn:14,teach:70,cat:'lang',post:{emoji:'🇬🇧',type:'دورة IELTS',desc:'تحضير IELTS من الصفر للـ 7 bands. نغطي الـ Writing, Speaking, Listening, Reading مع نماذج حقيقية.'},taught:[{icon:'🇬🇧',n:'IELTS Preparation',st:50},{icon:'📝',n:'Academic Writing',st:20}],learned:[{icon:'🇫🇷',n:'French Basics'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'رفعت درجتي من 5.5 إلى 7 خلال شهرين.'}]},
+  talal:{n:'طلال الحربي',bg:'linear-gradient(135deg,#65a30d,#4d7c0f)',i:'ط',rank:'فضي',ri:'🥈',title:'بيئة | استدامة وطاقة متجددة',bio:'أعرّف الطلاب بمفاهيم الاستدامة وتقنيات الطاقة المتجددة.',learn:18,teach:12,cat:'other',post:{emoji:'🌱',type:'جلسة تثقيف',desc:'مقدمة في الاستدامة والطاقة المتجددة (شمسية وريحية). كيف يصبح مشروعك التخرجي صديقاً للبيئة.'},taught:[{icon:'🌱',n:'مفاهيم الاستدامة',st:12}],learned:[{icon:'📐',n:'AutoCAD'}],reviews:[]},
+  reema:{n:'ريما فيصل',bg:'linear-gradient(135deg,#be185d,#9d174d)',i:'ر',rank:'ذهبي',ri:'🌟',title:'علاج نطق | مهارات تواصل',bio:'أساعد الطلاب يطورون مهارات التحدث العام (Public Speaking) وتجاوز رهاب المواجهة.',learn:6,teach:38,cat:'other',post:{emoji:'🎤',type:'ورشة Public Speaking',desc:'تجاوز الخوف من التحدث أمام الجمهور. نتعلم تقنيات TED talks ونطبق أمام المجموعة.'},taught:[{icon:'🎤',n:'Public Speaking',st:25},{icon:'🗣️',n:'مهارات التواصل',st:13}],learned:[{icon:'📄',n:'كتابة CV'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'ريما غيّرت نظرتي للتحدث العام كلياً.'}]},
+  abdulaziz:{n:'عبدالعزيز العمر',bg:'linear-gradient(135deg,#0f172a,#1e293b)',i:'عـ',rank:'فضي',ri:'🥈',title:'ميكاترونيكس | Arduino & Robotics',bio:'أبني روبوتات وأدرّس Arduino والإلكترونيات.',learn:8,teach:20,cat:'coding',post:{emoji:'🤖',type:'ورشة روبوتات',desc:'بناء مشاريع Arduino من الصفر: نبني روبوت بسيط يتجنب العوائق في ورشة واحدة.'},taught:[{icon:'🤖',n:'Arduino Projects',st:12},{icon:'⚙️',n:'Robotics Basics',st:8}],learned:[{icon:'💻',n:'Python'}],reviews:[]},
+  rana:{n:'رنا الدوسري',bg:'linear-gradient(135deg,#7c2d12,#c2410c)',i:'ر',rank:'فضي',ri:'🥈',title:'فرنسي | مستوى A1-B1',bio:'أدرّس الفرنسية للمبتدئين. معي الأساس حتى مستوى B1.',learn:20,teach:16,cat:'lang',post:{emoji:'🇫🇷',type:'جلسة فرنسي',desc:'تعلم الفرنسية من الصفر. نبدأ بالنطق الصحيح، ثم المحادثة اليومية، ثم القواعد الأساسية.'},taught:[{icon:'🇫🇷',n:'French A1-B1',st:16}],learned:[{icon:'🗣️',n:'English Speaking'}],reviews:[]},
+  sultan:{n:'سلطان المالكي',bg:'linear-gradient(135deg,#3730a3,#4338ca)',i:'سـ',rank:'ذهبي',ri:'🌟',title:'تطوير ويب | React & Node.js',bio:'أطوّر مواقع Full Stack وأعلّم الطلاب من البداية للاحتراف.',learn:7,teach:60,cat:'coding',post:{emoji:'🌐',type:'دورة Full Stack',desc:'بناء موقع ويب كامل بـ React و Node.js و MongoDB. من الصفر لـ deployment على Vercel.'},taught:[{icon:'🌐',n:'React.js',st:40},{icon:'🗄️',n:'Node.js & MongoDB',st:20}],learned:[{icon:'📲',n:'Flutter'}],reviews:[{n:'عمر المطيري',s:'⭐⭐⭐⭐⭐',t:'سلطان من أفضل المدربين الي اخذت منهم.'}]},
+  hajar:{n:'هاجر الحكمي',bg:'linear-gradient(135deg,#9f1239,#e11d48)',i:'هـ',rank:'فضي',ri:'🥈',title:'أحياء | بيولوجيا ووراثة',bio:'أشرح مواد البيولوجيا والوراثة لطلاب الصحة والعلوم.',learn:22,teach:14,cat:'math',post:{emoji:'🧬',type:'جلسة علوم',desc:'شرح مادة الوراثة والجينوم بأسلوب مبسط. نستخدم الرسوم البيانية لفهم التراكيب الجيني.'},taught:[{icon:'🧬',n:'الوراثة والجينوم',st:14}],learned:[{icon:'🩺',n:'إسعافات أولية'}],reviews:[]},
+  mohammed:{n:'محمد الزهراني',bg:'linear-gradient(135deg,#164e63,#0e7490)',i:'م',rank:'ذهبي',ri:'🌟',title:'إحصاء | SPSS & R',bio:'أساعد طلاب الأبحاث في التحليل الإحصائي بـ SPSS وR.',learn:5,teach:48,cat:'math',post:{emoji:'📉',type:'جلسة إحصاء',desc:'تحليل بيانات بحثك الجامعي بـ SPSS. من إدخال البيانات للتحليل الوصفي والاستدلالي.'},taught:[{icon:'📉',n:'SPSS Analysis',st:30},{icon:'📈',n:'R for Statistics',st:18}],learned:[{icon:'📊',n:'Excel متقدم'}],reviews:[{n:'سارة أحمد',s:'⭐⭐⭐⭐⭐',t:'إنجز معي التحليل الإحصائي لأطروحتي في ساعات!'}]},
+  afnan:{n:'أفنان العمري',bg:'linear-gradient(135deg,#be185d,#f43f5e)',i:'أ',rank:'فضي',ri:'🥈',title:'فنون | رسم ورسوم متحركة',bio:'أدرّس أساسيات الرسم الرقمي والرسوم المتحركة.',learn:11,teach:22,cat:'design',post:{emoji:'🎭',type:'ورشة فنون',desc:'رسم ديجيتال من الصفر بـ Procreate. نرسم شخصية كرتونية كاملة في جلسة واحدة.'},taught:[{icon:'🎭',n:'Procreate Digital Art',st:15},{icon:'🎬',n:'رسوم متحركة 2D',st:7}],learned:[{icon:'✒️',n:'Illustrator'}],reviews:[]},
+  yazeed:{n:'يزيد المقبل',bg:'linear-gradient(135deg,#1d4ed8,#3b82f6)',i:'يـ',rank:'ذهبي',ri:'🌟',title:'DevOps | Docker & Cloud',bio:'أدرّب الطلاب على DevOps: Docker وCI/CD والـ Cloud.',learn:4,teach:35,cat:'coding',post:{emoji:'☁️',type:'ورشة Cloud',desc:'Docker وCloud Computing للمبتدئين. نرفع تطبيق كامل على AWS أو Azure في الورشة.'},taught:[{icon:'☁️',n:'Cloud & Docker',st:20},{icon:'🔄',n:'CI/CD Pipelines',st:15}],learned:[{icon:'🌐',n:'React.js'}],reviews:[{n:'سلطان المالكي',s:'⭐⭐⭐⭐⭐',t:'يزيد جعل Docker سهل فعلاً!'}]},
 };
 
-function login() {
-    if(!document.getElementById('univ-select').value) return alert('الرجاء اختيار جامعتك أولاً');
-    go('feed-view', 0);
-}
+// =============================================
+const USERS = Object.keys(DB);
+let navHist = ['login-view'];
+let curChat = '';
 
-// نظام التنقل الذكي
-function go(viewId, navIdx = -1) {
-    if(navHistory[navHistory.length-1] !== viewId) {
-        if(navIdx >= 0) navHistory = []; 
-        navHistory.push(viewId);
-    }
-    
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    document.getElementById(viewId).classList.add('active');
-
-    const navBtns = document.querySelectorAll('#bottom-nav .nav-btn');
-    navBtns.forEach(b => b.classList.remove('active'));
-    if(navIdx >= 0 && navIdx < navBtns.length) navBtns[navIdx].classList.add('active');
-
-    const hideNavIn = ['login-view', 'settings-view', 'chat-view', 'skill-offers-view', 'add-view'];
-    const isOtherProfile = (viewId === 'profile-view' && document.getElementById('prof-msg-btn').style.display === 'block');
-    
-    document.getElementById('bottom-nav').style.display = (hideNavIn.includes(viewId) || isOtherProfile) ? 'none' : 'flex';
-    window.scrollTo(0,0);
-}
-
-function goBack() {
-    if(navHistory.length > 1) {
-        navHistory.pop();
-        const prev = navHistory[navHistory.length-1];
-        const map = {'feed-view':0, 'search-view':1, 'add-view':2, 'dm-view':3, 'profile-view':4};
-        go(prev, map[prev] !== undefined ? map[prev] : -1);
-    } else { go('feed-view', 0); }
-}
-
-// دالة فتح البروفايلات العميقة
-function openProfile(userId, navIdx = -1) {
-    const u = db[userId];
-    if(!u) return;
-    
-    const isMe = (userId === 'me');
-
-    document.getElementById('prof-back-btn').style.display = isMe ? 'none' : 'flex';
-    document.getElementById('prof-settings-btn').style.display = isMe ? 'flex' : 'none';
-    document.getElementById('prof-cover').style.background = u.bg;
-    
-    const av = document.getElementById('prof-avatar');
-    av.style.background = u.bg; av.textContent = u.arInit;
-    
-    document.getElementById('prof-name').innerHTML = `${u.arName} ${u.teach>20 ? '<span style="color:var(--accent);font-size:18px;">✓</span>':''}`;
-    document.getElementById('prof-title').textContent = u.arTitle;
-    document.getElementById('prof-bio').textContent = u.arBio;
-    
-    document.getElementById('prof-rank').textContent = u.arRank;
-    document.getElementById('prof-rank-icon').textContent = u.rankIcon;
-
-    document.getElementById('prof-stat-learn').textContent = u.learn;
-    document.getElementById('prof-stat-teach').textContent = u.teach;
-
-    const msgBtn = document.getElementById('prof-msg-btn');
-    msgBtn.style.display = isMe ? 'none' : 'block';
-    msgBtn.onclick = () => openChat(userId);
-    
-    // بناء التابات
-    const buildServices = (data, showBadge) => {
-        let html = '';
-        data.forEach(item => {
-            const badge = (showBadge && item.st) ? `<div class="students-badge">👥 ${item.st} متدرب</div>` : '';
-            html += `<div class="service-card">
-                        <div class="service-icon">${item.icon}</div>
-                        <div class="service-details">
-                            <div class="service-title">${item.n}</div>
-                            <div class="service-meta">${badge}</div>
-                        </div>
-                        ${showBadge && !isMe ? `<button class="btn-primary" style="width:auto; padding:8px 16px; border-radius:10px; font-size:12px;" onclick="bookWorkshop()">طلب</button>` : ''}
-                     </div>`;
-        });
-        return html || `<div style="text-align:center; color:var(--sub); padding:20px; font-size:14px;">لا يوجد بيانات بعد.</div>`;
-    };
-
-    const buildReviews = (reviews) => {
-        let html = '';
-        if(reviews && reviews.length > 0) {
-            reviews.forEach(r => {
-                html += `<div class="review-card">
-                            <div class="review-header"><span class="review-name">${r.n}</span><span class="review-stars">${r.stars}</span></div>
-                            <div class="review-text">${r.txt}</div>
-                         </div>`;
-            });
-        } else {
-            html = `<div style="text-align:center; color:var(--sub); padding:20px; font-size:14px;">لا توجد تقييمات بعد.</div>`;
-        }
-        return html;
-    };
-    
-    document.getElementById('grid-taught').innerHTML = buildServices(u.taught, true);
-    document.getElementById('grid-learned').innerHTML = buildServices(u.learned, false);
-    document.getElementById('grid-reviews').innerHTML = buildReviews(u.reviews);
-    
-    toggleGrid('taught');
-    go('profile-view', navIdx);
-}
-
-function openSkillOffers(skillId) {
-    let users = [];
-    let title = "";
-    if(skillId === 'Design') { users = ['lama', 'nouf', 'shahad']; title = "التصميم والهندسة"; }
-    else if(skillId === 'Admin') { users = ['faisal', 'amal', 'raghad']; title = "المهارات الإدارية والأعمال"; }
-    else if(skillId === 'Coding') { users = ['sara', 'ziyad', 'yasser', 'majed']; title = "البرمجة والبيانات والـ AI"; }
-
-    document.getElementById('offer-skill-title').textContent = title;
-    const list = document.getElementById('offers-list');
-    list.innerHTML = '';
-    
-    users.forEach(uid => {
-        const u = db[uid];
-        list.innerHTML += `
-        <div class="search-item" onclick="openProfile('${uid}')" style="margin-bottom:16px;">
-            <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:${u.bg};font-size:24px;border-radius:16px;width:56px;height:56px;">${u.arInit}</div>
-                <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">${u.arName}</div>
-                    <div style="font-size:12px;color:var(--sub);font-weight:700;">${u.rankIcon} ${u.arRank}</div>
-                </div>
-            </div>
-            <button class="btn-outline" style="padding:8px 16px; border-radius:10px; font-size:12px; font-weight:900;">ملف المدرب</button>
-        </div>`;
-    });
-    go('skill-offers-view', -1);
-}
-
-// دالة الشات الذكي (Auto Reply)
-function openChat(userId) {
-    currentChatUser = userId;
-    const u = db[userId];
-    document.getElementById('chat-name').textContent = u.arName;
-    const av = document.getElementById('chat-avatar');
-    av.style.background = u.bg; av.textContent = u.arInit;
-    av.onclick = () => openProfile(userId);
-    
-    const time = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('chat-area').innerHTML = `
-        <div class="msg-row in">
-            <div class="msg">أهلاً بك! معك ${u.arName}. كيف أقدر أساعدك؟</div>
-            <div class="msg-time">${time}</div>
+// ===== FEED POSTS =====
+function buildFeed(){
+  const fc = document.getElementById('feed-container');
+  fc.innerHTML = '';
+  const catMap = {coding:'coding',design:'design',business:'business',lang:'lang',media:'media',math:'math',other:'other'};
+  USERS.filter(id=>id!=='me').forEach(uid=>{
+    const u = DB[uid];
+    if(!u.post) return;
+    const p = u.post;
+    const fc2 = u.cat || 'other';
+    const badgeHtml = u.rank==='ماسي'?`<span class="badge badge-expert">💎 ماسي</span>`:u.rank==='ذهبي'?`<span class="badge badge-pro">🌟 ذهبي</span>`:`<span class="badge badge-verified">🥈 فضي</span>`;
+    const el = document.createElement('div');
+    el.className = 'post'; el.setAttribute('data-cat', fc2);
+    el.innerHTML = `
+      <div class="ph">
+        <div class="av" style="background:${u.bg};width:48px;height:48px" onclick="openProfile('${uid}')">${u.i}</div>
+        <div class="ph-info" onclick="openProfile('${uid}')">
+          <h3>${u.n} ${badgeHtml}</h3>
+          <p>${u.title}</p>
         </div>
-    `;
-    go('chat-view', -1);
+      </div>
+      <div class="post-media" style="background:${u.bg}">
+        <span style="font-size:52px">${p.emoji}</span>
+        <div class="cm"><div class="pill">⏱️ ${p.type}</div><div class="pill">👥 ${u.teach} متدرب</div></div>
+      </div>
+      <div class="post-body" style="margin-bottom:0">
+        <p>${p.desc}</p>
+        ${u.taught.length?`<div class="tags">${u.taught.map(t=>`<span class="tag">${t.n}</span>`).join('')}</div>`:''}
+      </div>
+      <div class="post-acts">
+        <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
+        <button class="pa btn-p" onclick="showToast('✅ تم الطلب بنجاح!')">طلب الخدمة</button>
+      </div>`;
+    fc.appendChild(el);
+  });
 }
 
-function sendMsg() {
-    const inp = document.getElementById('chat-input');
-    const txt = inp.value.trim();
-    if(!txt) return;
-    
-    const area = document.getElementById('chat-area');
-    const ind = document.getElementById('typing-ind');
-    const time = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-    
-    area.innerHTML += `<div class="msg-row out"><div class="msg">${txt}</div><div class="msg-time">${time}</div></div>`;
-    inp.value = '';
-    
-    // إظهار الكتابة
-    area.appendChild(ind);
-    ind.style.display = 'flex';
-    area.scrollTop = area.scrollHeight;
-
-    // الرد التلقائي الذكي
-    setTimeout(() => {
-        ind.style.display = 'none';
-        const replies = [
-            "أبشر، راح أراجع طلبك وأرد عليك بتفاصيل الجلسة بأقرب وقت.", 
-            "ممتاز جداً! متى يناسبك وقت الجلسة أو الورشة؟", 
-            "يعطيك العافية، وصلتني رسالتك وسيتم التنسيق معك قريباً."
-        ];
-        const rand = Math.floor(Math.random() * replies.length);
-        
-        area.innerHTML += `
-            <div class="msg-row in">
-                <div class="msg">${replies[rand]}</div>
-                <div class="msg-time">${new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}</div>
-            </div>
-        `;
-        area.scrollTop = area.scrollHeight;
-    }, 1500);
+// ===== ALL USERS LIST =====
+function buildAllUsers(){
+  const el = document.getElementById('all-users-list');
+  document.getElementById('total-count').textContent = USERS.length;
+  el.innerHTML = '';
+  USERS.forEach(uid=>{
+    const u = DB[uid];
+    el.innerHTML += `
+      <div class="skill-item" onclick="openProfile('${uid}')">
+        <div class="skill-l">
+          <div class="av" style="background:${u.bg};width:52px;height:52px;font-size:20px;border-radius:14px">${u.i}</div>
+          <div>
+            <div style="font-weight:900;font-size:14px;margin-bottom:2px">${u.n}</div>
+            <div style="font-size:12px;color:var(--sub2)">${u.ri} ${u.rank} • ${u.teach} متدرب</div>
+          </div>
+        </div>
+        <span style="color:var(--sub2)">←</span>
+      </div>`;
+  });
 }
 
-// وظائف مساعدة
-function filterCat(el, catVal) {
-    document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    document.querySelectorAll('#feed-container .post-card').forEach(card => {
-        card.style.display = (catVal === 'all' || card.getAttribute('data-cat').includes(catVal)) ? 'block' : 'none';
-    });
-}
-function searchSkills(q) {
-    q = q.toLowerCase();
-    document.querySelectorAll('#skills-list .search-item').forEach(i => { i.style.display = i.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
-}
-function searchDMs(q) {
-    q = q.toLowerCase();
-    document.querySelectorAll('#dm-list .dm-item').forEach(i => { i.style.display = i.querySelector('.dm-name').innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
-}
-function bookWorkshop() { alert('✅ تم حجز مقعدك بنجاح! سيصلك إشعار بالتفاصيل.'); }
-
-function toggleGrid(type) {
-    ['taught', 'learned', 'reviews'].forEach(t => {
-        document.getElementById('tab-' + t).classList.toggle('active', t === type);
-        document.getElementById('grid-' + t).style.display = (t === type) ? 'flex' : 'none';
-    });
-    // تعديل بسيط للتقييمات عشان تظهر كقائمة بلوكات مو فليكس
-    if(type === 'reviews') document.getElementById('grid-reviews').style.display = 'block';
+// ===== DM LIST =====
+function buildDMs(){
+  const el = document.getElementById('dm-list');
+  el.innerHTML = '';
+  const msgs = ['أهلاً، متى يناسبك الجلسة؟','وصلتني رسالتك، سنتواصل قريباً.','أرسلت لك المواد المطلوبة.','شكراً لك، يعطيك العافية!','ممتاز، سأؤكد لك الموعد.'];
+  const times = ['١٠:٣٠ ص','أمس','الأحد','السبت','منذ ساعتين'];
+  USERS.filter(id=>id!=='me').slice(0,10).forEach((uid,i)=>{
+    const u = DB[uid];
+    const unread = i<3;
+    el.innerHTML += `
+      <div class="dm-item" onclick="openChat('${uid}')">
+        <div class="av" style="background:${u.bg};width:52px;height:52px;flex-shrink:0">${u.i}</div>
+        <div class="dm-info">
+          <div class="dm-name">${u.n}</div>
+          <div class="dm-msg" ${unread?'style="color:var(--text);font-weight:700"':''}>${msgs[i%msgs.length]}</div>
+        </div>
+        <div class="dm-meta">
+          <div class="dm-time">${times[i%times.length]}</div>
+          ${unread?`<div class="unread">${i+1}</div>`:''}
+        </div>
+      </div>`;
+  });
 }
 
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    document.getElementById('theme-btn').textContent = isLight ? 'داكن 🌙' : 'فاتح ☀️';
+// ===== LEADERBOARD =====
+function buildLB(){
+  const el = document.getElementById('lb-list');
+  const sorted = USERS.filter(id=>id!=='me').sort((a,b)=>DB[b].teach-DB[a].teach);
+  const medals = ['🥇','🥈','🥉'];
+  el.innerHTML = '';
+  sorted.forEach((uid,i)=>{
+    const u = DB[uid];
+    el.innerHTML += `
+      <div class="lb-item" onclick="openProfile('${uid}')">
+        <div class="lb-rank">${i<3?medals[i]:`${i+1}`}</div>
+        <div class="av" style="background:${u.bg};width:44px;height:44px;font-size:16px;flex-shrink:0">${u.i}</div>
+        <div class="lb-info">
+          <div class="lb-name">${u.n}</div>
+          <div class="lb-sub">${u.ri} ${u.rank} • ${u.title.split('|')[0].trim()}</div>
+        </div>
+        <div style="font-weight:900;color:var(--green);font-size:14px">👥 ${u.teach}</div>
+      </div>`;
+  });
 }
 
-function selType(el) {
-    document.querySelectorAll('.add-type-card').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
+// ===== NAV =====
+function go(vid, ni=-1){
+  if(navHist[navHist.length-1]!==vid){
+    if(ni>=0) navHist=[];
+    navHist.push(vid);
+  }
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(vid).classList.add('active');
+  const nbs = document.querySelectorAll('#bnav .nb');
+  nbs.forEach(b=>b.classList.remove('active'));
+  if(ni>=0&&ni<nbs.length) nbs[ni].classList.add('active');
+  const hide=['login-view','settings-view','chat-view','offers-view','add-view','lb-view'];
+  const isOther = vid==='profile-view' && document.getElementById('prof-msg-btn').style.display==='block';
+  document.getElementById('bnav').style.display=(hide.includes(vid)||isOther)?'none':'flex';
+  window.scrollTo(0,0);
 }
 
-function submitSkill() {
-    goBack();
-    setTimeout(() => alert('✅ تم اعتماد ونشر الخدمة في السوق بنجاح!'), 300);
+function goBack(){
+  if(navHist.length>1){
+    navHist.pop();
+    const prev = navHist[navHist.length-1];
+    const map={'feed-view':0,'search-view':1,'add-view':2,'dm-view':3,'profile-view':4};
+    go(prev, map[prev]!==undefined?map[prev]:-1);
+  } else go('feed-view',0);
+}
+
+// ===== LOGIN =====
+function login(){
+  if(!document.getElementById('univ-sel').value){showToast('اختر جامعتك أولاً ⚠️','#ef4444');return;}
+  buildFeed(); buildAllUsers(); buildDMs(); buildLB();
+  go('feed-view',0);
+}
+
+// ===== FILTER =====
+function filterCat(el,cat){
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#feed-container .post').forEach(p=>{
+    p.style.display=(cat==='all'||p.getAttribute('data-cat')===cat)?'block':'none';
+  });
+}
+
+// ===== SEARCH =====
+function searchSkills(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#skills-list .skill-item').forEach(i=>{
+    i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none';
+  });
+  document.querySelectorAll('#all-users-list .skill-item').forEach(i=>{
+    i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none';
+  });
+}
+
+function searchDMs(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#dm-list .dm-item').forEach(i=>{
+    i.style.display=i.querySelector('.dm-name').innerText.toLowerCase().includes(q)?'flex':'none';
+  });
+}
+
+// ===== OFFERS =====
+const offerMap = {
+  design:['lama','shahad','yasser','nouf','jana','weam','afnan'],
+  coding:['sara','ziyad','majed','bader','omar','sara2','sultan','yazeed','abdulaziz'],
+  business:['faisal','raghad','hamad','dima','fahad'],
+  lang:['mona','lujain','rana'],
+  media:['tariq','huda','khalil'],
+  math:['sami','amal','khaled','mohammed','hajar'],
+  other:['raghad','saad','reem','nasser','nada','talal','reema']
+};
+const offerTitles = {design:'🎨 التصميم والهندسة',coding:'💻 البرمجة والبيانات',business:'📂 الإدارة والأعمال',lang:'🌍 اللغات والترجمة',media:'🎬 المونتاج والتصوير',math:'🔢 العلوم والرياضيات',other:'✨ تطوير شخصي'};
+
+function openOffers(cat){
+  document.getElementById('offers-title').textContent = offerTitles[cat]||'الخدمات';
+  const list = document.getElementById('offers-list');
+  list.innerHTML = '';
+  (offerMap[cat]||[]).forEach(uid=>{
+    const u = DB[uid];
+    list.innerHTML += `
+      <div class="offer-item" onclick="openProfile('${uid}')">
+        <div class="skill-l">
+          <div class="av" style="background:${u.bg};width:56px;height:56px;font-size:22px;border-radius:16px">${u.i}</div>
+          <div>
+            <div style="font-weight:900;font-size:15px;margin-bottom:3px">${u.n}</div>
+            <div style="font-size:12px;color:var(--sub2)">${u.ri} ${u.rank} • 👥 ${u.teach} متدرب</div>
+            ${u.taught[0]?`<div style="font-size:11px;color:var(--sub);margin-top:3px">${u.taught.map(t=>t.n).join(' • ')}</div>`:''}
+          </div>
+        </div>
+        <button class="btn btn-o btn-sm" onclick="event.stopPropagation();openChat('${uid}')">تواصل</button>
+      </div>`;
+  });
+  go('offers-view',-1);
+}
+
+// ===== PROFILE =====
+function openProfile(uid, ni=-1){
+  const u = DB[uid];
+  if(!u) return;
+  const isMe = uid==='me';
+  document.getElementById('prof-back').style.display = isMe?'none':'flex';
+  document.getElementById('prof-set').style.display = isMe?'flex':'none';
+  document.getElementById('prof-cover').style.background = u.bg;
+  const av = document.getElementById('prof-av');
+  av.style.background = u.bg; av.textContent = u.i;
+  document.getElementById('prof-name').innerHTML = `${u.n}${u.teach>20?' <span style="color:var(--accent2);font-size:17px">✓</span>':''}`;
+  document.getElementById('prof-title').textContent = u.title;
+  document.getElementById('prof-bio').textContent = u.bio;
+  document.getElementById('prof-rank').textContent = u.rank;
+  document.getElementById('ps-icon').textContent = u.ri;
+  document.getElementById('ps-learn').textContent = u.learn;
+  document.getElementById('ps-teach').textContent = u.teach;
+  const mb = document.getElementById('prof-msg-btn');
+  mb.style.display = isMe?'none':'block';
+  mb.onclick = ()=>openChat(uid);
+
+  document.getElementById('grid-taught').innerHTML = u.taught.length?u.taught.map(s=>`
+    <div class="svc-card" onclick="showToast('تم طلب الخدمة ✅')">
+      <div class="svc-icon">${s.icon}</div>
+      <div class="svc-det"><div class="svc-t">${s.n}</div>${s.st?`<div class="stud-b">👥 ${s.st} متدرب</div>`:''}</div>
+      ${!isMe?`<button class="btn btn-p btn-sm" onclick="event.stopPropagation();showToast('تم الطلب ✅')">طلب</button>`:''}
+    </div>`).join(''):`<div style="text-align:center;color:var(--sub2);padding:20px;font-size:14px">لا توجد خدمات بعد.</div>`;
+
+  document.getElementById('grid-learned').innerHTML = u.learned.length?u.learned.map(s=>`
+    <div class="svc-card">
+      <div class="svc-icon">${s.icon||'📚'}</div>
+      <div class="svc-det"><div class="svc-t">${s.n}</div></div>
+    </div>`).join(''):`<div style="text-align:center;color:var(--sub2);padding:20px;font-size:14px">لا توجد بيانات.</div>`;
+
+  const gr = document.getElementById('grid-reviews');
+  gr.innerHTML = u.reviews&&u.reviews.length?u.reviews.map(r=>`
+    <div class="rev-card">
+      <div class="rev-hdr"><span class="rev-name">${r.n}</span><span>${r.s}</span></div>
+      <div class="rev-txt">${r.t}</div>
+    </div>`).join(''):`<div style="text-align:center;color:var(--sub2);padding:20px;font-size:14px">لا توجد تقييمات بعد.</div>`;
+
+  toggleGrid('taught');
+  go('profile-view', ni);
+}
+
+function toggleGrid(type){
+  ['taught','learned','reviews'].forEach(t=>{
+    document.getElementById('tab-'+t).classList.toggle('active',t===type);
+    const el = document.getElementById('grid-'+t);
+    el.style.display = t===type?(t==='reviews'?'block':'flex'):'none';
+  });
+}
+
+// ===== CHAT =====
+const chatReplies = [
+  'أبشر، راح أراجع طلبك وأرد بأقرب وقت.',
+  'ممتاز! متى يناسبك وقت الجلسة؟',
+  'يعطيك العافية، وصلتني رسالتك وسنتواصل قريباً.',
+  'بكل سرور، أرسل لك التفاصيل الآن.',
+  'أهلاً وسهلاً، سأساعدك بإذن الله!',
+  'حياك! هل عندك وقت هذا الأسبوع؟',
+];
+
+function openChat(uid){
+  curChat = uid;
+  const u = DB[uid];
+  document.getElementById('chat-name').textContent = u.n;
+  const av = document.getElementById('chat-av');
+  av.style.background = u.bg; av.textContent = u.i;
+  const area = document.getElementById('chat-area');
+  const t = now();
+  area.innerHTML = `
+    <div class="msg-row in">
+      <div class="msg">أهلاً وسهلاً! معك ${u.n}. كيف أقدر أساعدك؟ 😊</div>
+      <div class="msg-time">${t}</div>
+    </div>`;
+  go('chat-view',-1);
+}
+
+function openCurrentProfile(){
+  if(curChat) openProfile(curChat);
+}
+
+function sendMsg(){
+  const inp = document.getElementById('chat-inp');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  const area = document.getElementById('chat-area');
+  const ind = document.getElementById('typing-ind');
+  area.innerHTML += `<div class="msg-row out"><div class="msg">${txt}</div><div class="msg-time">${now()}</div></div>`;
+  inp.value='';
+  area.appendChild(ind);
+  ind.style.display='flex';
+  area.scrollTop=area.scrollHeight;
+  setTimeout(()=>{
+    ind.style.display='none';
+    const r = chatReplies[Math.floor(Math.random()*chatReplies.length)];
+    area.innerHTML += `<div class="msg-row in"><div class="msg">${r}</div><div class="msg-time">${now()}</div></div>`;
+    area.scrollTop=area.scrollHeight;
+  },1200+Math.random()*800);
+}
+
+function now(){
+  return new Date().toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+}
+
+// ===== ADD =====
+function selType(el){
+  document.querySelectorAll('.type-card').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+function submitSkill(){
+  goBack();
+  setTimeout(()=>showToast('✅ تم نشر خدمتك في السوق بنجاح!'),300);
+}
+
+// ===== SETTINGS =====
+function toggleTheme(){
+  document.body.classList.toggle('lm');
+  const light = document.body.classList.contains('lm');
+  document.getElementById('theme-lbl').textContent = light?'داكن 🌙':'فاتح ☀️';
+}
+function toggleLang(){
+  const html = document.documentElement;
+  const isAr = html.getAttribute('dir')==='rtl';
+  html.setAttribute('dir',isAr?'ltr':'rtl');
+  html.setAttribute('lang',isAr?'en':'ar');
+  document.getElementById('lang-lbl').textContent = isAr?'العربية':'English';
+}
+
+// ===== TOAST =====
+function showToast(msg, color='var(--green)'){
+  const t = document.getElementById('toast');
+  t.textContent=msg; t.style.background=color;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
 }
 </script>
+
 </body>
 </html>
