@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>غصون – سوق المهارات الجامعي والأعمال</title>
+<title>نُول – سوق المهارات الجامعي والأعمال</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ================= الثيم الفاتح الزجاجي (الافتراضي) ================= */
@@ -156,6 +156,15 @@ textarea.inp{height:110px;resize:none}
 .offer-info { display:flex; align-items:center; gap:12px; }
 .price-badge { background:rgba(16, 185, 129, 0.1); color:var(--green); border:1px solid rgba(16, 185, 129, 0.2); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; text-align:center; white-space:nowrap;}
 
+/* ===== MODALS (REQUEST / OPTIONS) ===== */
+.modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:200; display:none; justify-content:center; align-items:flex-end; backdrop-filter:blur(5px); }
+.modal-overlay.active { display:flex; animation:fadeIn 0.2s ease-out; }
+.modal-content { background:var(--bg); width:100%; border-top-left-radius:24px; border-top-right-radius:24px; padding:24px; box-shadow:0 -10px 40px rgba(0,0,0,0.1); animation:slideUp 0.3s ease-out; position:relative;}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+.modal-title { font-size:18px; font-weight:900; margin-bottom:8px; color:var(--text); }
+.modal-close { position:absolute; top:20px; left:20px; background:var(--input); border:1px solid var(--border2); width:32px; height:32px; border-radius:50%; font-weight:900; color:var(--text); cursor:pointer; display:flex; justify-content:center; align-items:center;}
+
 /* ===== NOTIFICATIONS & WALLET ===== */
 .notif-item { padding:16px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); display:flex; align-items:flex-start; gap:12px; box-shadow:var(--shadow); margin-bottom:10px;}
 .notif-icon { width:40px; height:40px; border-radius:50%; background:var(--input); border:1px solid var(--border2); display:flex; justify-content:center; align-items:center; font-size:18px; flex-shrink:0; }
@@ -278,10 +287,37 @@ textarea.inp{height:110px;resize:none}
 
 <div id="toast" class="toast"></div>
 
+<div id="request-modal" class="modal-overlay" onclick="closeRequestModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeRequestModal()">✕</button>
+    <div class="modal-title">طلب تعلّم مهارة</div>
+    <div style="font-size:14px; color:var(--sub); margin-bottom:16px;">حدد خياراتك لتقديم الطلب للطالب <span id="rm-name" style="font-weight:900; color:var(--accent)"></span></div>
+    
+    <span class="add-lbl" style="margin-top:0">نوع الجلسة</span>
+    <select class="inp" id="rm-type">
+      <option>عن بُعد (Online)</option>
+      <option>حضوري (داخل الحرم الجامعي)</option>
+      <option>عمل مشترك</option>
+    </select>
+    
+    <span class="add-lbl">الوقت المفضل</span>
+    <select class="inp" id="rm-time">
+      <option>صباحاً</option>
+      <option>مساءً</option>
+      <option>نهاية الأسبوع</option>
+    </select>
+
+    <span class="add-lbl">ملاحظات للطالب (اختياري)</span>
+    <textarea class="inp" style="height:70px;" placeholder="اكتب التفاصيل اللي حاب تركز عليها..."></textarea>
+
+    <button class="btn btn-p" style="margin-top:16px" onclick="confirmRequest()">تأكيد الطلب</button>
+  </div>
+</div>
+
 <div id="login-view" class="view active">
   <div class="login-wrap">
     <div class="login-card">
-      <div class="login-logo">غصون</div>
+      <div class="login-logo">نُول</div>
       <p class="login-sub">سوق المهارات والخدمات الجامعي للأفراد والأعمال</p>
 
       <div class="login-tabs">
@@ -312,7 +348,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="feed-view" class="view">
   <header class="hdr">
-    <div class="logo">غصون</div>
+    <div class="logo">نُول</div>
     <div class="hdr-row">
       <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
         🔔<div class="notif-badge" id="n-badge1">3</div>
@@ -434,7 +470,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="comp-dash-view" class="view">
   <header class="hdr">
-    <div class="logo">غصون للأعمال</div>
+    <div class="logo">نُول للأعمال</div>
     <div class="hdr-row">
       <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
         🔔<div class="notif-badge" id="n-badge2">2</div>
@@ -444,7 +480,7 @@ textarea.inp{height:110px;resize:none}
   </header>
   
   <div style="padding:20px; text-align:center;">
-    <h2 style="font-size:20px; font-weight:900; margin-bottom:8px;">مرحباً بك في غصون للأعمال</h2>
+    <h2 style="font-size:20px; font-weight:900; margin-bottom:8px;">مرحباً بك في نُول للأعمال</h2>
     <p style="font-size:13px; color:var(--sub2);">استقطب أفضل المواهب الجامعية بأسعار تنافسية لمشاريعك.</p>
   </div>
 
@@ -586,7 +622,7 @@ textarea.inp{height:110px;resize:none}
     <div class="wallet-card" style="background:var(--accentG); border-radius:var(--r3); padding:30px 20px; color:#fff; text-align:center; box-shadow:0 12px 30px rgba(234,88,12,0.3); margin-bottom:24px;">
       <div style="font-size:14px; margin-bottom:8px; opacity:0.9; font-weight:500;">الرصيد المتاح</div>
       <div style="font-size:48px; font-weight:900; letter-spacing:1px; line-height:1;" id="wallet-balance">٠</div>
-      <div style="font-size:16px; opacity:0.9; font-weight:700; margin-top:4px;" id="wallet-currency">نقطة غصون</div>
+      <div style="font-size:16px; opacity:0.9; font-weight:700; margin-top:4px;" id="wallet-currency">نقطة نُول</div>
     </div>
     <div class="sec-t" style="padding:0 0 10px 0;">سجل العمليات</div>
     <div id="wallet-history"></div>
@@ -615,7 +651,7 @@ textarea.inp{height:110px;resize:none}
     </select>
     <span class="add-lbl">التفاصيل والمخرجات</span>
     <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
-    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في غصون</button>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول</button>
   </div>
 </div>
 
@@ -738,9 +774,10 @@ textarea.inp{height:110px;resize:none}
    ====================================================== */
 const DB = {
   me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',cat:'design',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات. أشارك زملائي مهارات 3D Modeling.',learn:2,teach:28,post:{emoji:'📐',type:'جلسة إرشادية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة.'}]},
+  ghusoon:{n:'غصون عطيه',bg:'linear-gradient(135deg,#c026d3,#db2777)',i:'غ',rank:'ماسي',ri:'💎',cat:'math',title:'رياضيات | دافورة تفاضل وتكامل',bio:'أشرح لك الرياضيات من الصفر حتى الـ A+. متخصصة في تبسيط المعادلات المعقدة جداً والفيزياء الرياضية.',learn:4,teach:210,post:{emoji:'♾️',type:'مراجعة أكاديمية',desc:'مراجعة شاملة لاختبارات الـ Calculus والفيزياء. نفكك أصعب المسائل ونضمن الفل مارك.'},taught:[{icon:'♾️',n:'تفاضل وتكامل 101',st:120},{icon:'📐',n:'جبر خطي',st:90}],learned:[{icon:'💻',n:'أساسيات بايثون'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'شرحها يدخل المخ غصب، دافورة صدق.'},{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'أنقذتني في الميدتيرم، أفضل شرح شفته.'}]},
   lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'✨',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',cat:'business',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري.',learn:4,teach:40,post:{emoji:'📂',type:'ورشة تدريبية',desc:'ورشة المهارات الإدارية للعمل عن بُعد.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل.'}]},
-  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل ممتازة.'}]},
+  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
   yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',cat:'design',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,post:{emoji:'⚙️',type:'ورشة تدريبية',desc:'أساسيات AutoCAD للطلاب الجدد.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
   raghad:{n:'رغد صالح',bg:'linear-gradient(135deg,#ec4899,#f43f5e)',i:'ر',rank:'ذهبي',ri:'🌟',cat:'other',title:'موارد بشرية | تطوير وظيفي',bio:'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات.',learn:8,teach:60,post:{emoji:'📄',type:'استشارة مهنية',desc:'مراجعة شاملة لـ CV وتجهيزك للمقابلات.'},taught:[{icon:'📄',n:'كتابة CV احترافي',st:40},{icon:'🎯',n:'تجاوز المقابلات',st:20}],learned:[{icon:'💼',n:'إدارة مشاريع'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'انقبلت في تدريب تعاوني بفضلها.'}]},
   shahad:{n:'شهد محمد',bg:'linear-gradient(135deg,#10b981,#3b82f6)',i:'ش',rank:'ذهبي',ri:'🌟',cat:'design',title:'مصممة واجهات | UI/UX & Figma',bio:'متخصصة في بناء تجربة مستخدم سلسة واحترافية.',learn:5,teach:45,post:{emoji:'🎨',type:'جلسة إرشادية',desc:'تصميم واجهات تطبيقات موبايل باستخدام Figma.'},taught:[{icon:'🎨',n:'UI/UX Figma',st:30},{icon:'📱',n:'تصميم تطبيقات موبايل',st:15}],learned:[{icon:'📈',n:'تسويق رقمي'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'استشارة ممتازة.'}]},
@@ -893,7 +930,7 @@ function buildFeed(){
       </div>
       <div class="post-acts">
         <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
-        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة للتعلم!')">طلب تعلّم المهارة</button>
+        <button class="pa btn-p" onclick="openRequestModal('${uid}')">طلب تعلّم المهارة</button>
       </div>`;
     fc.appendChild(el);
   });
@@ -923,6 +960,24 @@ function buildProjectsFeed() {
     `;
     fc.appendChild(el);
   });
+}
+
+// ===== REQUEST MODAL LOGIC (STUDENTS) =====
+function openRequestModal(uid) {
+  const u = DB[uid];
+  if(!u) return;
+  document.getElementById('rm-name').textContent = u.n;
+  document.getElementById('request-modal').classList.add('active');
+}
+
+function closeRequestModal(e) {
+  if (e && e.target !== document.getElementById('request-modal') && e.target.className !== 'modal-close') return;
+  document.getElementById('request-modal').classList.remove('active');
+}
+
+function confirmRequest() {
+  document.getElementById('request-modal').classList.remove('active');
+  showToast('تم إرسال الطلب بنجاح! سيتم التواصل معك قريباً.', 'var(--green)');
 }
 
 // ===== SEARCH LOGIC (STUDENTS) =====
@@ -1025,7 +1080,7 @@ function openOffers(cat){
             </div>
             <div style="display:flex; gap:8px; margin-top:4px;">
               <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل</button>
-              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم طلب التعلم من الطالب')">طلب تعلّم المهارة</button>
+              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openRequestModal('${uid}')">طلب تعلّم المهارة</button>
             </div>
           </div>`;
       });
@@ -1201,7 +1256,7 @@ function buildWallet() {
   
   if(userType === 'student') {
     document.getElementById('wallet-balance').textContent = '٣٥٠';
-    document.getElementById('wallet-currency').textContent = 'نقطة غصون';
+    document.getElementById('wallet-currency').textContent = 'نقطة نُول';
     trans = [
       {t:'إنجاز مهمة (تصميم 3D)', d:'١٥ أكتوبر ٢٠٢٦', a:'+١٥٠', cls:'pos'},
       {t:'حجز جلسة (برمجة بايثون)', d:'١٢ أكتوبر ٢٠٢٦', a:'-٥٠', cls:'neg'},
@@ -1306,13 +1361,13 @@ function openProfile(uid, ni=-1){
   const mb = document.getElementById('prof-msg-btn');
   mb.style.display = isMe ? 'none' : 'block';
   mb.textContent = userType === 'company' ? 'إسناد مهمة' : 'طلب تعلّم المهارة';
-  mb.onclick = () => userType === 'company' ? openAssignTask(uid) : openChat(uid);
+  mb.onclick = () => userType === 'company' ? openAssignTask(uid) : openRequestModal(uid);
 
   document.getElementById('grid-taught').innerHTML = u.taught.length?u.taught.map(s=>`
     <div class="svc-card" onclick="showToast('تم الطلب')">
       <div class="svc-icon">${s.icon}</div>
       <div class="svc-det"><div class="svc-t">${s.n}</div>${s.st?`<div class="stud-b">👥 ${s.st} متدرب</div>`:''}</div>
-      ${!isMe?`<button class="btn btn-p btn-sm" onclick="event.stopPropagation();showToast('${userType === 'company'?'تم إسناد المهمة':'تم الطلب'}')">طلب</button>`:''}
+      ${!isMe?`<button class="btn btn-p btn-sm" onclick="event.stopPropagation();${userType === 'company' ? `openAssignTask('${uid}')` : `openRequestModal('${uid}')`}">طلب</button>`:''}
     </div>`).join(''):`<div style="text-align:center;color:var(--sub2);padding:20px;font-size:14px;font-weight:700;">لا توجد خدمات معروضة حالياً.</div>`;
 
   document.getElementById('grid-learned').innerHTML = u.learned.length?u.learned.map(s=>`
@@ -1400,7 +1455,7 @@ function selType(el){
 }
 function submitSkill(){
   goBack();
-  setTimeout(()=>showToast('تم النشر في غصون بنجاح!'),300);
+  setTimeout(()=>showToast('تم النشر في نُول بنجاح!'),300);
 }
 
 function toggleTheme(){
