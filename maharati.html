@@ -81,6 +81,12 @@ textarea.inp{height:110px;resize:none}
 .login-tab { flex:1; padding:12px; font-weight:900; font-size:14px; cursor:pointer; color:var(--sub2); transition:0.3s; }
 .login-tab.active { background:var(--accentG); color:#fff; }
 
+/* ===== CENTERED PILL TABS (Students Feed) ===== */
+.top-tabs-container { display:flex; justify-content:center; padding:16px 20px 0; }
+.top-tabs { display:flex; background:var(--card); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:30px; padding:4px; box-shadow:var(--shadow); }
+.top-tab { padding:8px 24px; font-weight:900; font-size:13px; cursor:pointer; color:var(--sub2); transition:0.3s; border-radius:26px; }
+.top-tab.active { background:var(--accentG); color:#fff; box-shadow:0 4px 10px rgba(234,88,12,0.2); }
+
 .login-wrap{width:92%;max-width:420px;text-align:center}
 .login-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r3);padding:40px 24px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow)}
 .login-logo{font-size:52px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
@@ -101,7 +107,7 @@ textarea.inp{height:110px;resize:none}
 .sort-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 0;}
 .sort-bar select{width:auto;padding:6px 12px;border-radius:10px;font-size:13px;margin:0;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border2);color:var(--text);outline:none;}
 
-/* ===== FEED ===== */
+/* ===== FEED & PROJECTS ===== */
 .feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
 .post{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r3);padding:18px;transition:.2s;box-shadow:var(--shadow)}
 .post:active{transform:scale(.99)}
@@ -121,6 +127,14 @@ textarea.inp{height:110px;resize:none}
 .pa{flex:1;padding:13px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;text-align:center;transition:.2s;border:none;}
 .pa:active{transform:scale(.97)}
 
+/* Project Card Specifics */
+.proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px; border-right:4px solid var(--accent); }
+.proj-card:active { transform:scale(0.98); }
+.proj-title { font-size:16px; font-weight:900; color:var(--text); margin-bottom:4px; }
+.proj-comp { font-size:12px; color:var(--sub2); font-weight:700; display:flex; align-items:center; gap:6px; }
+.proj-details { display:flex; gap:12px; margin-top:8px; }
+.proj-badge { background:var(--input); border:1px solid var(--border2); color:var(--text); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; display:flex; align-items:center; gap:4px; }
+
 /* ===== SEARCH & B2B SEARCH ===== */
 .sbox{margin:14px 18px;position:relative}
 .sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--r2);background:var(--input);backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;box-shadow:inset 0 2px 5px rgba(0,0,0,0.02)}
@@ -138,7 +152,6 @@ textarea.inp{height:110px;resize:none}
 .offer-top { display:flex; justify-content:space-between; align-items:flex-start; }
 .offer-info { display:flex; align-items:center; gap:12px; }
 .price-badge { background:rgba(16, 185, 129, 0.1); color:var(--green); border:1px solid rgba(16, 185, 129, 0.2); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; text-align:center; white-space:nowrap;}
-.mini-service-tag {background:var(--input); border:1px solid var(--border2); color:var(--text); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:700;}
 
 /* ===== ADD & POST PROJECT ===== */
 .add-wrap{padding:22px 18px}
@@ -209,7 +222,7 @@ textarea.inp{height:110px;resize:none}
 .rev-txt{font-size:13px;color:var(--sub);line-height:1.6;font-weight:500}
 
 /* ===== BOTTOM NAV ===== */
-.bnav{position:fixed;bottom:18px;left:5%;width:90%;background:var(--nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:none;justify-content:space-around;align-items:center;padding:10px;border-radius:26px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.15);z-index:100}
+.bnav{position:fixed;bottom:18px;left:5%;width:90%;background:var(--nav);backdrop-filter:blur(24px);display:none;justify-content:space-around;align-items:center;padding:10px;border-radius:26px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.15);z-index:100}
 .nb{color:var(--sub2);font-size:22px;cursor:pointer;padding:10px 18px;transition:.25s;border-radius:14px}
 .nb.active{color:var(--text);background:var(--card2)}
 .nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
@@ -261,6 +274,9 @@ textarea.inp{height:110px;resize:none}
           <option value="pmu">جامعة الأمير مقرن بن عبدالعزيز</option>
           <option value="ksu">جامعة الملك سعود</option>
           <option value="kfupm">جامعة الملك فهد للبترول والمعادن</option>
+          <option value="kau">جامعة الملك عبدالعزيز</option>
+          <option value="iau">جامعة الإمام عبدالرحمن بن فيصل</option>
+          <option value="qu">جامعة القصيم</option>
         </select>
         <input type="number" class="inp" id="sid" placeholder="الرقم الجامعي">
       </div>
@@ -270,7 +286,8 @@ textarea.inp{height:110px;resize:none}
         <input type="number" class="inp" id="comp-cr" placeholder="رقم السجل التجاري">
       </div>
 
-      <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة </button>
+      <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة</button>
+      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
   </div>
 </div>
@@ -284,6 +301,13 @@ textarea.inp{height:110px;resize:none}
       <div class="hdr-icon" onclick="go('settings-view')" title="إعدادات">⚙️</div>
     </div>
   </header>
+
+  <div class="top-tabs-container">
+    <div class="top-tabs">
+      <div class="top-tab active" id="tab-st-talents" onclick="switchFeed('talents')">المواهب والخدمات</div>
+      <div class="top-tab" id="tab-st-projects" onclick="switchFeed('projects')">مشاريع الشركات</div>
+    </div>
+  </div>
   
   <div class="cats" id="feed-cats">
     <div class="cat active" data-val="all" onclick="filterCat(this,'all')">الكل</div>
@@ -296,7 +320,7 @@ textarea.inp{height:110px;resize:none}
     <div class="cat" data-val="other" onclick="filterCat(this,'other')">✨ أخرى</div>
   </div>
 
-  <div class="sort-bar">
+  <div class="sort-bar" id="feed-sort-bar">
     <span style="font-size:13px; color:var(--sub2); font-weight:700;">فرز حسب:</span>
     <select class="inp" style="width:auto; padding:6px 12px; font-size:13px; margin:0;" id="sort-sel" onchange="buildFeed()">
       <option value="new">الأحدث</option>
@@ -311,85 +335,72 @@ textarea.inp{height:110px;resize:none}
 <div id="search-view" class="view">
   <header class="hdr" style="border-bottom:none">
     <div style="width:28px"></div>
-    <div class="hdr-title">اكتشف المهارات</div>
+    <div class="hdr-title">بحث عن مواهب</div>
     <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
   </header>
   <div class="sbox" style="margin-top:0">
     <span class="sico">🔍</span>
-    <input type="text" oninput="searchSkills(this.value)" placeholder="ابحث عن مهارة أو طالب...">
+    <input type="text" oninput="searchSkills(this.value)" placeholder="ابحث عن مهارة أو طالب (مثال: برمجة)...">
   </div>
-  <div class="sec-t">تخصصات مقترحة</div>
-  <div class="skill-list" id="skills-list">
-    <div class="skill-item" onclick="openOffers('design')">
-      <div class="skill-l">
-        <div class="av" style="background:linear-gradient(135deg,#0d9488,#3b82f6);width:52px;height:52px;font-size:22px;border-radius:14px">🎨</div>
-        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">التصميم والهندسة</div><div style="font-size:12px;color:var(--sub2)">UI/UX, 3D, AutoCAD, Figma</div></div>
+  
+  <div id="skills-list-container">
+    <div class="sec-t">تخصصات مقترحة</div>
+    <div class="skill-list" id="skills-list">
+      <div class="skill-item" onclick="openOffers('design')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#0d9488,#3b82f6);width:52px;height:52px;font-size:22px;border-radius:14px">🎨</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">التصميم والهندسة</div><div style="font-size:12px;color:var(--sub2)">UI/UX, 3D, AutoCAD, Figma</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <span style="color:var(--sub2); font-weight:bold;">←</span>
-    </div>
-    <div class="skill-item" onclick="openOffers('coding')">
-      <div class="skill-l">
-        <div class="av" style="background:linear-gradient(135deg,#4f46e5,#8b5cf6);width:52px;height:52px;font-size:22px;border-radius:14px">💻</div>
-        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">البرمجة والبيانات</div><div style="font-size:12px;color:var(--sub2)">Python, Excel, AI, شبكات</div></div>
+      <div class="skill-item" onclick="openOffers('coding')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#4f46e5,#8b5cf6);width:52px;height:52px;font-size:22px;border-radius:14px">💻</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">البرمجة والبيانات</div><div style="font-size:12px;color:var(--sub2)">Python, Excel, AI, شبكات</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <span style="color:var(--sub2); font-weight:bold;">←</span>
-    </div>
-    <div class="skill-item" onclick="openOffers('business')">
-      <div class="skill-l">
-        <div class="av" style="background:linear-gradient(135deg,#eab308,#f59e0b);width:52px;height:52px;font-size:22px;border-radius:14px">📂</div>
-        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">الإدارة والأعمال</div><div style="font-size:12px;color:var(--sub2)">إدارة ملفات، عمل عن بُعد، تسويق</div></div>
+      <div class="skill-item" onclick="openOffers('business')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#eab308,#f59e0b);width:52px;height:52px;font-size:22px;border-radius:14px">📂</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">الإدارة والأعمال</div><div style="font-size:12px;color:var(--sub2)">إدارة ملفات، عمل عن بُعد، تسويق</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <span style="color:var(--sub2); font-weight:bold;">←</span>
-    </div>
-    <div class="skill-item" onclick="openOffers('lang')">
-      <div class="skill-l">
-        <div class="av" style="background:linear-gradient(135deg,#8b5cf6,#c084fc);width:52px;height:52px;font-size:22px;border-radius:14px">🌍</div>
-        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">اللغات والترجمة</div><div style="font-size:12px;color:var(--sub2)">إنجليزي، فرنسي، إيميلات رسمية</div></div>
+      <div class="skill-item" onclick="openOffers('lang')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#8b5cf6,#c084fc);width:52px;height:52px;font-size:22px;border-radius:14px">🌍</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">اللغات والترجمة</div><div style="font-size:12px;color:var(--sub2)">إنجليزي، فرنسي، إيميلات رسمية</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <span style="color:var(--sub2); font-weight:bold;">←</span>
-    </div>
-    <div class="skill-item" onclick="openOffers('media')">
-      <div class="skill-l">
-        <div class="av" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);width:52px;height:52px;font-size:22px;border-radius:14px">🎬</div>
-        <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">المونتاج والتصوير</div><div style="font-size:12px;color:var(--sub2)">Premiere, Lightroom, محتوى</div></div>
+      <div class="skill-item" onclick="openOffers('media')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#0369a1,#0ea5e9);width:52px;height:52px;font-size:22px;border-radius:14px">🎬</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">المونتاج والتصوير</div><div style="font-size:12px;color:var(--sub2)">Premiere, Lightroom, محتوى</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <span style="color:var(--sub2); font-weight:bold;">←</span>
+      <div class="skill-item" onclick="openOffers('math')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#15803d,#22c55e);width:52px;height:52px;font-size:22px;border-radius:14px">🔢</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">العلوم والرياضيات</div><div style="font-size:12px;color:var(--sub2)">Calculus, فيزياء, طب, محاسبة</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
+      </div>
+      <div class="skill-item" onclick="openOffers('other')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#e11d48,#f43f5e);width:52px;height:52px;font-size:22px;border-radius:14px">✨</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">تطوير شخصي وأخرى</div><div style="font-size:12px;color:var(--sub2)">CV, مقابلات, كتابة إبداعية</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
+      </div>
     </div>
   </div>
-</div>
 
-<div id="offers-view" class="view">
-  <header class="hdr">
-    <div class="hdr-icon" onclick="goBack()">🔙</div>
-    <div class="hdr-title" id="offers-title">الخدمات المتاحة</div>
-    <div style="width:28px"></div>
-  </header>
-  <div class="skill-list" id="offers-list" style="margin-top:20px; padding:0 20px;"></div>
-</div>
-
-<div id="add-view" class="view">
-  <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
-    <div class="hdr-title">تقديم خدمة جديدة</div>
-    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
-  </header>
-  <div class="add-wrap">
-    <span class="add-lbl">نوع الخدمة</span>
-    <div class="type-grid">
-      <div class="type-card active" onclick="selType(this)"><div class="type-icon">👤</div><div class="type-t">جلسة فردية</div></div>
-      <div class="type-card" onclick="selType(this)"><div class="type-icon">👥</div><div class="type-t">ورشة جماعية</div></div>
-    </div>
-    <span class="add-lbl">عنوان الخدمة</span>
-    <input type="text" class="inp" placeholder="مثال: دروس Python للمبتدئين">
-    <span class="add-lbl">التصنيف</span>
-    <select class="inp">
-      <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
-      <option>إدارة وأعمال</option><option>لغات وترجمة</option>
-      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
-    </select>
-    <span class="add-lbl">التفاصيل والمخرجات</span>
-    <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
-    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول ✅</button>
+  <div id="search-results-container" style="display:none;">
+    <div class="sec-t">نتائج البحث</div>
+    <div class="skill-list" id="all-users-list" style="padding:0 20px;"></div>
   </div>
 </div>
 
@@ -415,7 +426,8 @@ textarea.inp{height:110px;resize:none}
     <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك (AI Matches)</span>
   </div>
 
-  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;"></div>
+  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;">
+    </div>
 </div>
 
 <div id="comp-search-view" class="view">
@@ -424,11 +436,12 @@ textarea.inp{height:110px;resize:none}
     <div class="hdr-title">البحث عن مواهب</div>
     <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
   </header>
+  
   <div class="sbox" style="margin-top:0">
     <span class="sico">🔍</span>
     <input type="text" oninput="searchCompSkills(this.value)" placeholder="ابحث عن مهارة (مثال: تصميم واجهات)...">
   </div>
-  
+
   <div class="cats" id="comp-search-cats">
     <div class="cat active" data-val="all" onclick="filterCompCat(this, 'all')">الكل</div>
     <div class="cat" data-val="coding" onclick="filterCompCat(this, 'coding')">برمجة وبيانات</div>
@@ -437,36 +450,45 @@ textarea.inp{height:110px;resize:none}
     <div class="cat" data-val="media" onclick="filterCompCat(this, 'media')">مونتاج وتصوير</div>
   </div>
 
-  <div class="skill-list" id="comp-search-list" style="margin-top:16px; padding:0 20px;"></div>
+  <div class="sort-bar" style="padding-bottom: 10px;">
+    <span style="font-size:13px; color:var(--sub2); font-weight:700;">فرز حسب:</span>
+    <select class="inp" style="width:auto; padding:6px 12px; font-size:13px; margin:0;" id="comp-sort-sel" onchange="buildCompMatches(document.querySelector('#comp-search-cats .cat.active').dataset.val, 'comp-search-list')">
+      <option value="rank">الأعلى تصنيفاً</option>
+      <option value="trainees">الأكثر تدريباً</option>
+      <option value="new">الأحدث</option>
+    </select>
+  </div>
+
+  <div class="skill-list" id="comp-search-list" style="margin-top:6px; padding:0 20px;"></div>
 </div>
 
 <div id="comp-post-view" class="view">
   <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء 🔙</div>
     <div class="hdr-title">طرح مشروع جديد</div>
     <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitProject()">نشر</div>
   </header>
   <div class="add-wrap">
     <span class="add-lbl">عنوان المشروع / المهمة</span>
-    <input type="text" class="inp" placeholder="مثال: مطلوب مطور لبناء صفحة هبوط">
+    <input type="text" class="inp" id="proj-title" placeholder="مثال: مطلوب مطور لبناء صفحة هبوط">
     
     <span class="add-lbl">المهارة المطلوبة</span>
-    <select class="inp" id="project-cat-sel">
-      <option value="برمجة الويب">برمجة الويب (Front-End)</option>
-      <option value="تصميم واجهات">تصميم واجهات (UI/UX)</option>
-      <option>تحليل بيانات (Excel/Python)</option>
-      <option>مونتاج فيديو</option>
-      <option>إدارة أعمال وتسويق</option>
+    <select class="inp" id="proj-cat">
+      <option value="coding">برمجة وتطوير (Front-End/Back-End)</option>
+      <option value="design">تصميم واجهات (UI/UX)</option>
+      <option value="coding">تحليل بيانات (Excel/Python)</option>
+      <option value="media">مونتاج فيديو وصناعة محتوى</option>
+      <option value="business">إدارة أعمال وتسويق</option>
     </select>
     
     <div style="display:flex; gap:12px; margin-top:16px;">
       <div style="flex:1;">
         <span class="add-lbl" style="margin-top:0;">الميزانية المتوقعة (ريال)</span>
-        <input type="number" class="inp" placeholder="مثال: 500">
+        <input type="number" class="inp" id="proj-budget" placeholder="مثال: 500">
       </div>
       <div style="flex:1;">
         <span class="add-lbl" style="margin-top:0;">المدة الزمنية</span>
-        <select class="inp">
+        <select class="inp" id="proj-time">
           <option>أيام</option>
           <option>أسبوع - أسبوعين</option>
           <option>شهر فأكثر</option>
@@ -475,9 +497,35 @@ textarea.inp{height:110px;resize:none}
     </div>
 
     <span class="add-lbl">وصف المشروع بالتفصيل</span>
-    <textarea class="inp" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
+    <textarea class="inp" id="proj-desc" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
     
-    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع للمواهب </button>
+    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع والبحث عن مواهب</button>
+  </div>
+</div>
+
+<div id="add-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-title">تقديم خدمة جديدة</div>
+    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
+  </header>
+  <div class="add-wrap">
+    <span class="add-lbl">نوع الخدمة</span>
+    <div class="type-grid">
+      <div class="type-card active" onclick="selType(this)"><div class="type-icon">👤</div><div class="type-t">جلسة فردية</div></div>
+      <div class="type-card" onclick="selType(this)"><div class="type-icon">👥</div><div class="type-t">ورشة جماعية</div></div>
+    </div>
+    <span class="add-lbl">عنوان الخدمة</span>
+    <input type="text" class="inp" placeholder="مثال: دروس Python للمبتدئين">
+    <span class="add-lbl">التصنيف</span>
+    <select class="inp">
+      <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
+      <option>إدارة وأعمال</option><option>لغات وترجمة</option>
+      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
+    </select>
+    <span class="add-lbl">التفاصيل والمخرجات</span>
+    <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول</button>
   </div>
 </div>
 
@@ -571,29 +619,45 @@ textarea.inp{height:110px;resize:none}
       <span class="set-label">🌐 اللغة</span>
       <span class="set-val" id="lang-lbl">English</span>
     </div>
-    <div class="set-row" onclick="openProfile('me',4)">
+    
+    <div class="set-row" id="set-profile" onclick="openProfile('me',4)">
       <span class="set-label">👤 ملفي الشخصي</span>
       <span style="color:var(--sub2); font-weight:bold;">←</span>
     </div>
-    <div class="set-row" onclick="go('lb-view')">
+    <div class="set-row" id="set-lb" onclick="go('lb-view')">
       <span class="set-label">🏆 لوحة المتصدرين</span>
       <span style="color:var(--sub2); font-weight:bold;">←</span>
     </div>
+
+    <div class="set-row" id="set-my-projects" style="display:none;" onclick="showToast('سيتم إضافة صفحة إدارة المشاريع قريباً')">
+      <span class="set-label">📂 مشاريعي المطروحة</span>
+      <span style="color:var(--sub2); font-weight:bold;">←</span>
+    </div>
+
     <div class="set-row" style="margin-top:12px" onclick="location.reload()">
       <span class="set-label" style="color:var(--red)">🚪 تسجيل الخروج</span>
     </div>
   </div>
 </div>
 
+<div id="offers-view" class="view">
+  <header class="hdr">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title" id="offers-title">الخدمات المتاحة</div>
+    <div style="width:28px"></div>
+  </header>
+  <div class="skill-list" id="offers-list" style="margin-top:20px; padding:0 20px;"></div>
+</div>
+
 <nav id="bnav" class="bnav"></nav>
 
 <script>
 /* ======================================================
-   DATABASE – 30+ STUDENTS (Fully Populated & Mapped)
+   DATABASE – STUDENTS
    ====================================================== */
 const DB = {
   me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',cat:'design',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات المستقبلية. أشارك زملائي مهارات 3D Modeling وأتعلم منهم ما أحتاجه.',learn:2,teach:28,post:{emoji:'📐',type:'جلسة إرشادية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين. نبني نموذج كامل من الصفر.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'},{icon:'🇬🇧',n:'إنجليزي أعمال'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة وعملية.'}]},
-  lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية. أساعدك تصمم فراغات تدمج الطبيعة مع التكنولوجيا.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة إرشادية',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية وكيف ندمج الطبيعة مع التكنولوجيا.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'🚀',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]},
+  lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية. أساعدك تصمم فراغات تدمج الطبيعة مع التكنولوجيا.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية وكيف ندمج الطبيعة مع التكنولوجيا.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'🚀',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',cat:'business',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري. أعلمك كيف تشتغل Remote File Clerk بكفاءة.',learn:4,teach:40,post:{emoji:'📂',type:'ورشة تدريبية',desc:'ورشة المهارات الإدارية للعمل عن بُعد. ندرس Clerical work وأدوات التنظيم السحابية.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل، أنصح به.'}]},
   sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python. نبني Dashboards احترافية تفيدك في الـ CV.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
   yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',cat:'design',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,post:{emoji:'⚙️',type:'ورشة تدريبية',desc:'أساسيات AutoCAD للطلاب الجدد. نرسم مشروعاً كاملاً من الصفر خطوة بخطوة.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
@@ -613,11 +677,20 @@ const DB = {
   reem:{n:'ريم محمد',bg:'linear-gradient(135deg,#e11d48,#9f1239)',i:'ر',rank:'فضي',ri:'🥈',cat:'other',title:'طب | إسعافات أولية',bio:'جلسات في الإسعافات الأولية والتثقيف الصحي.',learn:15,teach:10,post:{emoji:'🩺',type:'جلسة تدريبية',desc:'تعلم الإسعافات الأولية الأساسية: التنفس الاصطناعي، الكسور، الإغماء. كل طالب يحتاجه.'},taught:[{icon:'🩺',n:'إسعافات أولية',st:10}],learned:[{icon:'🗣️',n:'لغة إشارة'}],reviews:[]},
   nasser:{n:'ناصر العلي',bg:'linear-gradient(135deg,#ea580c,#9a3412)',i:'ن',rank:'ذهبي',ri:'🌟',cat:'other',title:'كتابة إبداعية | سيناريو ومحتوى',bio:'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',learn:8,teach:35,post:{emoji:'✍️',type:'ورشة تدريبية',desc:'ورشة كتابة السيناريو وصياغة المحتوى الرقمي. نكتب قصة قصيرة ونطوّرها خطوة بخطوة.'},taught:[{icon:'✍️',n:'كتابة السيناريو',st:20},{icon:'📚',n:'Content Writing',st:15}],learned:[{icon:'🎬',n:'مونتاج'}],reviews:[]}
 };
-
 const USERS = Object.keys(DB);
+
+/* ======================================================
+   DATABASE – COMPANY PROJECTS
+   ====================================================== */
+let COMPANY_PROJECTS = [
+  {id:1, comp:'شركة التقنية الحديثة', title:'تصميم واجهة تطبيق توصيل', cat:'design', budget:'١٥٠٠', time:'أسبوعين', desc:'نبحث عن مصمم واجهات (UI/UX) لبناء شاشات تطبيق توصيل طلبات باستخدام Figma.'},
+  {id:2, comp:'مؤسسة الأفق للتجارة', title:'تحليل بيانات مبيعات المتجر', cat:'coding', budget:'٨٠٠', time:'أسبوع', desc:'نحتاج طالب متمكن من Excel لتنظيف وتحليل بيانات مبيعاتنا واستخراج لوحة تحكم (Dashboard).'}
+];
+
 let navHist = ['login-view'];
 let curChat = '';
 let userType = 'student'; 
+let feedMode = 'talents'; 
 
 // ===== INITIALIZATION & THEME =====
 let isLight = true; 
@@ -638,20 +711,26 @@ function switchLogin(type) {
 
 function login(){
   if(userType === 'student') {
-    // تم إلغاء التحقق لتسريع الدخول في العرض!
     updateBottomNav();
-    buildFeed(); buildAllUsers(); buildDMs(); buildLB();
+    updateSettingsUI();
+    switchFeed('talents');
+    buildAllUsers(); buildDMs(); buildLB();
     go('feed-view',0);
-    showToast('تم تسجيل الدخول كطالب ✅');
   } else {
     updateBottomNav();
+    updateSettingsUI();
     buildCompMatches('all');
     go('comp-dash-view',0);
-    showToast('تم تسجيل الدخول كجهة أعمال ✅');
   }
 }
 
-// ===== UPDATE BOTTOM NAV =====
+function updateSettingsUI() {
+  const isSt = (userType === 'student');
+  document.getElementById('set-profile').style.display = isSt ? 'flex' : 'none';
+  document.getElementById('set-lb').style.display = isSt ? 'flex' : 'none';
+  document.getElementById('set-my-projects').style.display = isSt ? 'none' : 'flex';
+}
+
 function updateBottomNav() {
   const bnav = document.getElementById('bnav');
   if(userType === 'student') {
@@ -673,26 +752,23 @@ function updateBottomNav() {
   }
 }
 
-const offerMap = {};
-USERS.forEach(uid => {
-  if(uid === 'me') return;
-  const c = DB[uid].cat;
-  if(c) {
-    if(!offerMap[c]) offerMap[c] = [];
-    offerMap[c].push(uid);
+// ===== FEED LOGIC (STUDENT) =====
+function switchFeed(mode) {
+  feedMode = mode;
+  document.getElementById('tab-st-talents').classList.toggle('active', mode === 'talents');
+  document.getElementById('tab-st-projects').classList.toggle('active', mode === 'projects');
+  
+  if(mode === 'talents') {
+    document.getElementById('feed-cats').style.display = 'flex';
+    document.getElementById('feed-sort-bar').style.display = 'flex';
+    buildFeed();
+  } else {
+    document.getElementById('feed-cats').style.display = 'none';
+    document.getElementById('feed-sort-bar').style.display = 'none';
+    buildProjectsFeed();
   }
-});
-const offerTitles = {
-  design:'🎨 التصميم والهندسة',
-  coding:'💻 البرمجة والبيانات',
-  business:'📂 الإدارة والأعمال',
-  lang:'🌍 اللغات والترجمة',
-  media:'🎬 المونتاج والتصوير',
-  math:'🔢 العلوم والرياضيات',
-  other:'✨ تطوير شخصي وأخرى'
-};
+}
 
-// ===== FEED POSTS (B2C) =====
 function buildFeed(){
   const fc = document.getElementById('feed-container');
   const sortType = document.getElementById('sort-sel') ? document.getElementById('sort-sel').value : 'new';
@@ -701,7 +777,6 @@ function buildFeed(){
   fc.innerHTML = '';
   
   let usersArr = USERS.filter(id=>id!=='me' && DB[id].post);
-
   if(activeCat && activeCat !== 'all') {
     usersArr = usersArr.filter(id => DB[id].cat === activeCat);
   }
@@ -742,13 +817,39 @@ function buildFeed(){
       </div>
       <div class="post-acts">
         <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
-        <button class="pa btn-p" onclick="showToast('✅ تم حجز الجلسة بنجاح!')">اطلب خدمته الآن </button>
+        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة بنجاح!')">طلب تعلّم المهارة</button>
       </div>`;
     fc.appendChild(el);
   });
 }
 
-// ===== ALL USERS LIST =====
+function buildProjectsFeed() {
+  const fc = document.getElementById('feed-container');
+  fc.innerHTML = '';
+  
+  if(COMPANY_PROJECTS.length === 0) {
+     fc.innerHTML = `<div style="text-align:center;color:var(--sub2);padding:40px;font-weight:700;">لا توجد مشاريع من الشركات حالياً.</div>`;
+     return;
+  }
+
+  COMPANY_PROJECTS.forEach(proj => {
+    const el = document.createElement('div');
+    el.className = 'proj-card';
+    el.innerHTML = `
+      <div class="proj-title">${proj.title}</div>
+      <div class="proj-comp">🏢 ${proj.comp}</div>
+      <div class="proj-details">
+        <div class="proj-badge">💰 ${proj.budget} ر.س</div>
+        <div class="proj-badge">⏱️ ${proj.time}</div>
+      </div>
+      <div style="font-size:13px; color:var(--text); line-height:1.6; margin-top:12px; font-weight:500;">${proj.desc}</div>
+      <button class="btn btn-p" style="margin-top:16px; width:100%; border-radius:12px;" onclick="showToast('تم التقديم على المشروع! سيتم مراجعة ملفك.')">تقديم على المشروع</button>
+    `;
+    fc.appendChild(el);
+  });
+}
+
+// ===== SEARCH LOGIC (STUDENTS) =====
 function buildAllUsers(){
   const el = document.getElementById('all-users-list');
   if(document.getElementById('total-count')) document.getElementById('total-count').textContent = USERS.length - 1;
@@ -770,7 +871,43 @@ function buildAllUsers(){
   });
 }
 
-// ===== OFFERS (B2C) =====
+function searchSkills(q){
+  q = q.toLowerCase().trim();
+  const catsContainer = document.getElementById('skills-list-container');
+  const resContainer = document.getElementById('search-results-container');
+  
+  if(q === '') {
+    catsContainer.style.display = 'block';
+    resContainer.style.display = 'none';
+  } else {
+    catsContainer.style.display = 'none';
+    resContainer.style.display = 'block';
+    document.querySelectorAll('#all-users-list .skill-item').forEach(i=>{
+      i.style.display = i.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+    });
+  }
+}
+
+// ===== OFFERS MAP =====
+const offerMap = {};
+USERS.forEach(uid => {
+  if(uid === 'me') return;
+  const c = DB[uid].cat;
+  if(c) {
+    if(!offerMap[c]) offerMap[c] = [];
+    offerMap[c].push(uid);
+  }
+});
+const offerTitles = {
+  design:'🎨 التصميم والهندسة',
+  coding:'💻 البرمجة والبيانات',
+  business:'📂 الإدارة والأعمال',
+  lang:'🌍 اللغات والترجمة',
+  media:'🎬 المونتاج والتصوير',
+  math:'🔢 العلوم والرياضيات',
+  other:'✨ تطوير شخصي وأخرى'
+};
+
 function openOffers(cat){
   document.getElementById('offers-title').textContent = offerTitles[cat] || 'الخدمات المتاحة';
   const list = document.getElementById('offers-list');
@@ -812,7 +949,7 @@ function openOffers(cat){
             </div>
             <div style="display:flex; gap:8px; margin-top:4px;">
               <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل</button>
-              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال طلب إنجاز المهمة ✅')">اطلب خدمته الآن</button>
+              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم طلب التعلم من الطالب')">طلب تعلّم المهارة</button>
             </div>
           </div>`;
       });
@@ -843,8 +980,14 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
     usersArr = usersArr.filter(id => DB[id].cat === catFilter);
   }
   
-  const rankVal = { 'ماسي': 3, 'ذهبي': 2, 'فضي': 1 };
-  usersArr.sort((a,b) => (rankVal[DB[b].rank.split(' ')[1] || DB[b].rank] || 0) - (rankVal[DB[a].rank.split(' ')[1] || DB[a].rank] || 0));
+  const sortType = document.getElementById('comp-sort-sel') ? document.getElementById('comp-sort-sel').value : 'rank';
+
+  if(sortType === 'rank') {
+    const rankVal = { 'ماسي': 3, 'ذهبي': 2, 'فضي': 1 };
+    usersArr.sort((a,b) => (rankVal[DB[b].rank.split(' ')[1] || DB[b].rank] || 0) - (rankVal[DB[a].rank.split(' ')[1] || DB[a].rank] || 0));
+  } else if (sortType === 'trainees') {
+    usersArr.sort((a,b) => DB[b].teach - DB[a].teach);
+  }
 
   let htmlStr = '';
   usersArr.forEach(uid=>{
@@ -876,7 +1019,7 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
         </div>
         <div style="display:flex; gap:8px;">
           <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل مبدئي</button>
-          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال دعوة للطالب ✅')"> إسناد مشروع</button>
+          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال دعوة للطالب')">إسناد مشروع</button>
         </div>
       </div>`;
   });
@@ -891,24 +1034,31 @@ function searchCompSkills(q){
 }
 
 function submitProject() {
-  const sel = document.getElementById('project-cat-sel').value;
-  let cat = 'coding';
-  if(sel.includes('تصميم')) cat = 'design';
-  else if(sel.includes('برمجة')) cat = 'coding';
-  else if(sel.includes('بيانات')) cat = 'coding';
-  else if(sel.includes('مونتاج')) cat = 'media';
-  else if(sel.includes('إدارة')) cat = 'business';
-  else cat = 'all';
+  const title = document.getElementById('proj-title').value || 'مشروع جديد';
+  const sel = document.getElementById('proj-cat').value;
+  const budget = document.getElementById('proj-budget').value || 'غير محدد';
+  const time = document.getElementById('proj-time').value || 'غير محدد';
+  const desc = document.getElementById('proj-desc').value || 'لا يوجد تفاصيل';
+
+  COMPANY_PROJECTS.unshift({
+    id: Date.now(),
+    comp: document.getElementById('comp-name') ? document.getElementById('comp-name').value : 'الشركة الخاصة بك',
+    title, cat: sel, budget, time, desc
+  });
 
   document.querySelectorAll('#comp-search-cats .cat').forEach(c=>c.classList.remove('active'));
-  const targetCat = document.querySelector(`#comp-search-cats .cat[data-val="${cat}"]`);
+  const targetCat = document.querySelector(`#comp-search-cats .cat[data-val="${sel}"]`);
   if(targetCat) targetCat.classList.add('active');
   else document.querySelector('#comp-search-cats .cat').classList.add('active');
 
-  buildCompMatches(cat, 'comp-search-list');
+  buildCompMatches(sel, 'comp-search-list');
   go('comp-search-view', 1);
   
-  setTimeout(()=>showToast('✅ تم نشر المشروع! إليك أفضل المواهب المطابقة لطلبك.', 'var(--green)'), 400);
+  setTimeout(()=>showToast('تم نشر المشروع! إليك أفضل المواهب المطابقة لطلبك.', 'var(--green)'), 400);
+  
+  document.getElementById('proj-title').value = '';
+  document.getElementById('proj-budget').value = '';
+  document.getElementById('proj-desc').value = '';
 }
 
 
@@ -933,6 +1083,13 @@ function buildDMs(){
           ${unread?`<div class="unread">${i+1}</div>`:''}
         </div>
       </div>`;
+  });
+}
+
+function searchDMs(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#dm-list .dm-item').forEach(i=>{
+    i.style.display=i.querySelector('.dm-name').innerText.toLowerCase().includes(q)?'flex':'none';
   });
 }
 
@@ -963,19 +1120,6 @@ function filterCat(el,cat){
   buildFeed();
 }
 
-function searchSkills(q){
-  q=q.toLowerCase();
-  document.querySelectorAll('#skills-list .skill-item').forEach(i=>i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none');
-  document.querySelectorAll('#all-users-list .skill-item').forEach(i=>i.style.display=i.innerText.toLowerCase().includes(q)?'flex':'none');
-}
-
-function searchDMs(q){
-  q=q.toLowerCase();
-  document.querySelectorAll('#dm-list .dm-item').forEach(i=>{
-    i.style.display=i.querySelector('.dm-name').innerText.toLowerCase().includes(q)?'flex':'none';
-  });
-}
-
 function openProfile(uid, ni=-1){
   const u = DB[uid];
   if(!u) return;
@@ -995,14 +1139,14 @@ function openProfile(uid, ni=-1){
   
   const mb = document.getElementById('prof-msg-btn');
   mb.style.display = isMe ? 'none' : 'block';
-  mb.textContent = userType === 'company' ? 'إسناد مشروع ' : 'اطلب خدمته الآن ';
+  mb.textContent = userType === 'company' ? 'إسناد مشروع' : 'طلب تعلّم المهارة 🤝';
   mb.onclick = () => openChat(uid);
 
   document.getElementById('grid-taught').innerHTML = u.taught.length?u.taught.map(s=>`
-    <div class="svc-card" onclick="showToast('تم الطلب ✅')">
+    <div class="svc-card" onclick="showToast('تم الطلب')">
       <div class="svc-icon">${s.icon}</div>
       <div class="svc-det"><div class="svc-t">${s.n}</div>${s.st?`<div class="stud-b">👥 ${s.st} متدرب</div>`:''}</div>
-      ${!isMe?`<button class="btn btn-p btn-sm" onclick="event.stopPropagation();showToast('${userType === 'company'?'تم إسناد المهمة ✅':'تم الطلب ✅'}')">طلب</button>`:''}
+      ${!isMe?`<button class="btn btn-p btn-sm" onclick="event.stopPropagation();showToast('${userType === 'company'?'تم إسناد المهمة':'تم الطلب'}')">طلب</button>`:''}
     </div>`).join(''):`<div style="text-align:center;color:var(--sub2);padding:20px;font-size:14px;font-weight:700;">لا توجد خدمات معروضة حالياً.</div>`;
 
   document.getElementById('grid-learned').innerHTML = u.learned.length?u.learned.map(s=>`
@@ -1072,8 +1216,7 @@ function sendMsg(){
       'أبشر، راح أراجع طلبك وأرد بأقرب وقت.',
       'ممتاز جداً! متى يناسبك الوقت؟',
       'يعطيك العافية، وصلتني رسالتك وسيتم التنسيق معك قريباً.',
-      'بكل سرور، أرسل لك التفاصيل الآن.',
-      'أهلاً بك، سأرد عليك بالتفاصيل فوراً.'
+      'بكل سرور، أرسل لك التفاصيل الآن.'
     ];
     const r = replies[Math.floor(Math.random()*replies.length)];
     area.innerHTML += `<div class="msg-row in"><div class="msg">${r}</div><div class="msg-time">${now()}</div></div>`;
@@ -1091,7 +1234,7 @@ function selType(el){
 }
 function submitSkill(){
   goBack();
-  setTimeout(()=>showToast('✅ تم النشر في نُول بنجاح!'),300);
+  setTimeout(()=>showToast('تم النشر في نُول بنجاح!'),300);
 }
 
 function toggleTheme(){
@@ -1127,7 +1270,7 @@ function go(vid, ni=-1){
   nbs.forEach(b=>b.classList.remove('active'));
   if(ni>=0&&ni<nbs.length) nbs[ni].classList.add('active');
   
-  const alwaysHide=['login-view','settings-view','chat-view','offers-view','add-view','lb-view', 'comp-post-view'];
+  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view'];
   let hideNav = alwaysHide.includes(vid);
   if(vid==='profile-view'){
     const profBtn = document.getElementById('prof-msg-btn');
