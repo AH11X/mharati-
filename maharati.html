@@ -131,7 +131,7 @@ textarea.inp{height:110px;resize:none}
 .pa:active{transform:scale(.97)}
 
 /* Project Card Specifics */
-.proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; border-right:4px solid var(--accent); }
+.proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px; border-right:4px solid var(--accent); }
 .proj-card:active { transform:scale(0.98); }
 .proj-title { font-size:16px; font-weight:900; color:var(--text); margin-bottom:4px; }
 .proj-comp { font-size:12px; color:var(--sub2); font-weight:700; display:flex; align-items:center; gap:6px; }
@@ -174,7 +174,7 @@ textarea.inp{height:110px;resize:none}
 .trans-amt.pos { color:var(--green); }
 .trans-amt.neg { color:var(--text); opacity:0.8; }
 
-/* ===== ADD & POST PROJECT ===== */
+/* ===== ADD & POST PROJECT & ASSIGN TASK ===== */
 .add-wrap{padding:22px 18px}
 .type-grid{display:flex;gap:12px;margin-bottom:20px}
 .type-card{flex:1;background:var(--card);backdrop-filter:var(--blur);border:2px solid var(--border);border-radius:20px;padding:20px 8px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:var(--shadow)}
@@ -249,12 +249,12 @@ textarea.inp{height:110px;resize:none}
 .nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
 
 /* ===== SETTINGS & LEADERBOARD ===== */
-.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .set-row:active{background:var(--card2)}
 .set-label{font-size:15px;font-weight:700;color:var(--text)}
 .set-val{font-size:14px;font-weight:900;color:var(--accent)}
 
-.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .lb-item:active{background:var(--card2)}
 .lb-rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
 .lb-info{flex:1}
@@ -306,7 +306,6 @@ textarea.inp{height:110px;resize:none}
       </div>
 
       <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة</button>
-      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
   </div>
 </div>
@@ -449,12 +448,8 @@ textarea.inp{height:110px;resize:none}
     <p style="font-size:13px; color:var(--sub2);">استقطب أفضل المواهب الجامعية بأسعار تنافسية لمشاريعك.</p>
   </div>
 
-  <div style="padding:0 20px; margin-bottom:24px;">
-    <button class="btn btn-p" style="width:100%;" onclick="go('comp-post-view', 2)">📝 اطرح مشروعاً عاماً</button>
-  </div>
-
   <div class="sort-bar">
-    <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك (AI Matches)</span>
+    <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك</span>
   </div>
 
   <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;"></div>
@@ -527,7 +522,7 @@ textarea.inp{height:110px;resize:none}
     <span class="add-lbl">وصف المشروع بالتفصيل</span>
     <textarea class="inp" id="proj-desc" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
     
-    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر والبحث عن مواهب</button>
+    <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع والبحث عن مواهب</button>
   </div>
 </div>
 
@@ -535,7 +530,7 @@ textarea.inp{height:110px;resize:none}
   <header class="hdr" style="border-bottom:none">
     <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
     <div class="hdr-title">إسناد مهمة</div>
-    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitAssignTask()">إرسال</div>
+    <div style="width:28px"></div>
   </header>
   <div class="add-wrap">
     <div style="background:var(--card); padding:16px; border-radius:var(--r); border:1px solid var(--border); margin-bottom:20px; display:flex; align-items:center; gap:12px;">
@@ -745,7 +740,7 @@ const DB = {
   me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',cat:'design',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات. أشارك زملائي مهارات 3D Modeling.',learn:2,teach:28,post:{emoji:'📐',type:'جلسة إرشادية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة.'}]},
   lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'✨',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',cat:'business',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري.',learn:4,teach:40,post:{emoji:'📂',type:'ورشة تدريبية',desc:'ورشة المهارات الإدارية للعمل عن بُعد.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل.'}]},
-  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
+  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل ممتازة.'}]},
   yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',cat:'design',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,post:{emoji:'⚙️',type:'ورشة تدريبية',desc:'أساسيات AutoCAD للطلاب الجدد.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
   raghad:{n:'رغد صالح',bg:'linear-gradient(135deg,#ec4899,#f43f5e)',i:'ر',rank:'ذهبي',ri:'🌟',cat:'other',title:'موارد بشرية | تطوير وظيفي',bio:'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات.',learn:8,teach:60,post:{emoji:'📄',type:'استشارة مهنية',desc:'مراجعة شاملة لـ CV وتجهيزك للمقابلات.'},taught:[{icon:'📄',n:'كتابة CV احترافي',st:40},{icon:'🎯',n:'تجاوز المقابلات',st:20}],learned:[{icon:'💼',n:'إدارة مشاريع'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'انقبلت في تدريب تعاوني بفضلها.'}]},
   shahad:{n:'شهد محمد',bg:'linear-gradient(135deg,#10b981,#3b82f6)',i:'ش',rank:'ذهبي',ri:'🌟',cat:'design',title:'مصممة واجهات | UI/UX & Figma',bio:'متخصصة في بناء تجربة مستخدم سلسة واحترافية.',learn:5,teach:45,post:{emoji:'🎨',type:'جلسة إرشادية',desc:'تصميم واجهات تطبيقات موبايل باستخدام Figma.'},taught:[{icon:'🎨',n:'UI/UX Figma',st:30},{icon:'📱',n:'تصميم تطبيقات موبايل',st:15}],learned:[{icon:'📈',n:'تسويق رقمي'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'استشارة ممتازة.'}]},
@@ -1005,6 +1000,7 @@ function openOffers(cat){
         const u = DB[uid];
         if(!u) return;
 
+        // إبراز الخدمة الأساسية
         let serviceName = u.title.split('|')[1] || u.title;
         let servicesHtml = '';
         if(u.taught && u.taught.length > 0) {
@@ -1098,7 +1094,7 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
         </div>
         <div style="display:flex; gap:8px;">
           <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل مبدئي</button>
-          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openAssignTask('${uid}')">إسناد مشروع</button>
+          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openAssignTask('${uid}')">إسناد مهمة</button>
         </div>
       </div>`;
   });
@@ -1174,7 +1170,7 @@ function buildNotifs() {
   if(userType === 'student') {
     notifs = [
       {t:'تم قبول طلب التعلم من سارة أحمد', i:'✅', time:'منذ ١٥ دقيقة'},
-      {t:'تقييم جديد 🌟: حصلت على 5 نجوم من ياسر فهد', i:'🌟', time:'منذ ساعتين'},
+      {t:'تقييم جديد: حصلت على 5 نجوم من ياسر فهد', i:'🌟', time:'منذ ساعتين'},
       {t:'تذكير: موعد جلستك غداً الساعة ٤ مساءً', i:'⏱️', time:'أمس'}
     ];
   } else {
@@ -1309,7 +1305,7 @@ function openProfile(uid, ni=-1){
   
   const mb = document.getElementById('prof-msg-btn');
   mb.style.display = isMe ? 'none' : 'block';
-  mb.textContent = userType === 'company' ? 'إسناد مشروع' : 'طلب تعلّم المهارة 🤝';
+  mb.textContent = userType === 'company' ? 'إسناد مهمة' : 'طلب تعلّم المهارة';
   mb.onclick = () => userType === 'company' ? openAssignTask(uid) : openChat(uid);
 
   document.getElementById('grid-taught').innerHTML = u.taught.length?u.taught.map(s=>`
