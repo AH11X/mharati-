@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>مهاراتي – سوق المهارات الجامعي</title>
+<title>نُول – سوق المهارات الجامعي</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -12,7 +12,8 @@
   --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
   --text:#f1f5f9; --sub:#64748b; --sub2:#94a3b8;
   --nav:rgba(9,9,11,0.88); --input:rgba(255,255,255,0.05);
-  --accent:#5b4fce; --accent2:#8b5cf6; --accentG:linear-gradient(135deg,#5b4fce,#8b5cf6);
+  /* تم تغيير الثيم إلى البرتقالي والأصفر */
+  --accent:#ea580c; --accent2:#f59e0b; --accentG:linear-gradient(135deg,#ea580c,#f59e0b);
   --gold:#f59e0b; --green:#10b981; --red:#ef4444; --blue:#3b82f6;
   --r:16px; --r2:22px; --r3:28px;
   --shadow:0 8px 32px rgba(0,0,0,0.4);
@@ -25,6 +26,7 @@
   --text:#0f172a; --sub:#475569; --sub2:#64748b;
   --nav:rgba(255,255,255,0.95); --input:#ffffff;
   --shadow:0 8px 32px rgba(0,0,0,0.1);
+  --accent:#ea580c; --accent2:#f59e0b; --accentG:linear-gradient(135deg,#ea580c,#f59e0b);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
@@ -39,7 +41,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;t
 
 /* ===== HEADER ===== */
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);position:sticky;top:0;z-index:60;border-bottom:1px solid var(--border)}
-.logo{font-size:22px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px}
 .hdr-icon:active{opacity:.6;transform:scale(.93)}
 .hdr-title{font-size:17px;font-weight:900;color:var(--text)}
@@ -54,30 +56,30 @@ textarea.inp{height:110px;resize:none}
 /* ===== BUTTONS ===== */
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:14px 22px;border-radius:var(--r);border:none;font-size:15px;font-weight:900;cursor:pointer;width:100%;transition:.2s;font-family:'Tajawal',sans-serif}
 .btn:active{transform:translateY(2px);opacity:.85}
-.btn-p{background:var(--accentG);color:#fff;box-shadow:0 6px 20px rgba(91,79,206,.3)}
+.btn-p{background:var(--accentG);color:#fff;box-shadow:0 6px 20px rgba(234,88,12,.3)}
 .btn-o{background:transparent;border:1.5px solid var(--border2);color:var(--text)}
 .btn-sm{padding:9px 16px;font-size:13px;border-radius:10px;width:auto}
-.btn-g{background:linear-gradient(135deg,#059669,#10b981);color:#fff}
-.btn-danger{color:var(--red);border-color:rgba(239,68,68,.3);background:transparent;border:1.5px solid rgba(239,68,68,.3)}
 
 /* ===== LOGIN ===== */
 .login-wrap{width:92%;max-width:420px;text-align:center}
 .login-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r3);padding:44px 28px;backdrop-filter:blur(24px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.login-logo{font-size:44px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.login-logo{font-size:52px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
 .login-sub{color:var(--sub2);font-size:14px;margin-bottom:32px;font-weight:500;line-height:1.6}
 
 /* ===== BADGES ===== */
 .badge{font-size:10px;font-weight:900;padding:3px 8px;border-radius:7px;display:inline-flex;align-items:center;gap:3px}
 .badge-pro{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.2)}
 .badge-expert{background:var(--accentG);color:#fff}
-.badge-verified{background:rgba(91,79,206,.15);color:var(--accent2);border:1px solid rgba(91,79,206,.2)}
+.badge-verified{background:rgba(234,88,12,.15);color:var(--accent);border:1px solid rgba(234,88,12,.2)}
 .unread{background:var(--accent);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;min-width:22px;text-align:center}
 
-/* ===== CATS ===== */
+/* ===== CATS & SORTING ===== */
 .cats{display:flex;gap:8px;padding:14px 20px;overflow-x:auto;border-bottom:1px solid var(--border);scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
 .cat{padding:9px 18px;border-radius:30px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;border:1.5px solid var(--border2);color:var(--sub2);background:var(--card);transition:.2s;flex-shrink:0}
 .cat.active,.cat:active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.sort-bar {display:flex; justify-content:space-between; align-items:center; padding:10px 20px 0;}
+.sort-bar select {width:auto; padding:6px 12px; border-radius:10px; font-size:13px; margin:0; background:var(--card); border:1px solid var(--border2); color:var(--text); outline:none;}
 
 /* ===== FEED ===== */
 .feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
@@ -116,7 +118,7 @@ textarea.inp{height:110px;resize:none}
 .add-wrap{padding:22px 18px}
 .type-grid{display:flex;gap:12px;margin-bottom:20px}
 .type-card{flex:1;background:var(--card);border:2px solid var(--border);border-radius:20px;padding:20px 8px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px}
-.type-card.active{border-color:var(--accent);background:rgba(91,79,206,.06)}
+.type-card.active{border-color:var(--accent);background:rgba(234,88,12,.06)}
 .type-icon{font-size:32px}
 .type-t{font-size:14px;font-weight:900;color:var(--text)}
 .add-lbl{font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px;display:block;margin-top:18px}
@@ -138,7 +140,7 @@ textarea.inp{height:110px;resize:none}
 .msg-row.out{align-self:flex-end}
 .msg{padding:13px 17px;font-size:15px;line-height:1.65;border-radius:20px;font-weight:400;word-break:break-word}
 .msg-row.in .msg{background:var(--card);border:1px solid var(--border);border-top-right-radius:5px;color:var(--text)}
-.msg-row.out .msg{background:var(--accentG);color:#fff;border-top-left-radius:5px;box-shadow:0 4px 16px rgba(91,79,206,.25)}
+.msg-row.out .msg{background:var(--accentG);color:#fff;border-top-left-radius:5px;box-shadow:0 4px 16px rgba(234,88,12,.25)}
 .msg-time{font-size:11px;color:var(--sub);margin-top:5px;font-weight:700}
 .msg-row.out .msg-time{text-align:left}
 .chat-bar{position:fixed;bottom:0;width:100%;background:var(--nav);padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;z-index:100;align-items:center;backdrop-filter:blur(24px)}
@@ -157,7 +159,7 @@ textarea.inp{height:110px;resize:none}
 .prof-av-wrap{position:absolute;bottom:-48px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:26px;background:var(--bg2);border:4px solid var(--bg);display:flex;justify-content:center;align-items:center;font-size:36px;font-weight:900;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.35);z-index:10}
 .prof-info{display:flex;flex-direction:column;align-items:center;padding:0 22px;text-align:center}
 .prof-name{font-size:21px;font-weight:900;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:7px}
-.prof-title{font-size:13px;color:var(--accent2);font-weight:700;margin-bottom:14px;background:rgba(91,79,206,.12);padding:5px 14px;border-radius:10px;border:1px solid rgba(91,79,206,.2)}
+.prof-title{font-size:13px;color:var(--accent2);font-weight:700;margin-bottom:14px;background:rgba(234,88,12,.12);padding:5px 14px;border-radius:10px;border:1px solid rgba(234,88,12,.2)}
 .prof-bio{font-size:13px;color:var(--sub2);line-height:1.75;max-width:96%;margin-bottom:22px}
 .stats-row{display:flex;justify-content:center;width:100%;max-width:360px;margin-bottom:22px;border:1px solid var(--border);border-radius:20px;background:var(--card);overflow:hidden}
 .stat{display:flex;flex-direction:column;align-items:center;flex:1;padding:14px 8px;border-left:1px solid var(--border)}
@@ -170,7 +172,7 @@ textarea.inp{height:110px;resize:none}
 .ptab{flex:1;text-align:center;padding:14px 0;font-size:13px;font-weight:900;color:var(--sub2);cursor:pointer;border-bottom:2px solid transparent;transition:.2s}
 .ptab.active{color:var(--accent2);border-bottom-color:var(--accent2)}
 .svc-list{display:flex;flex-direction:column;gap:14px;padding:0 18px 24px}
-.svc-list[style*="display:none"], .svc-list[style*="display: none"] {display:none!important}
+.svc-list[style*="display:none"]{display:none!important}
 .svc-card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer}
 .svc-card:active{background:var(--card2)}
 .svc-icon{font-size:26px;background:var(--bg3);width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--border);flex-shrink:0}
@@ -188,7 +190,7 @@ textarea.inp{height:110px;resize:none}
 .bnav{position:fixed;bottom:18px;left:5%;width:90%;background:var(--nav);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:none;justify-content:space-around;align-items:center;padding:10px;border-radius:26px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.45);z-index:100}
 .nb{color:var(--sub2);font-size:22px;cursor:pointer;padding:10px 18px;transition:.25s;border-radius:14px}
 .nb.active{color:var(--text);background:var(--card2)}
-.nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(91,79,206,.35);border-radius:14px;padding:10px 22px}
+.nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
 
 /* ===== SETTINGS ===== */
 .set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s}
@@ -219,6 +221,7 @@ textarea.inp{height:110px;resize:none}
 [dir=ltr] .msg-row.out .msg{border-top-left-radius:20px;border-top-right-radius:5px}
 [dir=ltr] .msg-row.out .msg-time{text-align:right}
 </style>
+
 </head>
 <body>
 
@@ -227,7 +230,7 @@ textarea.inp{height:110px;resize:none}
 <div id="login-view" class="view active">
   <div class="login-wrap">
     <div class="login-card">
-      <div class="login-logo">مهاراتي</div>
+      <div class="login-logo">نُول</div>
       <p class="login-sub">سوق المهارات والخدمات الجامعي<br>تعلّم من زملائك، علّم من حولك</p>
       <select class="inp" id="univ-sel">
         <option value="" disabled selected>اختر جامعتك...</option>
@@ -249,7 +252,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="feed-view" class="view">
   <header class="hdr">
-    <div class="logo">مهاراتي</div>
+    <div class="logo">نُول</div>
     <div class="hdr-row">
       <div class="hdr-icon" onclick="go('search-view',1)" title="بحث">🔍</div>
       <div class="hdr-icon" onclick="go('lb-view')" title="المتصدرون">🏆</div>
@@ -257,15 +260,25 @@ textarea.inp{height:110px;resize:none}
     </div>
   </header>
   <div class="cats" id="feed-cats">
-    <div class="cat active" onclick="filterCat(this,'all')">الكل</div>
-    <div class="cat" onclick="filterCat(this,'coding')">💻 برمجة وبيانات</div>
-    <div class="cat" onclick="filterCat(this,'design')">🎨 تصميم وهندسة</div>
-    <div class="cat" onclick="filterCat(this,'business')">📂 إدارة وأعمال</div>
-    <div class="cat" onclick="filterCat(this,'lang')">🌍 لغات</div>
-    <div class="cat" onclick="filterCat(this,'media')">🎬 مونتاج وتصوير</div>
-    <div class="cat" onclick="filterCat(this,'math')">🔢 علوم ورياضيات</div>
-    <div class="cat" onclick="filterCat(this,'other')">✨ أخرى</div>
+    <div class="cat active" data-val="all" onclick="filterCat(this,'all')">الكل</div>
+    <div class="cat" data-val="coding" onclick="filterCat(this,'coding')">💻 برمجة وبيانات</div>
+    <div class="cat" data-val="design" onclick="filterCat(this,'design')">🎨 تصميم وهندسة</div>
+    <div class="cat" data-val="business" onclick="filterCat(this,'business')">📂 إدارة وأعمال</div>
+    <div class="cat" data-val="lang" onclick="filterCat(this,'lang')">🌍 لغات</div>
+    <div class="cat" data-val="media" onclick="filterCat(this,'media')">🎬 مونتاج وتصوير</div>
+    <div class="cat" data-val="math" onclick="filterCat(this,'math')">🔢 علوم ورياضيات</div>
+    <div class="cat" data-val="other" onclick="filterCat(this,'other')">✨ أخرى</div>
   </div>
+  
+  <div class="sort-bar">
+    <span style="font-size:13px; color:var(--sub2); font-weight:700;">فرز حسب:</span>
+    <select class="inp" style="width:auto; padding:6px 12px; font-size:12px; margin:0;" id="sort-sel" onchange="buildFeed()">
+      <option value="new">الأحدث</option>
+      <option value="trainees">الأكثر تدريباً</option>
+      <option value="rank">التصنيف</option>
+    </select>
+  </div>
+
   <div class="feed" id="feed-container"></div>
 </div>
 
@@ -365,11 +378,10 @@ textarea.inp{height:110px;resize:none}
       <option>إدارة وأعمال</option><option>لغات وترجمة</option>
       <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
     </select>
-    <span class="add-lbl">السعر (ريال)</span>
-    <input type="number" class="inp" placeholder="0 = مجاني">
+    
     <span class="add-lbl">التفاصيل والمخرجات</span>
     <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
-    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في السوق ✅</button>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول ✅</button>
   </div>
 </div>
 
@@ -487,10 +499,10 @@ textarea.inp{height:110px;resize:none}
 
 <script>
 /* ======================================================
-   DATABASE – 40 STUDENTS
+   DATABASE – 40 STUDENTS (Sample subset for UI)
    ====================================================== */
 const DB = {
-  me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#5b4fce,#8b5cf6)',i:'أ',rank:'ذهبي',ri:'🌟',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات المستقبلية. أشارك زملائي مهارات 3D Modeling وأتعلم منهم ما أحتاجه.',learn:2,teach:28,cat:'design',post:{emoji:'📐',type:'جلسة فردية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين. نبني نموذج كامل من الصفر.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'},{icon:'🇬🇧',n:'إنجليزي أعمال'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة وعملية.'}]},
+  me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات المستقبلية. أشارك زملائي مهارات 3D Modeling وأتعلم منهم ما أحتاجه.',learn:2,teach:28,cat:'design',post:{emoji:'📐',type:'جلسة فردية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين. نبني نموذج كامل من الصفر.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'},{icon:'🇬🇧',n:'إنجليزي أعمال'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة وعملية.'}]},
   lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية. أساعدك تصمم فراغات تدمج الطبيعة مع التكنولوجيا.',learn:5,teach:55,cat:'design',post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية (Solarpunk & Space Age) وكيف ندمج الطبيعة مع التكنولوجيا.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'🚀',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري. أعلمك كيف تشتغل Remote File Clerk بكفاءة.',learn:4,teach:40,cat:'business',post:{emoji:'📂',type:'ورشة ٤ أيام',desc:'ورشة المهارات الإدارية للعمل عن بُعد. ندرس Clerical work وأدوات التنظيم السحابية.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل، أنصح به.'}]},
   sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',learn:10,teach:120,cat:'coding',post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python. نبني Dashboards احترافية تفيدك في الـ CV.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
@@ -519,19 +531,9 @@ const DB = {
   khalil:{n:'خليل الرشيد',bg:'linear-gradient(135deg,#06b6d4,#0891b2)',i:'خ',rank:'ذهبي',ri:'🌟',title:'صوتيات | Podcast & Voiceover',bio:'أنتج بودكاست وأدرّب الطلاب على مهارات التحدث والـ voiceover.',learn:7,teach:33,cat:'media',post:{emoji:'🎙️',type:'ورشة صوت',desc:'تعلم إنتاج بودكاست احترافي: التسجيل، المونتاج الصوتي، والتوزيع على المنصات.'},taught:[{icon:'🎙️',n:'Podcast Production',st:20},{icon:'🎤',n:'Voiceover & Narration',st:13}],learned:[{icon:'🎬',n:'مونتاج فيديو'}],reviews:[]},
   sara2:{n:'سارة الغامدي',bg:'linear-gradient(135deg,#a78bfa,#7c3aed)',i:'سـ',rank:'فضي',ri:'🥈',title:'Python | Automation & Web Scraping',bio:'أدرّس Python وتطبيقاتها في Automation وجمع البيانات.',learn:11,teach:24,cat:'coding',post:{emoji:'🐍',type:'دورة Python',desc:'Python للأتمتة والـ web scraping. نكتب scripts تجمع بيانات حقيقية من الإنترنت تلقائياً.'},taught:[{icon:'🐍',n:'Python Automation',st:14},{icon:'🕷️',n:'Web Scraping',st:10}],learned:[{icon:'📊',n:'Data Visualization'}],reviews:[]},
   fahad:{n:'فهد العسيري',bg:'linear-gradient(135deg,#1e3a8a,#1e40af)',i:'فـ',rank:'فضي',ri:'🥈',title:'تسعير مالي | Financial Modeling',bio:'أدرّب الطلاب على النماذج المالية واتخاذ قرارات الاستثمار.',learn:9,teach:17,cat:'business',post:{emoji:'💹',type:'جلسة مالية',desc:'بناء نموذج مالي بسيط في Excel: الإيرادات والتكاليف والتدفقات النقدية. مهارة مطلوبة جداً.'},taught:[{icon:'💹',n:'Financial Modeling',st:17}],learned:[{icon:'📊',n:'Data Analysis'}],reviews:[]},
-  lujain:{n:'لجين الشهري',bg:'linear-gradient(135deg,#f97316,#ea580c)',i:'لـ',rank:'ذهبي',ri:'🌟',title:'تعليم | IELTS & Academic English',bio:'أساعد الطلاب يحصلون على درجات IELTS عالية ويكتبون بحوث أكاديمية بشكل صحيح.',learn:14,teach:70,cat:'lang',post:{emoji:'🇬🇧',type:'دورة IELTS',desc:'تحضير IELTS من الصفر للـ 7 bands. نغطي الـ Writing, Speaking, Listening, Reading مع نماذج حقيقية.'},taught:[{icon:'🇬🇧',n:'IELTS Preparation',st:50},{icon:'📝',n:'Academic Writing',st:20}],learned:[{icon:'🇫🇷',n:'French Basics'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'رفعت درجتي من 5.5 إلى 7 خلال شهرين.'}]},
-  talal:{n:'طلال الحربي',bg:'linear-gradient(135deg,#65a30d,#4d7c0f)',i:'ط',rank:'فضي',ri:'🥈',title:'بيئة | استدامة وطاقة متجددة',bio:'أعرّف الطلاب بمفاهيم الاستدامة وتقنيات الطاقة المتجددة.',learn:18,teach:12,cat:'other',post:{emoji:'🌱',type:'جلسة تثقيف',desc:'مقدمة في الاستدامة والطاقة المتجددة (شمسية وريحية). كيف يصبح مشروعك التخرجي صديقاً للبيئة.'},taught:[{icon:'🌱',n:'مفاهيم الاستدامة',st:12}],learned:[{icon:'📐',n:'AutoCAD'}],reviews:[]},
-  reema:{n:'ريما فيصل',bg:'linear-gradient(135deg,#be185d,#9d174d)',i:'ر',rank:'ذهبي',ri:'🌟',title:'علاج نطق | مهارات تواصل',bio:'أساعد الطلاب يطورون مهارات التحدث العام (Public Speaking) وتجاوز رهاب المواجهة.',learn:6,teach:38,cat:'other',post:{emoji:'🎤',type:'ورشة Public Speaking',desc:'تجاوز الخوف من التحدث أمام الجمهور. نتعلم تقنيات TED talks ونطبق أمام المجموعة.'},taught:[{icon:'🎤',n:'Public Speaking',st:25},{icon:'🗣️',n:'مهارات التواصل',st:13}],learned:[{icon:'📄',n:'كتابة CV'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'ريما غيّرت نظرتي للتحدث العام كلياً.'}]},
-  abdulaziz:{n:'عبدالعزيز العمر',bg:'linear-gradient(135deg,#0f172a,#1e293b)',i:'عـ',rank:'فضي',ri:'🥈',title:'ميكاترونيكس | Arduino & Robotics',bio:'أبني روبوتات وأدرّس Arduino والإلكترونيات.',learn:8,teach:20,cat:'coding',post:{emoji:'🤖',type:'ورشة روبوتات',desc:'بناء مشاريع Arduino من الصفر: نبني روبوت بسيط يتجنب العوائق في ورشة واحدة.'},taught:[{icon:'🤖',n:'Arduino Projects',st:12},{icon:'⚙️',n:'Robotics Basics',st:8}],learned:[{icon:'💻',n:'Python'}],reviews:[]},
-  rana:{n:'رنا الدوسري',bg:'linear-gradient(135deg,#7c2d12,#c2410c)',i:'ر',rank:'فضي',ri:'🥈',title:'فرنسي | مستوى A1-B1',bio:'أدرّس الفرنسية للمبتدئين. معي الأساس حتى مستوى B1.',learn:20,teach:16,cat:'lang',post:{emoji:'🇫🇷',type:'جلسة فرنسي',desc:'تعلم الفرنسية من الصفر. نبدأ بالنطق الصحيح، ثم المحادثة اليومية، ثم القواعد الأساسية.'},taught:[{icon:'🇫🇷',n:'French A1-B1',st:16}],learned:[{icon:'🗣️',n:'English Speaking'}],reviews:[]},
-  sultan:{n:'سلطان المالكي',bg:'linear-gradient(135deg,#3730a3,#4338ca)',i:'سـ',rank:'ذهبي',ri:'🌟',title:'تطوير ويب | React & Node.js',bio:'أطوّر مواقع Full Stack وأعلّم الطلاب من البداية للاحتراف.',learn:7,teach:60,cat:'coding',post:{emoji:'🌐',type:'دورة Full Stack',desc:'بناء موقع ويب كامل بـ React و Node.js و MongoDB. من الصفر لـ deployment على Vercel.'},taught:[{icon:'🌐',n:'React.js',st:40},{icon:'🗄️',n:'Node.js & MongoDB',st:20}],learned:[{icon:'📲',n:'Flutter'}],reviews:[{n:'عمر المطيري',s:'⭐⭐⭐⭐⭐',t:'سلطان من أفضل المدربين الي اخذت منهم.'}]},
-  hajar:{n:'هاجر الحكمي',bg:'linear-gradient(135deg,#9f1239,#e11d48)',i:'هـ',rank:'فضي',ri:'🥈',title:'أحياء | بيولوجيا ووراثة',bio:'أشرح مواد البيولوجيا والوراثة لطلاب الصحة والعلوم.',learn:22,teach:14,cat:'math',post:{emoji:'🧬',type:'جلسة علوم',desc:'شرح مادة الوراثة والجينوم بأسلوب مبسط. نستخدم الرسوم البيانية لفهم التراكيب الجيني.'},taught:[{icon:'🧬',n:'الوراثة والجينوم',st:14}],learned:[{icon:'🩺',n:'إسعافات أولية'}],reviews:[]},
-  mohammed:{n:'محمد الزهراني',bg:'linear-gradient(135deg,#164e63,#0e7490)',i:'م',rank:'ذهبي',ri:'🌟',title:'إحصاء | SPSS & R',bio:'أساعد طلاب الأبحاث في التحليل الإحصائي بـ SPSS وR.',learn:5,teach:48,cat:'math',post:{emoji:'📉',type:'جلسة إحصاء',desc:'تحليل بيانات بحثك الجامعي بـ SPSS. من إدخال البيانات للتحليل الوصفي والاستدلالي.'},taught:[{icon:'📉',n:'SPSS Analysis',st:30},{icon:'📈',n:'R for Statistics',st:18}],learned:[{icon:'📊',n:'Excel متقدم'}],reviews:[{n:'سارة أحمد',s:'⭐⭐⭐⭐⭐',t:'إنجز معي التحليل الإحصائي لأطروحتي في ساعات!'}]},
-  afnan:{n:'أفنان العمري',bg:'linear-gradient(135deg,#be185d,#f43f5e)',i:'أ',rank:'فضي',ri:'🥈',title:'فنون | رسم ورسوم متحركة',bio:'أدرّس أساسيات الرسم الرقمي والرسوم المتحركة.',learn:11,teach:22,cat:'design',post:{emoji:'🎭',type:'ورشة فنون',desc:'رسم ديجيتال من الصفر بـ Procreate. نرسم شخصية كرتونية كاملة في جلسة واحدة.'},taught:[{icon:'🎭',n:'Procreate Digital Art',st:15},{icon:'🎬',n:'رسوم متحركة 2D',st:7}],learned:[{icon:'✒️',n:'Illustrator'}],reviews:[]},
-  yazeed:{n:'يزيد المقبل',bg:'linear-gradient(135deg,#1d4ed8,#3b82f6)',i:'يـ',rank:'ذهبي',ri:'🌟',title:'DevOps | Docker & Cloud',bio:'أدرّب الطلاب على DevOps: Docker وCI/CD والـ Cloud.',learn:4,teach:35,cat:'coding',post:{emoji:'☁️',type:'ورشة Cloud',desc:'Docker وCloud Computing للمبتدئين. نرفع تطبيق كامل على AWS أو Azure في الورشة.'},taught:[{icon:'☁️',n:'Cloud & Docker',st:20},{icon:'🔄',n:'CI/CD Pipelines',st:15}],learned:[{icon:'🌐',n:'React.js'}],reviews:[{n:'سلطان المالكي',s:'⭐⭐⭐⭐⭐',t:'يزيد جعل Docker سهل فعلاً!'}]},
+  lujain:{n:'لجين الشهري',bg:'linear-gradient(135deg,#f97316,#ea580c)',i:'لـ',rank:'ذهبي',ri:'🌟',title:'تعليم | IELTS & Academic English',bio:'أساعد الطلاب يحصلون على درجات IELTS عالية ويكتبون بحوث أكاديمية.',learn:14,teach:70,cat:'lang',post:{emoji:'🇬🇧',type:'دورة IELTS',desc:'تحضير IELTS من الصفر للـ 7 bands. نغطي الـ Writing, Speaking, Listening, Reading.'},taught:[{icon:'🇬🇧',n:'IELTS Preparation',st:50},{icon:'📝',n:'Academic Writing',st:20}],learned:[{icon:'🇫🇷',n:'French Basics'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'رفعت درجتي من 5.5 إلى 7 خلال شهرين.'}]},
 };
 
-// =============================================
 const USERS = Object.keys(DB);
 let navHist = ['login-view'];
 let curChat = '';
@@ -539,13 +541,37 @@ let curChat = '';
 // ===== FEED POSTS =====
 function buildFeed(){
   const fc = document.getElementById('feed-container');
+  const sortType = document.getElementById('sort-sel') ? document.getElementById('sort-sel').value : 'new';
+  const activeCat = document.querySelector('.cat.active').dataset.val || 'all';
   fc.innerHTML = '';
-  USERS.filter(id=>id!=='me').forEach(uid=>{
+  
+  let usersArr = USERS.filter(id=>id!=='me' && DB[id].post);
+
+  // Filter
+  if(activeCat !== 'all') {
+    usersArr = usersArr.filter(id => (DB[id].cat || 'other') === activeCat);
+  }
+
+  // Sort
+  if(sortType === 'trainees') {
+    usersArr.sort((a,b) => DB[b].teach - DB[a].teach);
+  } else if (sortType === 'rank') {
+    const rankVal = { 'ماسي': 3, 'ذهبي': 2, 'فضي': 1 };
+    usersArr.sort((a,b) => rankVal[DB[b].rank.split(' ')[1] || DB[b].rank] - rankVal[DB[a].rank.split(' ')[1] || DB[a].rank]);
+  } else {
+    // new / default (randomize slightly for freshness or keep static)
+  }
+
+  if(usersArr.length === 0){
+    fc.innerHTML = `<div style="text-align:center;color:var(--sub2);padding:40px;">لا توجد نتائج في هذا التصنيف حالياً.</div>`;
+    return;
+  }
+
+  usersArr.forEach(uid=>{
     const u = DB[uid];
-    if(!u.post) return;
     const p = u.post;
     const fc2 = u.cat || 'other';
-    const badgeHtml = u.rank==='ماسي'?`<span class="badge badge-expert">💎 ماسي</span>`:u.rank==='ذهبي'?`<span class="badge badge-pro">🌟 ذهبي</span>`:`<span class="badge badge-verified">🥈 فضي</span>`;
+    const badgeHtml = u.rank.includes('ماسي')?`<span class="badge badge-expert">💎 ماسي</span>`:u.rank.includes('ذهبي')?`<span class="badge badge-pro">🌟 ذهبي</span>`:`<span class="badge badge-verified">🥈 فضي</span>`;
     const el = document.createElement('div');
     el.className = 'post'; el.setAttribute('data-cat', fc2);
     el.innerHTML = `
@@ -678,9 +704,8 @@ function login(){
 function filterCat(el,cat){
   document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
-  document.querySelectorAll('#feed-container .post').forEach(p=>{
-    p.style.display=(cat==='all'||p.getAttribute('data-cat')===cat)?'block':'none';
-  });
+  el.dataset.val = cat;
+  buildFeed();
 }
 
 // ===== SEARCH =====
@@ -853,7 +878,7 @@ function selType(el){
 }
 function submitSkill(){
   goBack();
-  setTimeout(()=>showToast('✅ تم نشر خدمتك في السوق بنجاح!'),300);
+  setTimeout(()=>showToast('✅ تم نشر خدمتك في نُول بنجاح!'),300);
 }
 
 // ===== SETTINGS =====
