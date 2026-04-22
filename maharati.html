@@ -6,67 +6,111 @@
 <title>نُول – سوق المهارات الجامعي والأعمال</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
+/* ================= الثيم الفاتح الزجاجي (الافتراضي) ================= */
 :root {
   --bg-grad: linear-gradient(135deg, #f6f8fd 0%, #e9eef5 100%);
-  --bg: #f8fafc; --bg2: #f1f5f9; --card: rgba(255, 255, 255, 0.65); --card2: rgba(255, 255, 255, 0.85);
-  --border: rgba(255, 255, 255, 0.5); --border-shadow: rgba(0, 0, 0, 0.05); --border2: rgba(0, 0, 0, 0.08);
-  --text: #0f172a; --sub: #475569; --sub2: #64748b;
-  --nav: rgba(255, 255, 255, 0.75); --input: rgba(255, 255, 255, 0.5);
+  --bg: #f8fafc; 
+  --bg2: #f1f5f9; 
+  --card: rgba(255, 255, 255, 0.65); 
+  --card2: rgba(255, 255, 255, 0.85);
+  --border: rgba(255, 255, 255, 0.5); 
+  --border-shadow: rgba(0, 0, 0, 0.05);
+  --border2: rgba(0, 0, 0, 0.08);
+  --text: #0f172a; 
+  --sub: #475569; 
+  --sub2: #64748b;
+  --nav: rgba(255, 255, 255, 0.75); 
+  --input: rgba(255, 255, 255, 0.5);
   --accent: #ea580c; --accent2: #f59e0b; --accentG: linear-gradient(135deg, #ea580c, #f59e0b);
   --gold: #f59e0b; --green: #10b981; --red: #ef4444; --blue: #3b82f6;
-  --r: 16px; --r2: 22px; --r3: 28px; --blur: blur(24px); --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --r: 16px; --r2: 22px; --r3: 28px;
+  --blur: blur(24px);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
+
+/* ================= الثيم الداكن ================= */
 :root.dark-mode {
   --bg-grad: linear-gradient(135deg, #09090b 0%, #15151a 100%);
-  --bg: #09090b; --bg2: #111116; --card: rgba(30, 30, 35, 0.6); --card2: rgba(40, 40, 45, 0.8);
-  --border: rgba(255, 255, 255, 0.08); --border-shadow: rgba(0, 0, 0, 0.4); --border2: rgba(255, 255, 255, 0.12);
-  --text: #f1f5f9; --sub: #94a3b8; --sub2: #cbd5e1;
-  --nav: rgba(15, 15, 18, 0.75); --input: rgba(0, 0, 0, 0.3); --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --bg: #09090b; 
+  --bg2: #111116; 
+  --card: rgba(30, 30, 35, 0.6); 
+  --card2: rgba(40, 40, 45, 0.8);
+  --border: rgba(255, 255, 255, 0.08); 
+  --border-shadow: rgba(0, 0, 0, 0.4);
+  --border2: rgba(255, 255, 255, 0.12);
+  --text: #f1f5f9; 
+  --sub: #94a3b8; 
+  --sub2: #cbd5e1;
+  --nav: rgba(15, 15, 18, 0.75); 
+  --input: rgba(0, 0, 0, 0.3);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{background:var(--bg-grad);background-attachment:fixed;color:var(--text);min-height:100vh;overflow-x:hidden;transition:background 0.4s,color 0.4s}
+body{background: var(--bg-grad); background-attachment: fixed; color: var(--text); min-height: 100vh; overflow-x: hidden; transition: background 0.4s, color 0.4s}
+
+/* ===== VIEWS ===== */
 .view{display:none;min-height:100vh;padding-bottom:115px;animation:fadeUp .3s ease-out}
 .view.active{display:block}
 #login-view.active{display:flex;justify-content:center;align-items:center;padding-bottom:0}
 @keyframes fadeUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== HEADER ===== */
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--nav);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);position:sticky;top:0;z-index:60;border-bottom:1px solid var(--border);box-shadow:0 1px 10px var(--border-shadow)}
-.logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--input);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border)}
+.logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--input);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border); position:relative;}
 .hdr-icon:active{transform:scale(.93)}
 .hdr-title{font-size:17px;font-weight:900;color:var(--text)}
 .hdr-row{display:flex;gap:8px;align-items:center}
+
+/* ===== NOTIFICATION BADGE ===== */
+.notif-badge { position:absolute; top:-4px; right:-4px; background:var(--red); color:#fff; font-size:10px; font-weight:900; padding:2px 6px; border-radius:10px; border:2px solid var(--bg); pointer-events:none; }
+
+/* ===== INPUTS & BUTTONS ===== */
 .inp{width:100%;padding:14px 18px;margin:6px 0;border-radius:var(--r);background:var(--input);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;}
 .inp:focus{border-color:var(--accent);background:var(--card2);box-shadow:0 0 0 3px rgba(234,88,12,.1)}
 select.inp option{background:var(--bg2);color:var(--text)}
 textarea.inp{height:110px;resize:none}
+
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:14px 22px;border-radius:var(--r);border:none;font-size:15px;font-weight:900;cursor:pointer;width:100%;transition:.2s;}
 .btn:active{transform:translateY(2px);opacity:.85}
 .btn-p{background:var(--accentG);color:#fff;box-shadow:0 6px 20px rgba(234,88,12,.3)}
-.btn-o{background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border2);color:var(--text)}
+.btn-o{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border2);color:var(--text)}
 .btn-sm{padding:9px 16px;font-size:13px;border-radius:10px;width:auto}
+
+/* ===== LOGIN TABS ===== */
 .login-tabs { display:flex; background:var(--input); border:1px solid var(--border2); border-radius:var(--r); margin-bottom:20px; overflow:hidden; }
 .login-tab { flex:1; padding:12px; font-weight:900; font-size:14px; cursor:pointer; color:var(--sub2); transition:0.3s; text-align:center;}
 .login-tab.active { background:var(--accentG); color:#fff; }
+
+/* ===== CENTERED PILL TABS ===== */
 .top-tabs-container { display:flex; justify-content:center; padding:16px 20px 0; }
 .top-tabs { display:flex; background:var(--card); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:30px; padding:4px; box-shadow:var(--shadow); }
 .top-tab { padding:8px 24px; font-weight:900; font-size:13px; cursor:pointer; color:var(--sub2); transition:0.3s; border-radius:26px; }
 .top-tab.active { background:var(--accentG); color:#fff; box-shadow:0 4px 10px rgba(234,88,12,0.2); }
-.login-wrap{width:92%;max-width:420px;text-align:center}
+
+.login-wrap{width:92%;max-width:420px;text-align:center;margin:auto;}
 .login-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r3);padding:40px 24px;backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);box-shadow:var(--shadow)}
 .login-logo{font-size:52px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
 .login-sub{color:var(--sub2);font-size:14px;margin-bottom:24px;font-weight:500;line-height:1.6}
+
+/* ===== BADGES ===== */
 .badge{font-size:10px;font-weight:900;padding:3px 8px;border-radius:7px;display:inline-flex;align-items:center;gap:3px}
 .badge-pro{background:rgba(245,158,11,.15);color:var(--gold);border:1px solid rgba(245,158,11,.2)}
 .badge-expert{background:var(--accentG);color:#fff}
 .badge-verified{background:rgba(234,88,12,.15);color:var(--accent);border:1px solid rgba(234,88,12,.2)}
 .unread{background:var(--accent);color:#fff;font-size:11px;font-weight:900;padding:2px 8px;border-radius:20px;min-width:22px;text-align:center}
+
+/* ===== CATS & SORTING ===== */
 .cats{display:flex;gap:8px;padding:14px 20px;overflow-x:auto;border-bottom:1px solid var(--border);scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
 .cat{padding:9px 18px;border-radius:30px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;border:1px solid var(--border2);color:var(--sub);background:var(--card);backdrop-filter:var(--blur);transition:.2s;flex-shrink:0}
 .cat.active,.cat:active{background:var(--text);color:var(--bg);border-color:var(--text)}
 .sort-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px 0;}
 .sort-bar select{width:auto;padding:6px 12px;border-radius:10px;font-size:13px;margin:0;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border2);color:var(--text);outline:none;}
+
+/* ===== FEED ===== */
 .feed{padding:16px 18px;display:flex;flex-direction:column;gap:20px}
 .post{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r3);padding:18px;transition:.2s;box-shadow:var(--shadow)}
 .post:active{transform:scale(.99)}
@@ -84,25 +128,52 @@ textarea.inp{height:110px;resize:none}
 .tag{background:var(--input);border:1px solid var(--border2);color:var(--sub);padding:5px 11px;border-radius:9px;font-size:11px;font-weight:700}
 .post-acts{display:flex;gap:10px;margin-top:14px}
 .pa{flex:1;padding:13px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;text-align:center;transition:.2s;border:none;}
+
+/* Project Card Specifics */
 .proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px; border-right:4px solid var(--accent); }
 .proj-card:active { transform:scale(0.98); }
 .proj-title { font-size:16px; font-weight:900; color:var(--text); margin-bottom:4px; }
 .proj-comp { font-size:12px; color:var(--sub2); font-weight:700; display:flex; align-items:center; gap:6px; }
 .proj-details { display:flex; gap:12px; margin-top:8px; }
 .proj-badge { background:var(--input); border:1px solid var(--border2); color:var(--text); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; display:flex; align-items:center; gap:4px; }
+
+/* ===== SEARCH ===== */
 .sbox{margin:14px 18px;position:relative}
 .sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--r2);background:var(--input);backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;box-shadow:inset 0 2px 5px rgba(0,0,0,0.02)}
 .sbox input:focus{border-color:var(--accent);background:var(--card)}
 .sico{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--sub2);pointer-events:none}
 .sec-t{padding:10px 20px;font-size:14px;font-weight:900;color:var(--sub2);text-transform:uppercase;}
 .skill-list{padding:0 18px 20px;display:flex;flex-direction:column;gap:10px}
-.skill-item{display:flex;align-items:center;justify-content:space-between;padding:15px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.skill-item{display:flex;align-items:center;justify-content:space-between;padding:15px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .skill-item:active{transform:scale(.98)}
 .skill-l{display:flex;align-items:center;gap:14px}
+
+/* ===== OFFERS / B2B CARDS ===== */
 .offer-item { display:flex; flex-direction:column; padding:16px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px;}
+.offer-item:active { transform:scale(0.98); }
 .offer-top { display:flex; justify-content:space-between; align-items:flex-start; }
 .offer-info { display:flex; align-items:center; gap:12px; }
 .price-badge { background:rgba(16, 185, 129, 0.1); color:var(--green); border:1px solid rgba(16, 185, 129, 0.2); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; text-align:center; white-space:nowrap;}
+
+/* ===== NOTIFICATIONS & WALLET ===== */
+.notif-item { padding:16px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); display:flex; align-items:flex-start; gap:12px; box-shadow:var(--shadow); margin-bottom:10px;}
+.notif-icon { width:40px; height:40px; border-radius:50%; background:var(--input); border:1px solid var(--border2); display:flex; justify-content:center; align-items:center; font-size:18px; flex-shrink:0; }
+.notif-text { font-size:14px; font-weight:700; color:var(--text); line-height:1.5; }
+.notif-time { font-size:11px; color:var(--sub); margin-top:6px; font-weight:500; }
+
+.wallet-card { background:var(--accentG); border-radius:var(--r3); padding:30px 20px; color:#fff; text-align:center; box-shadow:0 12px 30px rgba(234,88,12,0.3); margin:0 20px 24px; position:relative; overflow:hidden;}
+.wallet-card::after { content:''; position:absolute; top:-50%; right:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); pointer-events:none; }
+.w-lbl { font-size:14px; margin-bottom:8px; opacity:0.9; font-weight:500; }
+.w-bal { font-size:48px; font-weight:900; letter-spacing:1px; line-height:1; }
+.w-cur { font-size:16px; opacity:0.9; font-weight:700; margin-top:4px; }
+.trans-item { display:flex; justify-content:space-between; align-items:center; padding:16px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); margin-bottom:10px; box-shadow:var(--shadow); }
+.trans-title { font-size:14px; font-weight:900; color:var(--text); margin-bottom:4px; }
+.trans-date { font-size:11px; color:var(--sub); font-weight:500; }
+.trans-amt { font-size:15px; font-weight:900; }
+.trans-amt.pos { color:var(--green); }
+.trans-amt.neg { color:var(--text); opacity:0.8; }
+
+/* ===== ADD & POST PROJECT ===== */
 .add-wrap{padding:22px 18px}
 .type-grid{display:flex;gap:12px;margin-bottom:20px}
 .type-card{flex:1;background:var(--card);backdrop-filter:var(--blur);border:2px solid var(--border);border-radius:20px;padding:20px 8px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:var(--shadow)}
@@ -110,14 +181,17 @@ textarea.inp{height:110px;resize:none}
 .type-icon{font-size:32px}
 .type-t{font-size:14px;font-weight:900;color:var(--text)}
 .add-lbl{font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px;display:block;margin-top:18px}
+
+/* ===== DM LIST ===== */
 .dm-list{display:flex;flex-direction:column;padding:0 8px}
 .dm-item{display:flex;align-items:center;padding:14px 12px;cursor:pointer;border-radius:18px;transition:.2s;gap:14px;margin-bottom:5px}
-.dm-item:active{background:var(--card2)}
 .dm-info{flex:1;min-width:0}
 .dm-name{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .dm-msg{font-size:13px;color:var(--sub2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
 .dm-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
 .dm-time{font-size:11px;color:var(--sub);font-weight:700}
+
+/* ===== CHAT ===== */
 .chat-area{padding:20px 18px;display:flex;flex-direction:column;gap:14px;min-height:calc(100vh - 145px);overflow-y:auto;}
 .msg-row{display:flex;flex-direction:column;max-width:82%;animation:fadeUp 0.2s ease;}
 .msg-row.in{align-self:flex-start}
@@ -133,6 +207,8 @@ textarea.inp{height:110px;resize:none}
 .td{width:8px;height:8px;background:var(--sub2);border-radius:50%;animation:typ 1.4s infinite ease-in-out both}
 .td:nth-child(1){animation-delay:-.32s}.td:nth-child(2){animation-delay:-.16s}
 @keyframes typ{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+
+/* ===== PROFILE ===== */
 .prof-hdr{position:relative;margin-bottom:62px}
 .prof-cover{height:140px;width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));border-bottom-left-radius:32px;border-bottom-right-radius:32px;opacity:0.9}
 .prof-av-wrap{position:absolute;bottom:-48px;left:50%;transform:translateX(-50%);width:96px;height:96px;border-radius:26px;background:var(--bg2);border:4px solid var(--bg);display:flex;justify-content:center;align-items:center;font-size:36px;font-weight:900;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.15);z-index:10}
@@ -148,30 +224,43 @@ textarea.inp{height:110px;resize:none}
 .ptabs{display:flex;border-bottom:1px solid var(--border);padding:0 18px;margin-bottom:14px}
 .ptab{flex:1;text-align:center;padding:14px 0;font-size:13px;font-weight:900;color:var(--sub2);cursor:pointer;border-bottom:2px solid transparent;transition:.2s}
 .ptab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
 .svc-list{display:flex;flex-direction:column;gap:14px;padding:0 18px 24px}
+.svc-list[style*="display:none"]{display:none!important}
 .svc-card{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer;box-shadow:var(--shadow)}
 .svc-icon{font-size:26px;background:var(--input);width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--border2);flex-shrink:0}
 .svc-det{flex:1;text-align:right}
 .svc-t{font-size:14px;font-weight:900;color:var(--text);margin-bottom:5px}
 .stud-b{color:var(--green);background:rgba(16,185,129,.1);padding:4px 9px;border-radius:7px;font-size:11px;font-weight:900;display:inline-block;border:1px solid rgba(16,185,129,.2)}
+
 .rev-card{background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);padding:15px;border-radius:16px;margin-bottom:10px;text-align:right;box-shadow:var(--shadow)}
 .rev-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
 .rev-name{font-size:14px;font-weight:900;color:var(--text)}
 .rev-txt{font-size:13px;color:var(--sub);line-height:1.6;font-weight:500}
+
+/* ===== BOTTOM NAV ===== */
 .bnav{position:fixed;bottom:18px;left:5%;width:90%;background:var(--nav);backdrop-filter:blur(24px);display:none;justify-content:space-around;align-items:center;padding:10px;border-radius:26px;border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,.15);z-index:100}
 .nb{color:var(--sub2);font-size:22px;cursor:pointer;padding:10px 18px;transition:.25s;border-radius:14px}
 .nb.active{color:var(--text);background:var(--card2)}
 .nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
+
+/* ===== SETTINGS & LEADERBOARD ===== */
 .set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.set-row:active{background:var(--card2)}
 .set-label{font-size:15px;font-weight:700;color:var(--text)}
 .set-val{font-size:14px;font-weight:900;color:var(--accent)}
+
 .lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .lb-rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
 .lb-info{flex:1}
 .lb-name{font-size:15px;font-weight:900;color:var(--text);margin-bottom:3px}
 .lb-sub{font-size:12px;color:var(--sub2);font-weight:500}
+
+/* ===== TOAST ===== */
 .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--green);color:#fff;padding:12px 24px;border-radius:14px;font-size:14px;font-weight:900;z-index:999;opacity:0;transition:.3s;white-space:nowrap;box-shadow:0 8px 24px rgba(16,185,129,.3)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== LTR FIXES ===== */
 [dir=ltr] .sico{right:auto;left:18px}
 [dir=ltr] .sbox input{padding:14px 18px 14px 46px}
 [dir=ltr] .msg-row.out .msg-time{text-align:right}
@@ -189,10 +278,12 @@ textarea.inp{height:110px;resize:none}
     <div class="login-card">
       <div class="login-logo">نُول</div>
       <p class="login-sub">سوق المهارات والخدمات الجامعي للأفراد والأعمال</p>
+
       <div class="login-tabs">
         <div class="login-tab active" id="tab-student" onclick="switchLogin('student')">طالب جامعي</div>
         <div class="login-tab" id="tab-company" onclick="switchLogin('company')">جهة أعمال</div>
       </div>
+
       <div id="login-student-form">
         <select class="inp" id="univ-sel">
           <option value="" disabled selected>اختر جامعتك...</option>
@@ -203,10 +294,12 @@ textarea.inp{height:110px;resize:none}
         </select>
         <input type="number" class="inp" id="sid" placeholder="الرقم الجامعي">
       </div>
+
       <div id="login-company-form" style="display:none;">
         <input type="text" class="inp" id="comp-name" placeholder="اسم الشركة / المؤسسة">
         <input type="number" class="inp" id="comp-cr" placeholder="رقم السجل التجاري">
       </div>
+
       <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة</button>
     </div>
   </div>
@@ -216,9 +309,11 @@ textarea.inp{height:110px;resize:none}
   <header class="hdr">
     <div class="logo">نُول</div>
     <div class="hdr-row">
-      <div class="hdr-icon" onclick="go('search-view',1)" title="بحث">🔍</div>
-      <div class="hdr-icon" onclick="go('lb-view')" title="المتصدرون">🏆</div>
-      <div class="hdr-icon" onclick="go('settings-view')" title="إعدادات">⚙️</div>
+      <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
+        🔔<div class="notif-badge" id="n-badge1">3</div>
+      </div>
+      <div class="hdr-icon" onclick="go('search-view',1)">🔍</div>
+      <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
     </div>
   </header>
 
@@ -260,7 +355,7 @@ textarea.inp{height:110px;resize:none}
   </header>
   <div class="sbox" style="margin-top:0">
     <span class="sico">🔍</span>
-    <input type="text" oninput="searchSkills(this.value)" placeholder="ابحث عن مهارة أو طالب (مثال: برمجة)...">
+    <input type="text" oninput="searchSkills(this.value)" placeholder="ابحث عن مهارة أو طالب...">
   </div>
   
   <div id="skills-list-container">
@@ -323,20 +418,27 @@ textarea.inp{height:110px;resize:none}
   <header class="hdr">
     <div class="logo">نُول للأعمال</div>
     <div class="hdr-row">
+      <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
+        🔔<div class="notif-badge" id="n-badge2">2</div>
+      </div>
       <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
     </div>
   </header>
+  
   <div style="padding:20px; text-align:center;">
     <h2 style="font-size:20px; font-weight:900; margin-bottom:8px;">مرحباً بك في نُول للأعمال</h2>
     <p style="font-size:13px; color:var(--sub2);">استقطب أفضل المواهب الجامعية بأسعار تنافسية لمشاريعك.</p>
   </div>
+
   <div style="padding:0 20px; display:flex; gap:12px; margin-bottom:24px;">
     <button class="btn btn-p" style="flex:1;" onclick="go('comp-search-view', 1)">🔍 ابحث عن موهبة</button>
     <button class="btn btn-o" style="flex:1;" onclick="go('comp-post-view', 2)">📝 اطرح مشروعاً</button>
   </div>
+
   <div class="sort-bar">
     <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك (AI Matches)</span>
   </div>
+
   <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;"></div>
 </div>
 
@@ -350,6 +452,7 @@ textarea.inp{height:110px;resize:none}
     <span class="sico">🔍</span>
     <input type="text" oninput="searchCompSkills(this.value)" placeholder="ابحث عن مهارة (مثال: تصميم واجهات)...">
   </div>
+  
   <div class="cats" id="comp-search-cats">
     <div class="cat active" data-val="all" onclick="filterCompCat(this, 'all')">الكل</div>
     <div class="cat" data-val="coding" onclick="filterCompCat(this, 'coding')">برمجة وبيانات</div>
@@ -357,6 +460,7 @@ textarea.inp{height:110px;resize:none}
     <div class="cat" data-val="business" onclick="filterCompCat(this, 'business')">إدارة وأعمال</div>
     <div class="cat" data-val="media" onclick="filterCompCat(this, 'media')">مونتاج وتصوير</div>
   </div>
+
   <div class="sort-bar" style="padding-bottom: 10px;">
     <span style="font-size:13px; color:var(--sub2); font-weight:700;">فرز حسب:</span>
     <select class="inp" style="width:auto; padding:6px 12px; font-size:13px; margin:0;" id="comp-sort-sel" onchange="buildCompMatches(document.querySelector('#comp-search-cats .cat.active').dataset.val, 'comp-search-list')">
@@ -364,12 +468,13 @@ textarea.inp{height:110px;resize:none}
       <option value="rank">الأعلى تصنيفاً</option>
     </select>
   </div>
+
   <div class="skill-list" id="comp-search-list" style="margin-top:6px; padding:0 20px;"></div>
 </div>
 
 <div id="comp-post-view" class="view">
   <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء 🔙</div>
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
     <div class="hdr-title">طرح مشروع جديد</div>
     <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitProject()">نشر</div>
   </header>
@@ -400,15 +505,43 @@ textarea.inp{height:110px;resize:none}
         </select>
       </div>
     </div>
+
     <span class="add-lbl">وصف المشروع بالتفصيل</span>
     <textarea class="inp" id="proj-desc" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
+    
     <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع والبحث عن مواهب</button>
+  </div>
+</div>
+
+<div id="notif-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title">الإشعارات</div>
+    <div style="width:28px"></div>
+  </header>
+  <div class="skill-list" id="notif-list" style="margin-top:16px; padding:0 20px;"></div>
+</div>
+
+<div id="wallet-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title">المحفظة</div>
+    <div style="width:28px"></div>
+  </header>
+  <div style="padding:20px;">
+    <div class="wallet-card">
+      <div class="w-lbl">الرصيد المتاح</div>
+      <div class="w-bal" id="wallet-balance">٠</div>
+      <div class="w-cur" id="wallet-currency">نقطة نُول</div>
+    </div>
+    <div class="sec-t" style="padding:0 0 10px 0;">سجل العمليات</div>
+    <div id="wallet-history"></div>
   </div>
 </div>
 
 <div id="add-view" class="view">
   <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء 🔙</div>
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
     <div class="hdr-title">تقديم خدمة جديدة</div>
     <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
   </header>
@@ -424,7 +557,7 @@ textarea.inp{height:110px;resize:none}
     <select class="inp">
       <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
       <option>إدارة وأعمال</option><option>لغات وترجمة</option>
-      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option>
+      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
     </select>
     <span class="add-lbl">التفاصيل والمخرجات</span>
     <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
@@ -514,14 +647,17 @@ textarea.inp{height:110px;resize:none}
     <div style="width:28px"></div>
   </header>
   <div style="padding:24px 18px;display:flex;flex-direction:column;gap:10px">
+    
+    <div class="set-row" onclick="go('wallet-view')">
+      <span class="set-label">💳 المحفظة المالية</span>
+      <span style="color:var(--sub2); font-weight:bold;">←</span>
+    </div>
+
     <div class="set-row" onclick="toggleTheme()">
       <span class="set-label">🎨 المظهر</span>
       <span class="set-val" id="theme-lbl">فاتح ☀️</span>
     </div>
-    <div class="set-row" onclick="toggleLang()">
-      <span class="set-label">🌐 اللغة</span>
-      <span class="set-val" id="lang-lbl">English</span>
-    </div>
+    
     <div class="set-row" id="set-profile" onclick="openProfile('me',4)">
       <span class="set-label">👤 ملفي الشخصي</span>
       <span style="color:var(--sub2); font-weight:bold;">←</span>
@@ -550,7 +686,7 @@ const DB = {
   me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',cat:'design',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات. أشارك زملائي مهارات 3D Modeling.',learn:2,teach:28,post:{emoji:'📐',type:'جلسة إرشادية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة.'}]},
   lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'✨',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',cat:'business',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري.',learn:4,teach:40,post:{emoji:'📂',type:'ورشة تدريبية',desc:'ورشة المهارات الإدارية للعمل عن بُعد.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل.'}]},
-  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
+  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل ممتازة.'}]},
   yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',cat:'design',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,post:{emoji:'⚙️',type:'ورشة تدريبية',desc:'أساسيات AutoCAD للطلاب الجدد.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
   raghad:{n:'رغد صالح',bg:'linear-gradient(135deg,#ec4899,#f43f5e)',i:'ر',rank:'ذهبي',ri:'🌟',cat:'other',title:'موارد بشرية | تطوير وظيفي',bio:'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات.',learn:8,teach:60,post:{emoji:'📄',type:'استشارة مهنية',desc:'مراجعة شاملة لـ CV وتجهيزك للمقابلات.'},taught:[{icon:'📄',n:'كتابة CV احترافي',st:40},{icon:'🎯',n:'تجاوز المقابلات',st:20}],learned:[{icon:'💼',n:'إدارة مشاريع'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'انقبلت في تدريب تعاوني بفضلها.'}]},
   shahad:{n:'شهد محمد',bg:'linear-gradient(135deg,#10b981,#3b82f6)',i:'ش',rank:'ذهبي',ri:'🌟',cat:'design',title:'مصممة واجهات | UI/UX & Figma',bio:'متخصصة في بناء تجربة مستخدم سلسة واحترافية.',learn:5,teach:45,post:{emoji:'🎨',type:'جلسة إرشادية',desc:'تصميم واجهات تطبيقات موبايل باستخدام Figma.'},taught:[{icon:'🎨',n:'UI/UX Figma',st:30},{icon:'📱',n:'تصميم تطبيقات موبايل',st:15}],learned:[{icon:'📈',n:'تسويق رقمي'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'استشارة ممتازة.'}]},
@@ -598,12 +734,12 @@ function login(){
     updateBottomNav();
     updateSettingsUI();
     switchFeed('talents');
-    buildAllUsers(); buildDMs(); buildLB();
+    buildAllUsers(); buildDMs(); buildLB(); buildWallet();
     go('feed-view',0);
   } else {
     updateBottomNav();
     updateSettingsUI();
-    buildCompMatches('all');
+    buildCompMatches('all'); buildWallet();
     go('comp-dash-view',0);
   }
 }
@@ -834,7 +970,7 @@ function openOffers(cat){
             </div>
             <div style="display:flex; gap:8px; margin-top:4px;">
               <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل</button>
-              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال طلب التعلم')">طلب تعلّم المهارة</button>
+              <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم طلب التعلم من الطالب')">طلب تعلّم المهارة</button>
             </div>
           </div>`;
       });
@@ -946,11 +1082,87 @@ function submitProject() {
 }
 
 
-// ========================= SHARED LOGIC =========================
+// ========================= SHARED LOGIC & NOTIFICATIONS =========================
+function openNotifs() {
+  const b1 = document.getElementById('n-badge1');
+  const b2 = document.getElementById('n-badge2');
+  if(b1) b1.style.display = 'none';
+  if(b2) b2.style.display = 'none';
+  buildNotifs();
+  go('notif-view', -1);
+}
+
+function buildNotifs() {
+  const list = document.getElementById('notif-list');
+  list.innerHTML = '';
+  let notifs = [];
+  
+  if(userType === 'student') {
+    notifs = [
+      {t:'تم قبول طلب التعلم من سارة أحمد', i:'✅', time:'منذ ١٥ دقيقة'},
+      {t:'تقييم جديد 🌟: حصلت على 5 نجوم من ياسر فهد', i:'🌟', time:'منذ ساعتين'},
+      {t:'تذكير: موعد جلستك غداً الساعة ٤ مساءً', i:'⏱️', time:'أمس'}
+    ];
+  } else {
+    notifs = [
+      {t:'تقدم أحمد خالد على مشروعك: تصميم واجهة تطبيق', i:'💼', time:'منذ ١٠ دقائق'},
+      {t:'تم إنجاز المهمة من قبل سارة أحمد، يرجى المراجعة', i:'✅', time:'منذ ٤ ساعات'},
+      {t:'تم خصم ٥٠٠ ر.س من المحفظة للمشروع الجديد', i:'💳', time:'أمس'}
+    ];
+  }
+  
+  notifs.forEach(n => {
+    list.innerHTML += `
+      <div class="offer-item" style="flex-direction:row; align-items:center; gap:12px; margin-bottom:10px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--input);border:1px solid var(--border2);display:flex;justify-content:center;align-items:center;font-size:18px;flex-shrink:0;">${n.i}</div>
+        <div>
+          <div style="font-size:14px; font-weight:700; color:var(--text); line-height:1.5;">${n.t}</div>
+          <div style="font-size:11px; color:var(--sub); margin-top:6px; font-weight:500;">${n.time}</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function buildWallet() {
+  const list = document.getElementById('wallet-history');
+  list.innerHTML = '';
+  let trans = [];
+  
+  if(userType === 'student') {
+    document.getElementById('wallet-balance').textContent = '٣٥٠';
+    document.getElementById('wallet-currency').textContent = 'نقطة نُول';
+    trans = [
+      {t:'إنجاز مهمة (تصميم 3D)', d:'١٥ أكتوبر ٢٠٢٦', a:'+١٥٠', cls:'pos'},
+      {t:'حجز جلسة (برمجة بايثون)', d:'١٢ أكتوبر ٢٠٢٦', a:'-٥٠', cls:'neg'},
+      {t:'مكافأة التسجيل', d:'٠١ أكتوبر ٢٠٢٦', a:'+٢٥٠', cls:'pos'}
+    ];
+  } else {
+    document.getElementById('wallet-balance').textContent = '٤,٥٠٠';
+    document.getElementById('wallet-currency').textContent = 'ريال سعودي (ر.س)';
+    trans = [
+      {t:'إيداع في المحفظة', d:'٢٠ أكتوبر ٢٠٢٦', a:'+٥٠٠٠', cls:'pos'},
+      {t:'خصم: مشروع تصميم واجهات', d:'١٨ أكتوبر ٢٠٢٦', a:'-٥٠٠', cls:'neg'}
+    ];
+  }
+  
+  trans.forEach(tr => {
+    list.innerHTML += `
+      <div class="offer-item" style="flex-direction:row; align-items:center; justify-content:space-between; margin-bottom:10px;">
+        <div>
+          <div style="font-size:14px; font-weight:900; color:var(--text); margin-bottom:4px;">${tr.t}</div>
+          <div style="font-size:11px; color:var(--sub); font-weight:500;">${tr.d}</div>
+        </div>
+        <div style="font-size:15px; font-weight:900; color:${tr.cls==='pos'?'var(--green)':'var(--text)'}; opacity:${tr.cls==='neg'?'0.8':'1'};">${tr.a}</div>
+      </div>
+    `;
+  });
+}
+
 function buildDMs(){
   const el = document.getElementById('dm-list');
   el.innerHTML = '';
-  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك رابط الاجتماع.','لا تتردد في الاستفسار عن أي نقطة.'];
+  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك التفاصيل.','لا تتردد في الاستفسار عن أي نقطة.'];
   const times = ['١٠:٣٠ ص','أمس','الأحد','السبت','منذ ساعتين'];
   USERS.filter(id=>id!=='me').slice(0,8).forEach((uid,i)=>{
     const u = DB[uid];
@@ -1154,7 +1366,7 @@ function go(vid, ni=-1){
   nbs.forEach(b=>b.classList.remove('active'));
   if(ni>=0&&ni<nbs.length) nbs[ni].classList.add('active');
   
-  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view'];
+  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view', 'notif-view', 'wallet-view'];
   let hideNav = alwaysHide.includes(vid);
   if(vid==='profile-view'){
     const profBtn = document.getElementById('prof-msg-btn');
