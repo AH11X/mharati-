@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مهاراتي - النسخة الكاملة (Pro Max)</title>
+    <title>مهاراتي - النسخة الشاملة ٢٠ طالب</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* ================= الثيمات والألوان ================= */
         :root {
             --bg: #09090b; --bg2: #121217; --card: rgba(255,255,255,0.03); 
             --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.1); 
@@ -24,39 +23,33 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal',sans-serif; -webkit-tap-highlight-color:transparent;}
         body { background: var(--bg); color: var(--text); min-height:100vh; overflow-x:hidden; transition: 0.3s; }
 
-        /* ================= الهيكل والأنيميشن ================= */
         .view { display:none; min-height:100vh; padding-bottom:110px; animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .view.active { display:block; }
         #login-view.active { display:flex; justify-content:center; align-items:center; }
         @keyframes slideIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
-        /* ================= الهيدر المشترك ================= */
         .hdr { display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:var(--nav); backdrop-filter:blur(24px); position:sticky; top:0; z-index:50; border-bottom:1px solid var(--border); }
         .logo { font-size:24px; font-weight:900; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
         .hdr-icon { font-size:22px; cursor:pointer; color:var(--text); transition:0.2s;}
         .hdr-icon:active { transform: scale(0.9); }
         .hdr-title { font-size:18px; font-weight:900; color:var(--text); }
 
-        /* ================= عناصر الإدخال والأزرار ================= */
         .input-box { width:100%; padding:16px 20px; margin:8px 0; border-radius:14px; background:var(--input); border:1px solid var(--border2); color:var(--text); font-size:15px; outline:none; transition:0.2s;}
         .input-box:focus { border-color:var(--accent); background:var(--card);}
         select.input-box option { background:var(--bg2); color:var(--text); }
         
         .btn-primary { display:inline-flex; justify-content:center; align-items:center; gap:8px; padding:16px 24px; border-radius:14px; border:none; font-size:15px; font-weight:900; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; cursor:pointer; width:100%; transition:0.2s; box-shadow:0 6px 20px rgba(79,70,229,0.25);}
-        .btn-primary:active { transform:translateY(2px); box-shadow:0 2px 10px rgba(79,70,229,0.25);}
+        .btn-primary:active { transform:translateY(2px); }
         .btn-outline { background:transparent; border:1px solid var(--border2); color:var(--text); box-shadow:none;}
 
-        /* ================= شاشة الدخول ================= */
         .login-wrap { width:90%; max-width:400px; text-align:center; }
         .login-card { background:var(--card); border:1px solid var(--border); border-radius:28px; padding:40px 24px; backdrop-filter:blur(24px); box-shadow:0 20px 50px rgba(0,0,0,0.3);}
 
-        /* ================= الفلاتر (الرئيسية) ================= */
         .cats { display:flex; gap:10px; padding:16px 20px; overflow-x:auto; border-bottom:1px solid var(--border);}
         .cats::-webkit-scrollbar { display:none; }
         .cat { padding:10px 20px; border-radius:24px; font-size:14px; font-weight:700; white-space:nowrap; cursor:pointer; border:1px solid var(--border2); color:var(--sub); background:var(--card); transition:0.2s; }
         .cat.active { background:var(--text); color:var(--bg); border-color:var(--text); }
 
-        /* ================= كروت الفرص (المنشورات) ================= */
         .feed { padding:16px 20px; display:flex; flex-direction:column; gap:24px; }
         .post-card { background:var(--card); border:1px solid var(--border); border-radius:24px; padding:20px; transition:0.3s; box-shadow:0 4px 20px rgba(0,0,0,0.05);}
         .post-header { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
@@ -78,10 +71,8 @@
         .post-actions { display:flex; gap:12px; }
         .post-action-btn { flex:1; padding:14px; border-radius:12px; font-size:14px; font-weight:900; cursor:pointer; text-align:center; transition:0.2s; }
 
-        /* ================= شاشة البحث والخدمات ================= */
         .search-box { margin:16px 20px; position:relative; }
         .search-box input { width:100%; padding:16px 48px 16px 20px; border-radius:16px; background:var(--input); border:1px solid var(--border2); color:var(--text); font-size:15px; outline:none; transition:0.3s;}
-        .search-box input:focus { border-color:var(--accent); background:var(--card);}
         .search-icon { position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--sub); }
         .section-title { padding:12px 20px; font-size:15px; font-weight:900; color:var(--text); }
         
@@ -89,7 +80,6 @@
         .search-item { display:flex; align-items:center; justify-content:space-between; padding:16px; background:var(--card); border:1px solid var(--border); border-radius:16px; cursor:pointer; transition:0.2s;}
         .search-item:hover { background:var(--card-hover); border-color:var(--border2); transform:translateY(-2px);}
 
-        /* ================= شاشة إضافة خدمة ================= */
         .add-container { padding:24px 20px; }
         .add-type-grid { display:flex; gap:16px; margin-bottom:24px; }
         .add-type-card { flex:1; background:var(--card); border:2px solid var(--border); border-radius:20px; padding:24px 10px; text-align:center; cursor:pointer; transition:0.3s; display:flex; flex-direction:column; align-items:center; gap:10px;}
@@ -99,7 +89,6 @@
         .add-label { font-size:14px; font-weight:900; color:var(--text); margin-bottom:8px; display:block; margin-top:20px;}
         textarea.input-box { height:120px; resize:none; }
 
-        /* ================= المحادثات (Inbox) ================= */
         .dm-list { display:flex; flex-direction:column; padding:0 10px;}
         .dm-item { display:flex; align-items:center; justify-content:space-between; padding:16px 12px; cursor:pointer; border-radius:20px; transition:0.2s; }
         .dm-item:hover { background:var(--card); }
@@ -108,9 +97,7 @@
         .dm-msg { font-size:14px; color:var(--sub); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:220px; font-weight:500;}
         .dm-meta { display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
         .dm-time { font-size:12px; color:var(--sub); font-weight:700; }
-        .unread-badge { background:var(--accent); color:#fff; font-size:11px; font-weight:900; padding:2px 8px; border-radius:12px; min-width:24px; text-align:center;}
 
-        /* ================= الشات (Chat) ================= */
         .chat-area { padding:24px; display:flex; flex-direction:column; gap:16px; height:calc(100vh - 150px); overflow-y:auto; background:var(--bg2);}
         .msg-row { display:flex; flex-direction:column; max-width:85%; animation: slideIn 0.2s ease;}
         .msg-row.in { align-self:flex-start; }
@@ -123,16 +110,13 @@
         .chat-bar { position:fixed; bottom:0; width:100%; background:var(--nav); padding:16px 20px; border-top:1px solid var(--border); display:flex; gap:12px; z-index:100; align-items:center; backdrop-filter:blur(24px);}
         .chat-bar input { flex:1; padding:14px 20px; border-radius:24px; background:var(--input); border:1px solid var(--border2); color:var(--text); outline:none; font-size:15px;}
         .chat-send { background:var(--text); color:var(--bg); border:none; border-radius:50%; width:48px; height:48px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:0.2s;}
-        .chat-send:active { transform:scale(0.9); }
 
-        /* مؤشر الكتابة */
         .typing-indicator { display:none; gap:6px; padding:16px 20px; background:var(--card); border:1px solid var(--border); border-radius:20px; border-top-right-radius:4px; align-self:flex-start; width:fit-content; margin-top:4px;}
         .typing-dot { width:8px; height:8px; background:var(--sub); border-radius:50%; animation:typing 1.4s infinite ease-in-out both; }
         .typing-dot:nth-child(1) { animation-delay:-0.32s; }
         .typing-dot:nth-child(2) { animation-delay:-0.16s; }
         @keyframes typing { 0%, 80%, 100% { transform:scale(0); } 40% { transform:scale(1); } }
 
-        /* ================= البروفايل الاحترافي (Marketplace) ================= */
         .profile-header { position:relative; margin-bottom:65px;}
         .profile-cover { height:140px; width:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); border-bottom-left-radius:32px; border-bottom-right-radius:32px; opacity:0.9;}
         .profile-avatar-wrapper { position:absolute; bottom:-50px; left:50%; transform:translateX(-50%); width:100px; height:100px; border-radius:28px; background:var(--bg2); border:4px solid var(--bg); display:flex; justify-content:center; align-items:center; font-size:40px; font-weight:900; color:#fff; box-shadow:0 12px 24px rgba(0,0,0,0.3); z-index:10;}
@@ -148,37 +132,34 @@
         .stat-val { font-size:20px; font-weight:900; color:var(--text); margin-bottom:4px;}
         .stat-lbl { font-size:11px; color:var(--sub); font-weight:700;}
 
-        /* التابات */
         .profile-tabs { display:flex; border-bottom:1px solid var(--border); padding:0 20px; margin-bottom:16px;}
         .ptab { flex:1; text-align:center; padding:16px 0; font-size:14px; font-weight:900; color:var(--sub); cursor:pointer; border-bottom:2px solid transparent; transition:0.2s;}
         .ptab.active { color:var(--accent); border-bottom:2px solid var(--accent); }
 
-        /* بطاقات الخدمات (أفقية) */
         .services-list { display:flex; flex-direction:column; gap:16px; padding:0 20px 24px; }
         .service-card { display:flex; align-items:center; gap:16px; background:var(--card); border:1px solid var(--border); padding:16px; border-radius:20px; transition:0.3s; cursor:pointer;}
-        .service-card:hover { border-color:var(--border2); transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.1);}
         .service-icon { font-size:28px; background:var(--bg2); width:64px; height:64px; display:flex; align-items:center; justify-content:center; border-radius:16px; border:1px solid var(--border);}
-        .service-details { flex:1; }
+        .service-details { flex:1; text-align:right;}
         .service-title { font-size:15px; font-weight:900; color:var(--text); margin-bottom:6px;}
-        .service-meta { display:flex; align-items:center; gap:8px;}
-        .students-badge { color:var(--green); background:rgba(16,185,129,0.1); padding:4px 10px; border-radius:8px; font-size:11px; font-weight:900;}
+        .students-badge { color:var(--green); background:rgba(16,185,129,0.1); padding:4px 10px; border-radius:8px; font-size:11px; font-weight:900; display:inline-block;}
 
-        /* قسم التقييمات */
-        .review-card { background:var(--bg2); border:1px solid var(--border); padding:16px; border-radius:16px; margin-bottom:12px;}
+        .review-card { background:var(--bg2); border:1px solid var(--border); padding:16px; border-radius:16px; margin-bottom:12px; text-align:right;}
         .review-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
         .review-name { font-size:14px; font-weight:900; color:var(--text); }
-        .review-stars { font-size:12px; color:var(--gold); letter-spacing:2px;}
         .review-text { font-size:13px; color:var(--sub); line-height:1.6;}
 
-        /* ================= الشريط السفلي (Floating UI) ================= */
         .bottom-nav { position:fixed; bottom:20px; left:5%; width:90%; background:var(--nav); backdrop-filter:blur(24px); display:none; justify-content:space-around; align-items:center; padding:12px; border-radius:24px; border:1px solid var(--border); box-shadow:0 15px 35px rgba(0,0,0,0.4); z-index:100; }
         .nav-btn { color:var(--sub); font-size:24px; cursor:pointer; padding:10px 20px; transition:0.3s; border-radius:16px;}
         .nav-btn.active { color:var(--text); background:var(--card); transform:translateY(-2px);}
         .nav-add { font-size:24px; color:#fff !important; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 8px 20px rgba(79,70,229,0.3); border-radius:14px; padding:10px 24px; }
 
-        html[dir="ltr"] .stat:first-child { border-left:none; border-right:1px solid var(--border); }
+        html[dir="ltr"] .search-icon { right:auto; left:20px; }
+        html[dir="ltr"] .search-box input { padding:16px 20px 16px 48px; }
+        html[dir="ltr"] .hdr-icon:first-child { transform:scaleX(-1); }
         html[dir="ltr"] .stat { border-left:none; border-right:1px solid var(--border); }
         html[dir="ltr"] .stat:last-child { border-right:none; }
+        html[dir="ltr"] .service-details { text-align: left; }
+        html[dir="ltr"] .review-card { text-align: left; }
     </style>
 </head>
 <body>
@@ -187,7 +168,7 @@
     <div class="login-wrap">
         <div class="login-card">
             <div class="logo" style="font-size:36px; margin-bottom:12px;">مهاراتي</div>
-            <p style="color:var(--sub);font-size:14px;margin-bottom:32px;font-weight:500;">المنصة الأولى للخدمات والمهارات الجامعية</p>
+            <p style="color:var(--sub);font-size:14px;margin-bottom:32px;font-weight:500;">سوق المهارات والخدمات الجامعية الشامل</p>
             
             <select class="input-box" id="univ-select">
                 <option value="" disabled selected>اختر جامعتك...</option>
@@ -195,6 +176,8 @@
                 <option value="ksu">جامعة الملك سعود</option>
                 <option value="kfupm">جامعة الملك فهد للبترول والمعادن</option>
                 <option value="kau">جامعة الملك عبدالعزيز</option>
+                <option value="iau">جامعة الإمام عبدالرحمن بن فيصل</option>
+                <option value="qu">جامعة القصيم</option>
             </select>
             <input type="number" class="input-box" placeholder="الرقم الجامعي">
             <button class="btn-primary" style="margin-top:16px;" onclick="login()">دخول للمنصة</button>
@@ -214,88 +197,107 @@
     <div class="cats">
         <div class="cat active" onclick="filterCat(this, 'all')">الكل</div>
         <div class="cat" onclick="filterCat(this, 'coding')">برمجة وبيانات</div>
-        <div class="cat" onclick="filterCat(this, 'design')">تصميم هندسي وواجهات</div>
-        <div class="cat" onclick="filterCat(this, 'business')">تسويق وإدارة</div>
+        <div class="cat" onclick="filterCat(this, 'design')">تصميم وهندسة</div>
+        <div class="cat" onclick="filterCat(this, 'business')">إدارة وتسويق</div>
+        <div class="cat" onclick="filterCat(this, 'other')">تخصصات أخرى</div>
     </div>
 
     <div class="feed" id="feed-container">
+        <div class="post-card" data-cat="design">
+            <div class="post-header" onclick="openProfile('lama')">
+                <div class="avatar" style="background:linear-gradient(135deg,#0d9488,#3b82f6);">ل</div>
+                <div class="post-header-info">
+                    <h3>لمى سعد <span class="verified-badge" style="background:var(--gold);">PRO</span></h3>
+                    <p>التصميم الداخلي • 💎 ماسي</p>
+                </div>
+            </div>
+            <div class="post-media" style="background:linear-gradient(135deg,#115e59,#1e3a8a);">
+                🛋️
+                <div class="course-meta">
+                    <div class="meta-pill">⏱️ جلسة ساعتين</div>
+                </div>
+            </div>
+            <div class="post-body">
+                <p>جلسة فردية لتعلم استايلات التصميم المستقبلية (Solarpunk & Space Age). وكيف ندمج الطبيعة مع التكنولوجيا في الفراغ المعماري. 🌿✨</p>
+                <div class="post-tags">
+                    <span class="tag">Solarpunk</span>
+                    <span class="tag">تصميم داخلي</span>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="post-action-btn btn-outline" onclick="openChat('lama')">استفسار</button>
+                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">طلب خدمة</button>
+            </div>
+        </div>
+
+        <div class="post-card" data-cat="business">
+            <div class="post-header" onclick="openProfile('faisal')">
+                <div class="avatar" style="background:linear-gradient(135deg,#eab308,#ef4444);">ف</div>
+                <div class="post-header-info">
+                    <h3>فيصل خالد <span class="verified-badge">EXPERT</span></h3>
+                    <p>إدارة أعمال • 🌟 ذهبي</p>
+                </div>
+            </div>
+            <div class="post-media" style="background:linear-gradient(135deg,#713f12,#4c1d95);">
+                📂
+                <div class="course-meta">
+                    <div class="meta-pill">⏱️ ورشة ٤ أيام</div>
+                </div>
+            </div>
+            <div class="post-body">
+                <p>ورشة: المهارات الإدارية للعمل عن بُعد. هنتعلم كيف تدير الملفات (Clerical work) وتستخدم أدوات التنظيم السحابية للشركات. 💻</p>
+                <div class="post-tags">
+                    <span class="tag">عمل عن بُعد</span>
+                    <span class="tag">إدارة ملفات</span>
+                </div>
+            </div>
+            <div class="post-actions">
+                <button class="post-action-btn btn-outline" onclick="openChat('faisal')">تواصل</button>
+                <button class="post-action-btn btn-primary" onclick="alert('تم تسجيلك ✅')">حجز مقعد</button>
+            </div>
+        </div>
+
         <div class="post-card" data-cat="coding">
             <div class="post-header" onclick="openProfile('sara')">
                 <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#c084fc);">س</div>
                 <div class="post-header-info">
-                    <h3>سارة أحمد <span class="verified-badge">EXPERT</span></h3>
-                    <p>محللة بيانات • 💎 ماسي</p>
+                    <h3>سارة أحمد</h3>
+                    <p>تحليل بيانات • 💎 ماسي</p>
                 </div>
             </div>
             <div class="post-media" style="background:linear-gradient(135deg,#312e81,#0f172a);">
                 📊
-                <div class="course-meta">
-                    <div class="meta-pill">⏱️ جلسة مكثفة (ساعتين)</div>
-                    <div class="meta-pill" style="background:rgba(245, 158, 11, 0.8);">مستوى متوسط</div>
-                </div>
             </div>
             <div class="post-body">
-                <p>جلسة فردية لتعلم تحليل البيانات المتقدم باستخدام Excel. هنتعلم مع بعض بناء الـ Dashboards الاحترافية والـ Pivot Tables. 📈</p>
-                <div class="post-tags">
-                    <span class="tag">جلسة 1-on-1</span>
-                    <span class="tag">Excel</span>
-                </div>
+                <p>معسكر مكثف لتحليل البيانات باستخدام Excel و Python. يركز المعسكر على بناء Dashboards احترافية تفيدك في الـ CV. 📈</p>
             </div>
             <div class="post-actions">
-                <button class="post-action-btn btn-outline" onclick="openChat('sara')">استفسار</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم إرسال طلب الخدمة لسارة ✅')">طلب الخدمة</button>
+                <button class="post-action-btn btn-primary" style="background:var(--card); color:var(--text); border:1px solid var(--border);" onclick="openProfile('sara')">تصفح الملف</button>
+                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">تسجيل</button>
             </div>
         </div>
 
-        <div class="post-card" data-cat="coding">
-            <div class="post-header" onclick="openProfile('yasser')">
-                <div class="avatar" style="background:linear-gradient(135deg,#2563eb,#06b6d4);">ي</div>
+        <div class="post-card" data-cat="other">
+            <div class="post-header" onclick="openProfile('raghad')">
+                <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f43f5e);">ر</div>
                 <div class="post-header-info">
-                    <h3>ياسر فهد <span class="verified-badge" style="background:var(--gold);">PRO</span></h3>
-                    <p>مطور برمجيات • 🌟 ذهبي</p>
+                    <h3>رغد صالح <span class="verified-badge">PRO</span></h3>
+                    <p>موارد بشرية • 🌟 ذهبي</p>
                 </div>
             </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#0f172a,#1e3a8a);">
-                💻
-                <div class="course-meta">
-                    <div class="meta-pill">⏱️ معسكر (أسبوع)</div>
-                    <div class="meta-pill" style="background:rgba(16, 185, 129, 0.8);">مبتدئ</div>
-                </div>
+            <div class="post-media" style="background:linear-gradient(135deg,#831843,#4c1d95);">
+                📄
             </div>
             <div class="post-body">
-                <p>ورشة عمل جماعية: أساسيات البرمجة بلغة Python. بنبني أول تطبيق بسيط مع بعض من الصفر. 🚀</p>
+                <p>مراجعة شاملة لسيرتك الذاتية (CV Review) وتجهيزك للمقابلات الشخصية. بعطيك أهم الأسئلة وكيف تجاوب عليها بذكاء. 🎯</p>
                 <div class="post-tags">
-                    <span class="tag">ورشة عمل</span>
-                    <span class="tag">Python</span>
+                    <span class="tag">تطوير مهني</span>
+                    <span class="tag">سيرة ذاتية</span>
                 </div>
             </div>
             <div class="post-actions">
-                <button class="post-action-btn btn-outline" onclick="openChat('yasser')">تواصل</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم تسجيلك في الورشة ✅')">حجز مقعد</button>
-            </div>
-        </div>
-
-        <div class="post-card" data-cat="design">
-            <div class="post-header" onclick="openProfile('shahad')">
-                <div class="avatar" style="background:linear-gradient(135deg,#10b981,#3b82f6);">ش</div>
-                <div class="post-header-info">
-                    <h3>شهد محمد</h3>
-                    <p>مصممة واجهات • 🌟 ذهبي</p>
-                </div>
-            </div>
-            <div class="post-media" style="background:linear-gradient(135deg,#064e3b,#0f172a);">
-                🎨
-            </div>
-            <div class="post-body">
-                <p>مراجعة وتقييم لتصميم واجهة تطبيقك (UI/UX Review) باستخدام Figma. بعطيك ملاحظات تطور من شغلك وتخليه احترافي. ✨</p>
-                <div class="post-tags">
-                    <span class="tag">استشارة</span>
-                    <span class="tag">Figma</span>
-                </div>
-            </div>
-            <div class="post-actions">
-                <button class="post-action-btn btn-primary" style="background:var(--card); color:var(--text); border:1px solid var(--border);" onclick="openProfile('shahad')">تصفح ملف المدرب</button>
-                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب بنجاح ✅')">طلب تقييم</button>
+                <button class="post-action-btn btn-outline" onclick="openChat('raghad')">استفسار</button>
+                <button class="post-action-btn btn-primary" onclick="alert('تم الطلب ✅')">حجز استشارة</button>
             </div>
         </div>
     </div>
@@ -309,28 +311,28 @@
     </header>
     <div class="search-box" style="margin-top:0;">
         <span class="search-icon">🔍</span>
-        <input type="text" onkeyup="searchSkills(this.value)" placeholder="عن أي خدمة تبحث اليوم؟...">
+        <input type="text" onkeyup="searchSkills(this.value)" placeholder="عن أي مهارة تبحث اليوم؟...">
     </div>
     
-    <div class="section-title">التخصصات والمهارات الأكثر طلباً</div>
+    <div class="section-title">تخصصات مقترحة لك</div>
     <div class="search-list" id="skills-list">
-        <div class="search-item" onclick="openSkillOffers('Excel')">
+        <div class="search-item" onclick="openSkillOffers('Design')">
             <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#2563eb;border-radius:14px;width:56px;height:56px;font-size:24px;">📊</div>
+                <div class="avatar" style="background:#0d9488;border-radius:14px;width:56px;height:56px;font-size:24px;">🎨</div>
                 <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">تحليل البيانات والإكسل</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">١٢ خدمة متاحة • الأكثر طلباً</div>
+                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">التصميم والهندسة</div>
+                    <div style="font-size:13px;color:var(--sub);font-weight:500;">UI/UX, 3D, AutoCAD</div>
                 </div>
             </div>
             <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
         </div>
         
-        <div class="search-item" onclick="openSkillOffers('UI')">
+        <div class="search-item" onclick="openSkillOffers('Admin')">
             <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#8b5cf6;border-radius:14px;width:56px;height:56px;font-size:24px;">🎨</div>
+                <div class="avatar" style="background:#eab308;border-radius:14px;width:56px;height:56px;font-size:24px;">📂</div>
                 <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">تصميم واجهات المستخدم</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">٨ خدمات متاحة</div>
+                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">المهارات الإدارية</div>
+                    <div style="font-size:13px;color:var(--sub);font-weight:500;">إدارة ملفات، أعمال عن بُعد</div>
                 </div>
             </div>
             <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
@@ -338,10 +340,10 @@
         
         <div class="search-item" onclick="openSkillOffers('Coding')">
             <div style="display:flex;align-items:center;gap:16px;">
-                <div class="avatar" style="background:#10b981;border-radius:14px;width:56px;height:56px;font-size:24px;">💻</div>
+                <div class="avatar" style="background:#4f46e5;border-radius:14px;width:56px;height:56px;font-size:24px;">💻</div>
                 <div>
-                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">البرمجة وتطوير الويب</div>
-                    <div style="font-size:13px;color:var(--sub);font-weight:500;">١٥ خدمة متاحة</div>
+                    <div style="font-weight:900;color:var(--text);font-size:16px;margin-bottom:4px;">البرمجة والبيانات</div>
+                    <div style="font-size:13px;color:var(--sub);font-weight:500;">Python, Excel, AI</div>
                 </div>
             </div>
             <div class="hdr-icon" style="color:var(--sub);font-size:20px;">➔</div>
@@ -355,8 +357,7 @@
         <div class="hdr-title" id="offer-skill-title">الخدمات المتاحة</div>
         <div style="width:28px;"></div>
     </header>
-    <div class="search-list" id="offers-list" style="margin-top:24px;">
-        </div>
+    <div class="search-list" id="offers-list" style="margin-top:24px;"></div>
 </div>
 
 <div id="add-view" class="view">
@@ -366,31 +367,32 @@
         <div class="hdr-icon" style="color:var(--accent); font-size:15px; font-weight:900;" onclick="submitSkill()">نشر</div>
     </header>
     <div class="add-container">
-        <span class="add-label">نوع الخدمة اللي بتقدمها</span>
+        <span class="add-label">نوع الخدمة</span>
         <div class="add-type-grid">
             <div class="add-type-card active" onclick="selType(this)">
                 <div class="add-type-icon">👤</div>
-                <div class="add-type-title">جلسة استشارية فردية</div>
+                <div class="add-type-title">جلسة فردية</div>
             </div>
             <div class="add-type-card" onclick="selType(this)">
                 <div class="add-type-icon">👥</div>
-                <div class="add-type-title">ورشة عمل جماعية</div>
+                <div class="add-type-title">ورشة جماعية</div>
             </div>
         </div>
 
         <span class="add-label">عنوان الخدمة</span>
-        <input type="text" class="input-box" placeholder="مثال: تعليم أساسيات الإكسل للمبتدئين...">
+        <input type="text" class="input-box" placeholder="مثال: تعليم التصميم ببرنامج...">
 
         <span class="add-label">التصنيف المهني</span>
         <select class="input-box">
-            <option>إكسل وتحليل بيانات</option>
-            <option>برمجة وتطوير تقني</option>
-            <option>تصميم وإبداع</option>
+            <option>برمجة وبيانات</option>
+            <option>تصميم وهندسة</option>
             <option>أعمال وإدارة</option>
+            <option>لغات وترجمة</option>
+            <option>أخرى</option>
         </select>
 
-        <span class="add-label">وصف المخرجات والتفاصيل</span>
-        <textarea class="input-box" placeholder="اشرح بالتفصيل وش راح تقدم في هذي الجلسة أو الورشة، وماذا سيستفيد الطالب..."></textarea>
+        <span class="add-label">التفاصيل والمخرجات</span>
+        <textarea class="input-box" placeholder="اشرح بالتفصيل وش راح تقدم، وماذا سيستفيد الطالب..."></textarea>
         
         <button class="btn-primary" style="margin-top:24px;" onclick="submitSkill()">اعتماد ونشر في السوق</button>
     </div>
@@ -398,7 +400,7 @@
 
 <div id="dm-view" class="view">
     <header class="hdr" style="border-bottom:none;">
-        <div class="hdr-title" style="font-size:24px;">الرسائل والطلبات</div>
+        <div class="hdr-title" style="font-size:24px;">صندوق الوارد</div>
         <div class="hdr-icon">📝</div>
     </header>
     <div class="search-box" style="margin-top:0;">
@@ -407,10 +409,10 @@
     </div>
     
     <div id="dm-list" class="dm-list">
-        <div class="dm-item" onclick="openChat('sara')">
-            <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#c084fc);width:56px;height:56px;">س</div>
+        <div class="dm-item" onclick="openChat('lama')">
+            <div class="avatar" style="background:linear-gradient(135deg,#0d9488,#3b82f6);width:56px;height:56px;">ل</div>
             <div class="dm-info">
-                <div class="dm-name">سارة أحمد</div>
+                <div class="dm-name">لمى سعد</div>
                 <div class="dm-msg" style="color:var(--text); font-weight:700;">أهلاً بك، متى يناسبك وقت الجلسة؟</div>
             </div>
             <div class="dm-meta">
@@ -418,24 +420,24 @@
                 <div class="unread-badge">1</div>
             </div>
         </div>
-        <div class="dm-item" onclick="openChat('nora')">
-            <div class="avatar" style="background:linear-gradient(135deg,#f43f5e,#fb923c);width:56px;height:56px;">ن</div>
+        <div class="dm-item" onclick="openChat('faisal')">
+            <div class="avatar" style="background:linear-gradient(135deg,#eab308,#ef4444);width:56px;height:56px;">ف</div>
             <div class="dm-info">
-                <div class="dm-name">نورة سعد</div>
-                <div class="dm-msg">أرسلت لك ملف حملة التسويق للمراجعة.</div>
+                <div class="dm-name">فيصل خالد</div>
+                <div class="dm-msg">أرسلت لك ملفات الورشة الإدارية.</div>
             </div>
             <div class="dm-meta">
                 <div class="dm-time">أمس</div>
             </div>
         </div>
-        <div class="dm-item" onclick="openChat('yasser')">
-            <div class="avatar" style="background:linear-gradient(135deg,#2563eb,#06b6d4);width:56px;height:56px;">ي</div>
+        <div class="dm-item" onclick="openChat('sara')">
+            <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#c084fc);width:56px;height:56px;">س</div>
             <div class="dm-info">
-                <div class="dm-name">ياسر فهد</div>
-                <div class="dm-msg">تم تأكيد حجز الورشة، بشوفك بكرا.</div>
+                <div class="dm-name">سارة أحمد</div>
+                <div class="dm-msg">يعطيك العافية، شكراً لك.</div>
             </div>
             <div class="dm-meta">
-                <div class="dm-time">الإثنين</div>
+                <div class="dm-time">الأحد</div>
             </div>
         </div>
     </div>
@@ -499,9 +501,7 @@
 
     <div class="services-list" id="grid-taught"></div>
     <div class="services-list" id="grid-learned" style="display:none;"></div>
-    
-    <div class="services-list" id="grid-reviews" style="display:none;">
-        </div>
+    <div class="services-list" id="grid-reviews" style="display:none;"></div>
 </div>
 
 <div id="settings-view" class="view">
@@ -514,10 +514,6 @@
         <div class="input-box" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; cursor:pointer;" onclick="toggleTheme()">
             <span style="font-weight:900;">المظهر (Dark/Light)</span>
             <span id="theme-btn" style="font-weight:900; color:var(--accent);">فاتح ☀️</span>
-        </div>
-        <div class="input-box" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; cursor:pointer;" onclick="alert('اللغة الإنجليزية ستتوفر قريباً')">
-            <span style="font-weight:900;">لغة التطبيق</span>
-            <span style="font-weight:900; color:var(--accent);">العربية 🇸🇦</span>
         </div>
         <button class="btn-outline" style="width:100%; padding:16px; border-radius:14px; color:var(--red); font-weight:900; border-color:rgba(239,68,68,0.3);" onclick="location.reload()">تسجيل الخروج</button>
     </div>
@@ -535,71 +531,207 @@
 let navHistory = ['login-view']; 
 let currentChatUser = '';
 
-// قاعدة البيانات الأضخم والأشمل
+// ================= قاعدة البيانات الشاملة ٢٠ طالب =================
 const db = {
+    // 1
     'me': {
         arName: 'أحمد خالد', bg: 'linear-gradient(135deg,var(--accent),var(--accent2))', arInit: 'أ',
-        arRank: 'تصنيف ذهبي', rankIcon: '🌟',
-        arTitle: 'طالب هندسة معمارية | ممارس 3D',
-        arBio: 'شغوف بتصميم الفراغات وتطوير المخططات. أقدم ورش عمل مبسطة لزملائي في الكلية.',
+        arRank: 'تصنيف ذهبي', rankIcon: '🌟', arTitle: 'طالب معماري | مهتم بـ 70s Retro',
+        arBio: 'شغوف بتصميم الفراغات وتطوير المخططات (Solarpunk). أقدم ورش عمل مبسطة لزملائي.',
         learn: 2, teach: 28,
-        taught: [{icon: '📐', n: 'أساسيات 3D Modeling', st: 15}, {icon: '🛋️', n: 'تصميم مساحات باستخدام Coohom', st: 13}],
+        taught: [{icon: '📐', n: 'أساسيات 3D Modeling', st: 15}, {icon: '🛋️', n: 'تصميم مساحات بـ Coohom', st: 13}],
         learned: [{icon: '📊', n: 'تحليل بيانات'}, {icon: '🇬🇧', n: 'إنجليزي أعمال'}],
-        reviews: [
-            {n: 'ياسر فهد', stars: '⭐⭐⭐⭐⭐', txt: 'أحمد مبدع جداً، الورشة كانت مفيدة وتطبيقية 100%.'},
-            {n: 'سعد محمد', stars: '⭐⭐⭐⭐', txt: 'شرح واضح ومبسط للبرنامج.'}
-        ]
+        reviews: [{n: 'ياسر فهد', stars: '⭐⭐⭐⭐⭐', txt: 'أحمد مبدع جداً، الورشة كانت مفيدة 100%.'}]
     },
-    'shahad': {
-        arName: 'شهد محمد', bg: 'linear-gradient(135deg,#10b981,#3b82f6)', arInit: 'ش',
-        arRank: 'مدربة ذهبية', rankIcon: '🌟',
-        arTitle: 'مصممة واجهات المستخدم | UI/UX',
-        arBio: 'متخصصة في بناء تجربة مستخدم سلسة واحترافية. أقدم استشارات لمراجعة وتطوير مشاريعك في Figma.',
-        learn: 5, teach: 45,
-        taught: [{icon: '🎨', n: 'مراجعة تصاميم Figma', st: 30}, {icon: '📱', n: 'بناء النماذج الأولية (Prototyping)', st: 15}],
-        learned: [{icon: '📈', n: 'تسويق رقمي'}],
-        reviews: [
-            {n: 'نورة سعد', stars: '⭐⭐⭐⭐⭐', txt: 'استشارة شهد نقلت تصميم تطبيقي لمستوى ثاني! دقيقة في ملاحظاتها.'},
-            {n: 'خالد الدوسري', stars: '⭐⭐⭐⭐⭐', txt: 'أنصح بشدة، حلت لي مشاكل في الفيجما كنت أعاني منها.'}
-        ]
+    // 2
+    'lama': {
+        arName: 'لمى سعد', bg: 'linear-gradient(135deg,#0d9488,#3b82f6)', arInit: 'ل',
+        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'تصميم داخلي | Space Age',
+        arBio: 'مهتمة بالأنماط المستقبلية والعصرية. أساعدك تصمم فراغات مستوحاة من الطبيعة.',
+        learn: 5, teach: 55,
+        taught: [{icon: '🌿', n: 'مقدمة في نمط Solarpunk', st: 30}, {icon: '🚀', n: 'تصاميم Space Age', st: 25}],
+        learned: [{icon: '🎨', n: 'Color Theory'}],
+        reviews: [{n: 'نوف العبدالله', stars: '⭐⭐⭐⭐⭐', txt: 'أفضل مدربة، فتحت لي آفاق جديدة في التصميم.'}]
     },
+    // 3
+    'faisal': {
+        arName: 'فيصل خالد', bg: 'linear-gradient(135deg,#eab308,#ef4444)', arInit: 'ف',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'إدارة أعمال | أعمال عن بُعد',
+        arBio: 'متخصص في التنظيم الإداري وإدارة الملفات السحابية. أعلمك كيف تشتغل Remote File Clerk بكفاءة.',
+        learn: 4, teach: 40,
+        taught: [{icon: '📂', n: 'إدارة وتنظيم الملفات السحابية', st: 25}, {icon: '💻', n: 'مهارات العمل الإداري عن بُعد', st: 15}],
+        learned: [{icon: '🇬🇧', n: 'كتابة إيميلات رسمية'}],
+        reviews: [{n: 'رغد صالح', stars: '⭐⭐⭐⭐⭐', txt: 'نظم لي طريقة عملي بالكامل.'}]
+    },
+    // 4
     'sara': {
         arName: 'سارة أحمد', bg: 'linear-gradient(135deg,#6366f1,#c084fc)', arInit: 'س',
-        arRank: 'خبير ماسي', rankIcon: '💎',
-        arTitle: 'محللة بيانات محترفة | خبيرة Excel',
-        arBio: 'أعشق الأرقام وتحويلها إلى قرارات. أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',
+        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'محللة بيانات | خبيرة Excel',
+        arBio: 'أقدم معسكرات مكثفة في تحليل البيانات لتجهيزك لسوق العمل.',
         learn: 10, teach: 120,
-        taught: [{icon: '📊', n: 'تحليل البيانات بـ Excel', st: 70}, {icon: '🐍', n: 'برمجة وبناء نماذج بـ Python', st: 50}],
+        taught: [{icon: '📊', n: 'تحليل البيانات بـ Excel', st: 70}, {icon: '🐍', n: 'بناء نماذج بـ Python', st: 50}],
         learned: [{icon: '🎨', n: 'تصميم جرافيك'}],
-        reviews: [
-            {n: 'أحمد خالد', stars: '⭐⭐⭐⭐⭐', txt: 'دورة الإكسل خرافية، تعلمت الـ Pivot Tables بسهولة.'},
-            {n: 'عمر عبدالله', stars: '⭐⭐⭐⭐⭐', txt: 'من أفضل المدربين في المنصة بدون مبالغة.'},
-            {n: 'ريم عبدالله', stars: '⭐⭐⭐⭐', txt: 'معلومات كثيرة وقيمة.'}
-        ]
+        reviews: [{n: 'أحمد خالد', stars: '⭐⭐⭐⭐⭐', txt: 'دورة الإكسل خرافية.'}]
     },
-    'nora': {
-        arName: 'نورة سعد', bg: 'linear-gradient(135deg,#f43f5e,#fb923c)', arInit: 'ن',
-        arRank: 'خبير ماسي', rankIcon: '💎',
-        arTitle: 'مسوقة رقمية | خبيرة إعلانات',
-        arBio: 'أدير حملات إعلانية بميزانيات ضخمة. أعلمك كيف تطلق حملة ناجحة على Snapchat و Meta.',
-        learn: 4, teach: 85,
-        taught: [{icon: '📈', n: 'إدارة حملات سناب شات', st: 50}, {icon: '📱', n: 'أساسيات التسويق بالمحتوى', st: 35}],
-        learned: [{icon: '✍️', n: 'كتابة محتوى إبداعي'}],
-        reviews: [
-            {n: 'شركة تقنية', stars: '⭐⭐⭐⭐⭐', txt: 'أطلقنا حملة تحت إشراف نورة وجابت نتائج ممتازة.'}
-        ]
-    },
+    // 5
     'yasser': {
         arName: 'ياسر فهد', bg: 'linear-gradient(135deg,#2563eb,#06b6d4)', arInit: 'ي',
-        arRank: 'ممارس ذهبي', rankIcon: '🌟',
-        arTitle: 'مطور برمجيات | مطور واجهات أمامية',
-        arBio: 'أبرمج المواقع والتطبيقات. أساعدك تفهم لغات البرمجة وتبني أول مشروع لك.',
+        arRank: 'ممارس ذهبي', rankIcon: '🌟', arTitle: 'هندسة | AutoCAD',
+        arBio: 'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',
         learn: 6, teach: 30,
-        taught: [{icon: '💻', n: 'تطوير الويب (HTML/CSS)', st: 20}, {icon: '⚙️', n: 'التعامل مع Git و GitHub', st: 10}],
-        learned: [{icon: '🤖', n: 'أساسيات الذكاء الاصطناعي'}],
-        reviews: [
-            {n: 'سارة أحمد', stars: '⭐⭐⭐⭐⭐', txt: 'شرح نظيف وعملي.'}
-        ]
+        taught: [{icon: '⚙️', n: 'أساسيات AutoCAD', st: 20}, {icon: '💻', n: 'C++ Basics', st: 10}],
+        learned: [{icon: '🤖', n: 'AI Concepts'}],
+        reviews: [{n: 'سعد العتيبي', stars: '⭐⭐⭐⭐', txt: 'شرح عملي.'}]
+    },
+    // 6
+    'raghad': {
+        arName: 'رغد صالح', bg: 'linear-gradient(135deg,#ec4899,#f43f5e)', arInit: 'ر',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'موارد بشرية | تطوير وظيفي',
+        arBio: 'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات الشخصية بنجاح.',
+        learn: 8, teach: 60,
+        taught: [{icon: '📄', n: 'كتابة CV احترافي', st: 40}, {icon: '🎯', n: 'تجاوز المقابلات', st: 20}],
+        learned: [{icon: '💼', n: 'إدارة مشاريع'}],
+        reviews: [{n: 'منى اليوسف', stars: '⭐⭐⭐⭐⭐', txt: 'بفضل الله ثم رغد انقبلت في تدريب تعاوني.'}]
+    },
+    // 7
+    'shahad': {
+        arName: 'شهد محمد', bg: 'linear-gradient(135deg,#10b981,#3b82f6)', arInit: 'ش',
+        arRank: 'مدربة ذهبية', rankIcon: '🌟', arTitle: 'مصممة واجهات | UI/UX',
+        arBio: 'متخصصة في بناء تجربة مستخدم سلسة واحترافية (Figma).',
+        learn: 5, teach: 45,
+        taught: [{icon: '🎨', n: 'تصميم واجهات Figma', st: 30}],
+        learned: [{icon: '📈', n: 'تسويق رقمي'}],
+        reviews: [{n: 'لمى سعد', stars: '⭐⭐⭐⭐⭐', txt: 'استشارة ممتازة.'}]
+    },
+    // 8
+    'khaled': {
+        arName: 'خالد الدوسري', bg: 'linear-gradient(135deg,#e11d48,#be123c)', arInit: 'خ',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'هندسة مدنية | رسام هندسي',
+        arBio: 'شرح مواد التخصص للهندسة المدنية والاستاتيكا.',
+        learn: 10, teach: 15,
+        taught: [{icon: '🏗️', n: 'مراجعة استاتيكا', st: 15}],
+        learned: [{icon: '⚙️', n: 'AutoCAD'}],
+        reviews: []
+    },
+    // 9
+    'mona': {
+        arName: 'منى اليوسف', bg: 'linear-gradient(135deg,#8b5cf6,#6d28d9)', arInit: 'م',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'لغات | ترجمة',
+        arBio: 'طالبة لغات وترجمة، أقدم جلسات محادثة باللغة الإنجليزية.',
+        learn: 15, teach: 35,
+        taught: [{icon: '🗣️', n: 'محادثة إنجليزي', st: 20}, {icon: '📝', n: 'أساسيات الترجمة', st: 15}],
+        learned: [{icon: '🇫🇷', n: 'لغة فرنسية'}],
+        reviews: [{n: 'هدى محمد', stars: '⭐⭐⭐⭐⭐', txt: 'أسلوبها ممتع جداً بالتعليم.'}]
+    },
+    // 10
+    'saad': {
+        arName: 'سعد العتيبي', bg: 'linear-gradient(135deg,#1e40af,#1e3a8a)', arInit: 'س',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'قانون | صياغة عقود',
+        arBio: 'مراجعة للمواد القانونية وتدريب على صياغة العقود التجارية.',
+        learn: 5, teach: 12,
+        taught: [{icon: '⚖️', n: 'صياغة العقود', st: 12}],
+        learned: [{icon: '💼', n: 'إدارة أعمال'}],
+        reviews: []
+    },
+    // 11
+    'huda': {
+        arName: 'هدى محمد', bg: 'linear-gradient(135deg,#f43f5e,#be123c)', arInit: 'هـ',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'تصوير | Lightroom',
+        arBio: 'تعديل الصور الاحترافي وأساسيات التصوير التجاري.',
+        learn: 8, teach: 40,
+        taught: [{icon: '📸', n: 'أساسيات التصوير', st: 25}, {icon: '🖼️', n: 'تعديل Lightroom', st: 15}],
+        learned: [{icon: '🎨', n: 'Photoshop'}],
+        reviews: []
+    },
+    // 12
+    'majed': {
+        arName: 'ماجد فهد', bg: 'linear-gradient(135deg,#047857,#064e3b)', arInit: 'م',
+        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'أمن سيبراني | شبكات',
+        arBio: 'معسكرات في أساسيات الشبكات والـ Ethical Hacking.',
+        learn: 20, teach: 90,
+        taught: [{icon: '🛡️', n: 'أساسيات الأمن السيبراني', st: 50}, {icon: '🌐', n: 'شبكات CCNA', st: 40}],
+        learned: [{icon: '💻', n: 'Linux'}],
+        reviews: [{n: 'سعد العتيبي', stars: '⭐⭐⭐⭐⭐', txt: 'معلومات دسمة ومفيدة.'}]
+    },
+    // 13
+    'amal': {
+        arName: 'أمل سعود', bg: 'linear-gradient(135deg,#b45309,#713f12)', arInit: 'أ',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'محاسبة | Bookkeeping',
+        arBio: 'شرح مبادئ المحاسبة المالية واستخدام برامج المحاسبة السحابية.',
+        learn: 10, teach: 22,
+        taught: [{icon: '🧮', n: 'مبادئ المحاسبة', st: 22}],
+        learned: [{icon: '📊', n: 'Excel متقدم'}],
+        reviews: []
+    },
+    // 14
+    'ziyad': {
+        arName: 'زياد طارق', bg: 'linear-gradient(135deg,#4338ca,#312e81)', arInit: 'ز',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'ذكاء اصطناعي | ML',
+        arBio: 'هندسة الأوامر (Prompt Engineering) وأساسيات تعلم الآلة.',
+        learn: 15, teach: 65,
+        taught: [{icon: '🤖', n: 'هندسة الأوامر', st: 40}, {icon: '🧠', n: 'تعلم الآلة', st: 25}],
+        learned: [{icon: '🐍', n: 'Python'}],
+        reviews: [{n: 'فيصل خالد', stars: '⭐⭐⭐⭐⭐', txt: 'اختصر علي وقت طويل في فهم الـ AI.'}]
+    },
+    // 15
+    'nouf': {
+        arName: 'نوف العبدالله', bg: 'linear-gradient(135deg,#c026d3,#9d174d)', arInit: 'ن',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'عمارة | 3D Max',
+        arBio: 'ورش عمل في الإظهار المعماري باستخدام 3D Max & Vray.',
+        learn: 7, teach: 18,
+        taught: [{icon: '🏢', n: 'إظهار معماري Vray', st: 18}],
+        learned: [{icon: '📐', n: 'Revit'}],
+        reviews: []
+    },
+    // 16
+    'tariq': {
+        arName: 'طارق زياد', bg: 'linear-gradient(135deg,#0369a1,#1e3a8a)', arInit: 'ط',
+        arRank: 'مدرب ذهبي', rankIcon: '🌟', arTitle: 'مونتاج | Premiere',
+        arBio: 'تعلم المونتاج السينمائي وصناعة المحتوى المرئي.',
+        learn: 5, teach: 45,
+        taught: [{icon: '🎬', n: 'Premiere Pro', st: 30}, {icon: '📱', n: 'صناعة محتوى تيك توك', st: 15}],
+        learned: [{icon: '📸', n: 'تصوير'}],
+        reviews: [{n: 'أحمد خالد', stars: '⭐⭐⭐⭐', txt: 'شرح بطل وسريع.'}]
+    },
+    // 17
+    'jana': {
+        arName: 'جنى عبدالله', bg: 'linear-gradient(135deg,#a21caf,#701a75)', arInit: 'ج',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'تصميم جرافيك | Illustrator',
+        arBio: 'تصميم الهويات البصرية ورسم الشعارات.',
+        learn: 12, teach: 25,
+        taught: [{icon: '✒️', n: 'أساسيات Illustrator', st: 25}],
+        learned: [{icon: '🎨', n: 'UI/UX'}],
+        reviews: []
+    },
+    // 18
+    'sami': {
+        arName: 'سامي عبدالرحمن', bg: 'linear-gradient(135deg,#15803d,#064e3b)', arInit: 'س',
+        arRank: 'خبير ماسي', rankIcon: '💎', arTitle: 'رياضيات | دروس خصوصية',
+        arBio: 'مراجعة وتأسيس في مواد التفاضل والتكامل (Calculus).',
+        learn: 3, teach: 150,
+        taught: [{icon: '🔢', n: 'مراجعة Calculus 1', st: 90}, {icon: '➗', n: 'مراجعة Calculus 2', st: 60}],
+        learned: [{icon: '💻', n: 'برمجة C'}],
+        reviews: [{n: 'ماجد فهد', stars: '⭐⭐⭐⭐⭐', txt: 'أنقذني في الميدتيرم، شرحه يوصل للمخ فوراً.'}]
+    },
+    // 19
+    'reem': {
+        arName: 'ريم محمد', bg: 'linear-gradient(135deg,#e11d48,#9f1239)', arInit: 'ر',
+        arRank: 'ممارس فضي', rankIcon: '🥈', arTitle: 'طب | إسعافات أولية',
+        arBio: 'جلسات في الإسعافات الأولية والتثقيف الصحي.',
+        learn: 15, teach: 10,
+        taught: [{icon: '🩺', n: 'إسعافات أولية', st: 10}],
+        learned: [{icon: '🗣️', n: 'لغة إشارة'}],
+        reviews: []
+    },
+    // 20
+    'nasser': {
+        arName: 'ناصر العلي', bg: 'linear-gradient(135deg,#ea580c,#9a3412)', arInit: 'ن',
+        arRank: 'ممارس ذهبي', rankIcon: '🌟', arTitle: 'كتابة إبداعية | سيناريو',
+        arBio: 'تطوير مهارات الكتابة الإبداعية وصياغة المحتوى للمنصات.',
+        learn: 8, teach: 35,
+        taught: [{icon: '✍️', n: 'كتابة السيناريو', st: 20}, {icon: '📚', n: 'كتابة المحتوى', st: 15}],
+        learned: [{icon: '🎬', n: 'مونتاج'}],
+        reviews: []
     }
 };
 
@@ -677,7 +809,7 @@ function openProfile(userId, navIdx = -1) {
                             <div class="service-title">${item.n}</div>
                             <div class="service-meta">${badge}</div>
                         </div>
-                        ${showBadge ? `<button class="btn-primary" style="width:auto; padding:8px 16px; border-radius:10px; font-size:12px;" onclick="bookWorkshop()">طلب</button>` : ''}
+                        ${showBadge && !isMe ? `<button class="btn-primary" style="width:auto; padding:8px 16px; border-radius:10px; font-size:12px;" onclick="bookWorkshop()">طلب</button>` : ''}
                      </div>`;
         });
         return html || `<div style="text-align:center; color:var(--sub); padding:20px; font-size:14px;">لا يوجد بيانات بعد.</div>`;
@@ -709,9 +841,9 @@ function openProfile(userId, navIdx = -1) {
 function openSkillOffers(skillId) {
     let users = [];
     let title = "";
-    if(skillId === 'Excel') { users = ['sara']; title = "تحليل البيانات والإكسل"; }
-    else if(skillId === 'UI') { users = ['shahad']; title = "تصميم واجهات المستخدم"; }
-    else if(skillId === 'Coding') { users = ['yasser']; title = "البرمجة وتطوير الويب"; }
+    if(skillId === 'Design') { users = ['lama', 'nouf', 'shahad']; title = "التصميم والهندسة"; }
+    else if(skillId === 'Admin') { users = ['faisal', 'amal', 'raghad']; title = "المهارات الإدارية والأعمال"; }
+    else if(skillId === 'Coding') { users = ['sara', 'ziyad', 'yasser', 'majed']; title = "البرمجة والبيانات والـ AI"; }
 
     document.getElementById('offer-skill-title').textContent = title;
     const list = document.getElementById('offers-list');
@@ -806,7 +938,7 @@ function searchDMs(q) {
     q = q.toLowerCase();
     document.querySelectorAll('#dm-list .dm-item').forEach(i => { i.style.display = i.querySelector('.dm-name').innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
 }
-function bookWorkshop() { alert('✅ تم طلب الخدمة بنجاح! سيصلك إشعار عند القبول.'); }
+function bookWorkshop() { alert('✅ تم حجز مقعدك بنجاح! سيصلك إشعار بالتفاصيل.'); }
 
 function toggleGrid(type) {
     ['taught', 'learned', 'reviews'].forEach(t => {
@@ -830,7 +962,7 @@ function selType(el) {
 
 function submitSkill() {
     goBack();
-    setTimeout(() => alert('✅ تم عرض الخدمة في السوق بنجاح!'), 300);
+    setTimeout(() => alert('✅ تم اعتماد ونشر الخدمة في السوق بنجاح!'), 300);
 }
 </script>
 </body>
