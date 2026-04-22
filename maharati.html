@@ -128,6 +128,7 @@ textarea.inp{height:110px;resize:none}
 .tag{background:var(--input);border:1px solid var(--border2);color:var(--sub);padding:5px 11px;border-radius:9px;font-size:11px;font-weight:700}
 .post-acts{display:flex;gap:10px;margin-top:14px}
 .pa{flex:1;padding:13px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;text-align:center;transition:.2s;border:none;}
+.pa:active{transform:scale(.97)}
 
 /* Project Card Specifics */
 .proj-card { display:flex; flex-direction:column; padding:18px; background:var(--card); backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:var(--r2); box-shadow:var(--shadow); transition:0.2s; gap:12px; margin-bottom:12px; border-right:4px solid var(--accent); }
@@ -137,7 +138,7 @@ textarea.inp{height:110px;resize:none}
 .proj-details { display:flex; gap:12px; margin-top:8px; }
 .proj-badge { background:var(--input); border:1px solid var(--border2); color:var(--text); padding:4px 8px; border-radius:8px; font-size:11px; font-weight:900; display:flex; align-items:center; gap:4px; }
 
-/* ===== SEARCH ===== */
+/* ===== SEARCH & B2B SEARCH ===== */
 .sbox{margin:14px 18px;position:relative}
 .sbox input{width:100%;padding:14px 46px 14px 18px;border-radius:var(--r2);background:var(--input);backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;box-shadow:inset 0 2px 5px rgba(0,0,0,0.02)}
 .sbox input:focus{border-color:var(--accent);background:var(--card)}
@@ -185,6 +186,7 @@ textarea.inp{height:110px;resize:none}
 /* ===== DM LIST ===== */
 .dm-list{display:flex;flex-direction:column;padding:0 8px}
 .dm-item{display:flex;align-items:center;padding:14px 12px;cursor:pointer;border-radius:18px;transition:.2s;gap:14px;margin-bottom:5px}
+.dm-item:active{background:var(--card2)}
 .dm-info{flex:1;min-width:0}
 .dm-name{font-size:15px;font-weight:900;color:var(--text);margin-bottom:4px}
 .dm-msg{font-size:13px;color:var(--sub2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
@@ -197,11 +199,12 @@ textarea.inp{height:110px;resize:none}
 .msg-row.in{align-self:flex-start}
 .msg-row.out{align-self:flex-end}
 .msg{padding:13px 17px;font-size:15px;line-height:1.65;border-radius:20px;font-weight:500;}
-.msg-row.in .msg{background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-top-right-radius:5px;color:var(--text);box-shadow:0 4px 10px var(--border-shadow)}
+.msg-row.in .msg{background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-top-right-radius:5px;color:var(--text);box-shadow:0 4px 10px var(--border-shadow)}
 .msg-row.out .msg{background:var(--accentG);color:#fff;border-top-left-radius:5px;box-shadow:0 4px 16px rgba(234,88,12,.25)}
 .msg-time{font-size:11px;color:var(--sub);margin-top:5px;font-weight:700}
-.chat-bar{position:fixed;bottom:0;width:100%;background:var(--nav);padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;z-index:100;align-items:center;backdrop-filter:blur(24px);}
+.chat-bar{position:fixed;bottom:0;width:100%;background:var(--nav);padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;z-index:100;align-items:center;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
 .chat-inp{flex:1;padding:13px 18px;border-radius:24px;background:var(--input);border:1px solid var(--border2);color:var(--text);outline:none;font-size:15px;transition:.2s}
+.chat-inp:focus{border-color:var(--accent)}
 .chat-send{background:var(--text);color:var(--bg);border:none;border-radius:50%;width:46px;height:46px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .typing-ind{display:none;gap:5px;padding:13px 17px;background:var(--card);border:1px solid var(--border);border-radius:20px;border-top-right-radius:5px;align-self:flex-start;width:fit-content;backdrop-filter:var(--blur)}
 .td{width:8px;height:8px;background:var(--sub2);border-radius:50%;animation:typ 1.4s infinite ease-in-out both}
@@ -216,7 +219,7 @@ textarea.inp{height:110px;resize:none}
 .prof-name{font-size:21px;font-weight:900;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:7px}
 .prof-title{font-size:13px;color:var(--accent);font-weight:700;margin-bottom:14px;background:rgba(234,88,12,.12);padding:5px 14px;border-radius:10px;border:1px solid rgba(234,88,12,.2)}
 .prof-bio{font-size:14px;color:var(--sub);line-height:1.7;max-width:96%;margin-bottom:22px;font-weight:500}
-.stats-row{display:flex;justify-content:center;width:100%;max-width:360px;margin-bottom:22px;border:1px solid var(--border);border-radius:20px;background:var(--card);backdrop-filter:var(--blur);overflow:hidden;box-shadow:var(--shadow)}
+.stats-row{display:flex;justify-content:center;width:100%;max-width:360px;margin-bottom:22px;border:1px solid var(--border);border-radius:20px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);overflow:hidden;box-shadow:var(--shadow)}
 .stat{display:flex;flex-direction:column;align-items:center;flex:1;padding:14px 8px;border-left:1px solid var(--border)}
 .stat:first-child{border-left:none}
 .sv{font-size:19px;font-weight:900;color:var(--text);margin-bottom:3px}
@@ -227,7 +230,8 @@ textarea.inp{height:110px;resize:none}
 
 .svc-list{display:flex;flex-direction:column;gap:14px;padding:0 18px 24px}
 .svc-list[style*="display:none"]{display:none!important}
-.svc-card{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer;box-shadow:var(--shadow)}
+.svc-card{display:flex;align-items:center;gap:14px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);padding:15px;border-radius:20px;transition:.2s;cursor:pointer;box-shadow:var(--shadow)}
+.svc-card:active{background:var(--card2)}
 .svc-icon{font-size:26px;background:var(--input);width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--border2);flex-shrink:0}
 .svc-det{flex:1;text-align:right}
 .svc-t{font-size:14px;font-weight:900;color:var(--text);margin-bottom:5px}
@@ -245,12 +249,13 @@ textarea.inp{height:110px;resize:none}
 .nb-add{font-size:22px;color:#fff!important;background:var(--accentG);box-shadow:0 8px 20px rgba(234,88,12,.35);border-radius:14px;padding:10px 22px}
 
 /* ===== SETTINGS & LEADERBOARD ===== */
-.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
 .set-row:active{background:var(--card2)}
 .set-label{font-size:15px;font-weight:700;color:var(--text)}
 .set-val{font-size:14px;font-weight:900;color:var(--accent)}
 
-.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.lb-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);border-radius:var(--r2);margin-bottom:10px;cursor:pointer;transition:.2s;box-shadow:var(--shadow)}
+.lb-item:active{background:var(--card2)}
 .lb-rank{font-size:20px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
 .lb-info{flex:1}
 .lb-name{font-size:15px;font-weight:900;color:var(--text);margin-bottom:3px}
@@ -312,7 +317,6 @@ textarea.inp{height:110px;resize:none}
       <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
         🔔<div class="notif-badge" id="n-badge1">3</div>
       </div>
-      <div class="hdr-icon" onclick="go('search-view',1)">🔍</div>
       <div class="hdr-icon" onclick="go('settings-view')">⚙️</div>
     </div>
   </header>
@@ -396,6 +400,20 @@ textarea.inp{height:110px;resize:none}
         </div>
         <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
+      <div class="skill-item" onclick="openOffers('math')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#15803d,#22c55e);width:52px;height:52px;font-size:22px;border-radius:14px">🔢</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">العلوم والرياضيات</div><div style="font-size:12px;color:var(--sub2)">Calculus, فيزياء, طب, محاسبة</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
+      </div>
+      <div class="skill-item" onclick="openOffers('other')">
+        <div class="skill-l">
+          <div class="av" style="background:linear-gradient(135deg,#e11d48,#f43f5e);width:52px;height:52px;font-size:22px;border-radius:14px">✨</div>
+          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">تطوير شخصي وأخرى</div><div style="font-size:12px;color:var(--sub2)">CV, مقابلات, كتابة إبداعية</div></div>
+        </div>
+        <span style="color:var(--sub2); font-weight:bold;">←</span>
+      </div>
     </div>
   </div>
 
@@ -432,14 +450,14 @@ textarea.inp{height:110px;resize:none}
 
   <div style="padding:0 20px; display:flex; gap:12px; margin-bottom:24px;">
     <button class="btn btn-p" style="flex:1;" onclick="go('comp-search-view', 1)">🔍 ابحث عن موهبة</button>
-    <button class="btn btn-o" style="flex:1;" onclick="go('comp-post-view', 2)">📝 اطرح مشروعاً</button>
   </div>
 
   <div class="sort-bar">
     <span style="font-size:14px; font-weight:900; color:var(--text);">مواهب مرشحة لك (AI Matches)</span>
   </div>
 
-  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;"></div>
+  <div class="skill-list" id="comp-matches-list" style="margin-top:16px; padding:0 20px;">
+    </div>
 </div>
 
 <div id="comp-search-view" class="view">
@@ -474,7 +492,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="comp-post-view" class="view">
   <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء 🔙</div>
     <div class="hdr-title">طرح مشروع جديد</div>
     <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitProject()">نشر</div>
   </header>
@@ -529,10 +547,10 @@ textarea.inp{height:110px;resize:none}
     <div style="width:28px"></div>
   </header>
   <div style="padding:20px;">
-    <div class="wallet-card">
-      <div class="w-lbl">الرصيد المتاح</div>
-      <div class="w-bal" id="wallet-balance">٠</div>
-      <div class="w-cur" id="wallet-currency">نقطة نُول</div>
+    <div class="wallet-card" style="background:var(--accentG); border-radius:var(--r3); padding:30px 20px; color:#fff; text-align:center; box-shadow:0 12px 30px rgba(234,88,12,0.3); margin-bottom:24px;">
+      <div style="font-size:14px; margin-bottom:8px; opacity:0.9; font-weight:500;">الرصيد المتاح</div>
+      <div style="font-size:48px; font-weight:900; letter-spacing:1px; line-height:1;" id="wallet-balance">٠</div>
+      <div style="font-size:16px; opacity:0.9; font-weight:700; margin-top:4px;" id="wallet-currency">نقطة نُول</div>
     </div>
     <div class="sec-t" style="padding:0 0 10px 0;">سجل العمليات</div>
     <div id="wallet-history"></div>
@@ -686,7 +704,7 @@ const DB = {
   me:{n:'أحمد خالد',bg:'linear-gradient(135deg,#ea580c,#f59e0b)',i:'أ',rank:'ذهبي',ri:'🌟',cat:'design',title:'طالب معماري | Solarpunk Design',bio:'شغوف بتصميم الفراغات. أشارك زملائي مهارات 3D Modeling.',learn:2,teach:28,post:{emoji:'📐',type:'جلسة إرشادية',desc:'جلسة تعليم أساسيات 3D Modeling للطلاب المعماريين.'},taught:[{icon:'📐',n:'3D Modeling',st:15},{icon:'🛋️',n:'تصميم مساحات بـ Coohom',st:13}],learned:[{icon:'📊',n:'تحليل بيانات'}],reviews:[{n:'ياسر فهد',s:'⭐⭐⭐⭐⭐',t:'أحمد مبدع جداً، الجلسة كانت مفيدة.'}]},
   lama:{n:'لمى سعد',bg:'linear-gradient(135deg,#0d9488,#3b82f6)',i:'ل',rank:'ماسي',ri:'💎',cat:'design',title:'تصميم داخلي | Space Age & Solarpunk',bio:'مهتمة بالأنماط المستقبلية.',learn:5,teach:55,post:{emoji:'🛋️',type:'جلسة ساعتين',desc:'جلسة فردية تعلم استايلات التصميم المستقبلية.'},taught:[{icon:'🌿',n:'Solarpunk Design',st:30},{icon:'✨',n:'Space Age Interiors',st:25}],learned:[{icon:'🎨',n:'Color Theory'}],reviews:[{n:'نوف العبدالله',s:'⭐⭐⭐⭐⭐',t:'أفضل مدربة، فتحت لي آفاق جديدة.'}]},
   faisal:{n:'فيصل خالد',bg:'linear-gradient(135deg,#eab308,#ef4444)',i:'ف',rank:'ذهبي',ri:'🌟',cat:'business',title:'إدارة أعمال | أعمال عن بُعد',bio:'متخصص في التنظيم الإداري.',learn:4,teach:40,post:{emoji:'📂',type:'ورشة تدريبية',desc:'ورشة المهارات الإدارية للعمل عن بُعد.'},taught:[{icon:'📂',n:'إدارة الملفات السحابية',st:25},{icon:'💻',n:'العمل الإداري عن بُعد',st:15}],learned:[{icon:'🇬🇧',n:'كتابة إيميلات رسمية'}],reviews:[{n:'رغد صالح',s:'⭐⭐⭐⭐⭐',t:'نظم لي طريقة عملي بالكامل.'}]},
-  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل ممتازة.'}]},
+  sara:{n:'سارة أحمد',bg:'linear-gradient(135deg,#6366f1,#c084fc)',i:'س',rank:'ماسي',ri:'💎',cat:'coding',title:'محللة بيانات | خبيرة Excel & Python',bio:'أقدم معسكرات مكثفة في تحليل البيانات.',learn:10,teach:120,post:{emoji:'📊',type:'معسكر مكثف',desc:'معسكر تحليل البيانات بـ Excel و Python.'},taught:[{icon:'📊',n:'Excel للمحترفين',st:70},{icon:'🐍',n:'Python & Data Analysis',st:50}],learned:[{icon:'🎨',n:'تصميم جرافيك'}],reviews:[{n:'أحمد خالد',s:'⭐⭐⭐⭐⭐',t:'دورة الإكسل خرافية.'}]},
   yasser:{n:'ياسر فهد',bg:'linear-gradient(135deg,#2563eb,#06b6d4)',i:'ي',rank:'ذهبي',ri:'🌟',cat:'design',title:'هندسة | AutoCAD & C++',bio:'أبرمج وأرسم. أساعدك تفهم الرسم الهندسي وتبني مشاريعك.',learn:6,teach:30,post:{emoji:'⚙️',type:'ورشة تدريبية',desc:'أساسيات AutoCAD للطلاب الجدد.'},taught:[{icon:'⚙️',n:'AutoCAD Basics',st:20},{icon:'💻',n:'C++ للمبتدئين',st:10}],learned:[{icon:'🤖',n:'AI Concepts'}],reviews:[{n:'سعد العتيبي',s:'⭐⭐⭐⭐',t:'شرح عملي وسريع.'}]},
   raghad:{n:'رغد صالح',bg:'linear-gradient(135deg,#ec4899,#f43f5e)',i:'ر',rank:'ذهبي',ri:'🌟',cat:'other',title:'موارد بشرية | تطوير وظيفي',bio:'أساعدك في كتابة سيرتك الذاتية وتجاوز المقابلات.',learn:8,teach:60,post:{emoji:'📄',type:'استشارة مهنية',desc:'مراجعة شاملة لـ CV وتجهيزك للمقابلات.'},taught:[{icon:'📄',n:'كتابة CV احترافي',st:40},{icon:'🎯',n:'تجاوز المقابلات',st:20}],learned:[{icon:'💼',n:'إدارة مشاريع'}],reviews:[{n:'منى اليوسف',s:'⭐⭐⭐⭐⭐',t:'انقبلت في تدريب تعاوني بفضلها.'}]},
   shahad:{n:'شهد محمد',bg:'linear-gradient(135deg,#10b981,#3b82f6)',i:'ش',rank:'ذهبي',ri:'🌟',cat:'design',title:'مصممة واجهات | UI/UX & Figma',bio:'متخصصة في بناء تجربة مستخدم سلسة واحترافية.',learn:5,teach:45,post:{emoji:'🎨',type:'جلسة إرشادية',desc:'تصميم واجهات تطبيقات موبايل باستخدام Figma.'},taught:[{icon:'🎨',n:'UI/UX Figma',st:30},{icon:'📱',n:'تصميم تطبيقات موبايل',st:15}],learned:[{icon:'📈',n:'تسويق رقمي'}],reviews:[{n:'لمى سعد',s:'⭐⭐⭐⭐⭐',t:'استشارة ممتازة.'}]},
@@ -838,7 +856,7 @@ function buildFeed(){
       </div>
       <div class="post-acts">
         <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
-        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة بنجاح!')">طلب تعلّم المهارة</button>
+        <button class="pa btn-p" onclick="showToast('تم طلب التعلم من الطالب')">طلب تعلّم المهارة</button>
       </div>`;
     fc.appendChild(el);
   });
@@ -1039,7 +1057,7 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
         </div>
         <div style="display:flex; gap:8px;">
           <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();openChat('${uid}')">💬 تواصل مبدئي</button>
-          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال دعوة للطالب')">إسناد مشروع</button>
+          <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px; font-weight:900;" onclick="event.stopPropagation();showToast('تم إرسال دعوة للطالب لإنجاز المهمة')">إسناد مشروع</button>
         </div>
       </div>`;
   });
@@ -1162,7 +1180,7 @@ function buildWallet() {
 function buildDMs(){
   const el = document.getElementById('dm-list');
   el.innerHTML = '';
-  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك التفاصيل.','لا تتردد في الاستفسار عن أي نقطة.'];
+  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك رابط الاجتماع.','لا تتردد في الاستفسار عن أي نقطة.'];
   const times = ['١٠:٣٠ ص','أمس','الأحد','السبت','منذ ساعتين'];
   USERS.filter(id=>id!=='me').slice(0,8).forEach((uid,i)=>{
     const u = DB[uid];
