@@ -59,10 +59,11 @@ body{background: var(--bg-grad); background-attachment: fixed; color: var(--text
 /* ===== HEADER ===== */
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:var(--nav);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);position:sticky;top:0;z-index:60;border-bottom:1px solid var(--border);box-shadow:0 1px 10px var(--border-shadow)}
 .logo{font-size:24px;font-weight:900;background:var(--accentG);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--input);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border)}
+.hdr-icon{font-size:21px;cursor:pointer;color:var(--text);transition:.15s;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--input);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--border);position:relative;}
 .hdr-icon:active{transform:scale(.93)}
 .hdr-title{font-size:17px;font-weight:900;color:var(--text)}
 .hdr-row{display:flex;gap:8px;align-items:center}
+.notif-dot {position:absolute; top:8px; right:8px; background:var(--red); width:8px; height:8px; border-radius:50%;}
 
 /* ===== INPUTS & BUTTONS ===== */
 .inp{width:100%;padding:14px 18px;margin:6px 0;border-radius:var(--r);background:var(--input);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border2);color:var(--text);font-size:15px;outline:none;transition:.2s;}
@@ -81,7 +82,7 @@ textarea.inp{height:110px;resize:none}
 .login-tab { flex:1; padding:12px; font-weight:900; font-size:14px; cursor:pointer; color:var(--sub2); transition:0.3s; }
 .login-tab.active { background:var(--accentG); color:#fff; }
 
-/* ===== CENTERED PILL TABS (Students Feed) ===== */
+/* ===== CENTERED PILL TABS ===== */
 .top-tabs-container { display:flex; justify-content:center; padding:16px 20px 0; }
 .top-tabs { display:flex; background:var(--card); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur); border:1px solid var(--border); border-radius:30px; padding:4px; box-shadow:var(--shadow); }
 .top-tab { padding:8px 24px; font-weight:900; font-size:13px; cursor:pointer; color:var(--sub2); transition:0.3s; border-radius:26px; }
@@ -156,10 +157,10 @@ textarea.inp{height:110px;resize:none}
 /* ===== ADD & POST PROJECT ===== */
 .add-wrap{padding:22px 18px}
 .type-grid{display:flex;gap:12px;margin-bottom:20px}
-.type-card{flex:1;background:var(--card);backdrop-filter:var(--blur);border:2px solid var(--border);border-radius:20px;padding:20px 8px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:var(--shadow)}
+.type-card{flex:1;background:var(--card);backdrop-filter:var(--blur);border:2px solid var(--border);border-radius:20px;padding:18px 6px;text-align:center;cursor:pointer;transition:.3s;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:var(--shadow)}
 .type-card.active{border-color:var(--accent);background:rgba(234,88,12,.08)}
-.type-icon{font-size:32px}
-.type-t{font-size:14px;font-weight:900;color:var(--text)}
+.type-icon{font-size:28px}
+.type-t{font-size:13px;font-weight:900;color:var(--text)}
 .add-lbl{font-size:14px;font-weight:900;color:var(--text);margin-bottom:7px;display:block;margin-top:18px}
 
 /* ===== DM LIST ===== */
@@ -287,7 +288,6 @@ textarea.inp{height:110px;resize:none}
       </div>
 
       <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة</button>
-      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
   </div>
 </div>
@@ -296,7 +296,10 @@ textarea.inp{height:110px;resize:none}
   <header class="hdr">
     <div class="logo">نُول</div>
     <div class="hdr-row">
-      <div class="hdr-icon" onclick="go('search-view',1)" title="بحث">🔍</div>
+      <div class="hdr-icon" onclick="go('notif-view')" title="الإشعارات">
+        🔔
+        <div class="notif-dot"></div>
+      </div>
       <div class="hdr-icon" onclick="go('lb-view')" title="المتصدرون">🏆</div>
       <div class="hdr-icon" onclick="go('settings-view')" title="إعدادات">⚙️</div>
     </div>
@@ -331,6 +334,48 @@ textarea.inp{height:110px;resize:none}
 
   <div class="feed" id="feed-container"></div>
 </div>
+
+<div id="notif-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title">الإشعارات</div>
+    <div style="width:28px"></div>
+  </header>
+  <div style="padding:16px 20px;">
+    
+    <div class="offer-item" style="margin-bottom:12px; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="av" style="background:linear-gradient(135deg,#2563eb,#06b6d4);width:46px;height:46px;font-size:18px;">ي</div>
+        <div style="flex:1;">
+          <div style="font-weight:900;font-size:14px;color:var(--text);">ياسر فهد</div>
+          <div style="font-size:12px;color:var(--sub2);margin-top:2px;">طلب الانضمام إلى "ورشة أساسيات 3D"</div>
+        </div>
+        <div style="font-size:10px; color:var(--sub); font-weight:bold;">الآن</div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px;" onclick="showToast('تم قبول الطلب')">قبول الطلب</button>
+        <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px;" onclick="openChat('yasser')">💬 تواصل</button>
+      </div>
+    </div>
+
+    <div class="offer-item" style="margin-bottom:12px; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="av" style="background:linear-gradient(135deg,#10b981,#3b82f6);width:46px;height:46px;font-size:18px;">ش</div>
+        <div style="flex:1;">
+          <div style="font-weight:900;font-size:14px;color:var(--text);">شهد محمد</div>
+          <div style="font-size:12px;color:var(--sub2);margin-top:2px;">طلبت حجز "جلسة مساعدة في Coohom"</div>
+        </div>
+        <div style="font-size:10px; color:var(--sub); font-weight:bold;">٢ س</div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-p btn-sm" style="flex:1; border-radius:10px;" onclick="showToast('تم قبول الطلب')">قبول الطلب</button>
+        <button class="btn btn-o btn-sm" style="flex:1; border-radius:10px;" onclick="openChat('shahad')">💬 تواصل</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
 <div id="search-view" class="view">
   <header class="hdr" style="border-bottom:none">
@@ -381,26 +426,48 @@ textarea.inp{height:110px;resize:none}
         </div>
         <span style="color:var(--sub2); font-weight:bold;">←</span>
       </div>
-      <div class="skill-item" onclick="openOffers('math')">
-        <div class="skill-l">
-          <div class="av" style="background:linear-gradient(135deg,#15803d,#22c55e);width:52px;height:52px;font-size:22px;border-radius:14px">🔢</div>
-          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">العلوم والرياضيات</div><div style="font-size:12px;color:var(--sub2)">Calculus, فيزياء, طب, محاسبة</div></div>
-        </div>
-        <span style="color:var(--sub2); font-weight:bold;">←</span>
-      </div>
-      <div class="skill-item" onclick="openOffers('other')">
-        <div class="skill-l">
-          <div class="av" style="background:linear-gradient(135deg,#e11d48,#f43f5e);width:52px;height:52px;font-size:22px;border-radius:14px">✨</div>
-          <div><div style="font-weight:900;font-size:15px;margin-bottom:3px">تطوير شخصي وأخرى</div><div style="font-size:12px;color:var(--sub2)">CV, مقابلات, كتابة إبداعية</div></div>
-        </div>
-        <span style="color:var(--sub2); font-weight:bold;">←</span>
-      </div>
     </div>
   </div>
 
   <div id="search-results-container" style="display:none;">
     <div class="sec-t">نتائج البحث</div>
     <div class="skill-list" id="all-users-list" style="padding:0 20px;"></div>
+  </div>
+</div>
+
+<div id="offers-view" class="view">
+  <header class="hdr">
+    <div class="hdr-icon" onclick="goBack()">🔙</div>
+    <div class="hdr-title" id="offers-title">الخدمات المتاحة</div>
+    <div style="width:28px"></div>
+  </header>
+  <div class="skill-list" id="offers-list" style="margin-top:20px; padding:0 20px;"></div>
+</div>
+
+<div id="add-view" class="view">
+  <header class="hdr" style="border-bottom:none">
+    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
+    <div class="hdr-title">تقديم خدمة جديدة</div>
+    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
+  </header>
+  <div class="add-wrap">
+    <span class="add-lbl">نوع الخدمة</span>
+    <div class="type-grid">
+      <div class="type-card active" onclick="selType(this)"><div class="type-icon">👤</div><div class="type-t">جلسة فردية</div></div>
+      <div class="type-card" onclick="selType(this)"><div class="type-icon">👥</div><div class="type-t">ورشة جماعية</div></div>
+      <div class="type-card" onclick="selType(this)"><div class="type-icon">📡</div><div class="type-t">بث مباشر</div></div>
+    </div>
+    <span class="add-lbl">عنوان الخدمة</span>
+    <input type="text" class="inp" placeholder="مثال: دروس Python للمبتدئين">
+    <span class="add-lbl">التصنيف</span>
+    <select class="inp">
+      <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
+      <option>إدارة وأعمال</option><option>لغات وترجمة</option>
+      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
+    </select>
+    <span class="add-lbl">التفاصيل والمخرجات</span>
+    <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول</button>
   </div>
 </div>
 
@@ -453,8 +520,8 @@ textarea.inp{height:110px;resize:none}
   <div class="sort-bar" style="padding-bottom: 10px;">
     <span style="font-size:13px; color:var(--sub2); font-weight:700;">فرز حسب:</span>
     <select class="inp" style="width:auto; padding:6px 12px; font-size:13px; margin:0;" id="comp-sort-sel" onchange="buildCompMatches(document.querySelector('#comp-search-cats .cat.active').dataset.val, 'comp-search-list')">
-      <option value="rank">الأعلى تصنيفاً</option>
       <option value="trainees">الأكثر تدريباً</option>
+      <option value="rank">الأعلى تصنيفاً</option>
       <option value="new">الأحدث</option>
     </select>
   </div>
@@ -500,32 +567,6 @@ textarea.inp{height:110px;resize:none}
     <textarea class="inp" id="proj-desc" placeholder="اكتب تفاصيل المشروع وما تحتاجه بالضبط من الطالب..."></textarea>
     
     <button class="btn btn-p" style="margin-top:24px" onclick="submitProject()">نشر المشروع والبحث عن مواهب</button>
-  </div>
-</div>
-
-<div id="add-view" class="view">
-  <header class="hdr" style="border-bottom:none">
-    <div class="hdr-icon" onclick="goBack()" style="font-size:14px;font-weight:700;color:var(--sub2)">إلغاء</div>
-    <div class="hdr-title">تقديم خدمة جديدة</div>
-    <div class="hdr-icon" style="color:var(--accent);font-size:14px;font-weight:900" onclick="submitSkill()">نشر</div>
-  </header>
-  <div class="add-wrap">
-    <span class="add-lbl">نوع الخدمة</span>
-    <div class="type-grid">
-      <div class="type-card active" onclick="selType(this)"><div class="type-icon">👤</div><div class="type-t">جلسة فردية</div></div>
-      <div class="type-card" onclick="selType(this)"><div class="type-icon">👥</div><div class="type-t">ورشة جماعية</div></div>
-    </div>
-    <span class="add-lbl">عنوان الخدمة</span>
-    <input type="text" class="inp" placeholder="مثال: دروس Python للمبتدئين">
-    <span class="add-lbl">التصنيف</span>
-    <select class="inp">
-      <option>برمجة وبيانات</option><option>تصميم وهندسة</option>
-      <option>إدارة وأعمال</option><option>لغات وترجمة</option>
-      <option>مونتاج وتصوير</option><option>علوم ورياضيات</option><option>أخرى</option>
-    </select>
-    <span class="add-lbl">التفاصيل والمخرجات</span>
-    <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
-    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول</button>
   </div>
 </div>
 
@@ -640,15 +681,6 @@ textarea.inp{height:110px;resize:none}
   </div>
 </div>
 
-<div id="offers-view" class="view">
-  <header class="hdr">
-    <div class="hdr-icon" onclick="goBack()">🔙</div>
-    <div class="hdr-title" id="offers-title">الخدمات المتاحة</div>
-    <div style="width:28px"></div>
-  </header>
-  <div class="skill-list" id="offers-list" style="margin-top:20px; padding:0 20px;"></div>
-</div>
-
 <nav id="bnav" class="bnav"></nav>
 
 <script>
@@ -711,16 +743,19 @@ function switchLogin(type) {
 
 function login(){
   if(userType === 'student') {
+    // إزالة التحقق لتسهيل العرض
     updateBottomNav();
     updateSettingsUI();
     switchFeed('talents');
     buildAllUsers(); buildDMs(); buildLB();
     go('feed-view',0);
+    showToast('تم تسجيل الدخول كطالب');
   } else {
     updateBottomNav();
     updateSettingsUI();
     buildCompMatches('all');
     go('comp-dash-view',0);
+    showToast('تم تسجيل الدخول كجهة أعمال');
   }
 }
 
@@ -817,7 +852,7 @@ function buildFeed(){
       </div>
       <div class="post-acts">
         <button class="pa btn-o" onclick="openChat('${uid}')">💬 تواصل</button>
-        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة بنجاح!')">طلب تعلّم المهارة</button>
+        <button class="pa btn-p" onclick="showToast('تم حجز الجلسة للتعلم!')">طلب تعلّم المهارة</button>
       </div>`;
     fc.appendChild(el);
   });
@@ -924,7 +959,6 @@ function openOffers(cat){
         const u = DB[uid];
         if(!u) return;
 
-        // إبراز الخدمة الأساسية
         let serviceName = u.title.split('|')[1] || u.title;
         let servicesHtml = '';
         if(u.taught && u.taught.length > 0) {
@@ -980,7 +1014,7 @@ function buildCompMatches(catFilter = 'all', targetId = 'comp-matches-list') {
     usersArr = usersArr.filter(id => DB[id].cat === catFilter);
   }
   
-  const sortType = document.getElementById('comp-sort-sel') ? document.getElementById('comp-sort-sel').value : 'rank';
+  const sortType = document.getElementById('comp-sort-sel') ? document.getElementById('comp-sort-sel').value : 'trainees';
 
   if(sortType === 'rank') {
     const rankVal = { 'ماسي': 3, 'ذهبي': 2, 'فضي': 1 };
@@ -1061,12 +1095,11 @@ function submitProject() {
   document.getElementById('proj-desc').value = '';
 }
 
-
 // ========================= SHARED LOGIC =========================
 function buildDMs(){
   const el = document.getElementById('dm-list');
   el.innerHTML = '';
-  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك رابط الاجتماع.','لا تتردد في الاستفسار عن أي نقطة.'];
+  const msgs = ['أهلاً بك، متى يناسبك وقت الجلسة؟','يعطيك العافية، وصلتني رسالتك.','تم تأكيد الحجز، شكراً لك!','ممتاز، سأرسل لك التفاصيل.','لا تتردد في الاستفسار عن أي نقطة.'];
   const times = ['١٠:٣٠ ص','أمس','الأحد','السبت','منذ ساعتين'];
   USERS.filter(id=>id!=='me').slice(0,8).forEach((uid,i)=>{
     const u = DB[uid];
@@ -1267,30 +1300,3 @@ function go(vid, ni=-1){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById(vid).classList.add('active');
   const nbs = document.querySelectorAll('#bnav .nb');
-  nbs.forEach(b=>b.classList.remove('active'));
-  if(ni>=0&&ni<nbs.length) nbs[ni].classList.add('active');
-  
-  const alwaysHide=['login-view','settings-view','chat-view','add-view','lb-view', 'comp-post-view'];
-  let hideNav = alwaysHide.includes(vid);
-  if(vid==='profile-view'){
-    const profBtn = document.getElementById('prof-msg-btn');
-    if(profBtn) hideNav = profBtn.style.display === 'block';
-  }
-  const bnav = document.getElementById('bnav');
-  if(bnav) bnav.style.display = hideNav?'none':'flex';
-  window.scrollTo(0,0);
-}
-
-function goBack(){
-  if(navHist.length>1){
-    navHist.pop();
-    const prev = navHist[navHist.length-1];
-    const map={'feed-view':0,'search-view':1,'add-view':2,'dm-view':3,'profile-view':4, 'comp-dash-view':0, 'comp-search-view':1, 'comp-post-view':2};
-    go(prev, map[prev]!==undefined?map[prev]:-1);
-  } else {
-    go(userType === 'student' ? 'feed-view' : 'comp-dash-view', 0);
-  }
-}
-</script>
-</body>
-</html>
