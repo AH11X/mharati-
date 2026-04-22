@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<titlغصون – سوق المهارات الجامعي والأعمال</title>
+<title>غصون – سوق المهارات الجامعي والأعمال</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ================= الثيم الفاتح الزجاجي (الافتراضي) ================= */
@@ -281,7 +281,7 @@ textarea.inp{height:110px;resize:none}
 <div id="login-view" class="view active">
   <div class="login-wrap">
     <div class="login-card">
-      <div class="login-logo">نُول</div>
+      <div class="login-logo">غصون</div>
       <p class="login-sub">سوق المهارات والخدمات الجامعي للأفراد والأعمال</p>
 
       <div class="login-tabs">
@@ -312,7 +312,7 @@ textarea.inp{height:110px;resize:none}
 
 <div id="feed-view" class="view">
   <header class="hdr">
-    <div class="logo">نُول</div>
+    <div class="logo">غصون</div>
     <div class="hdr-row">
       <div class="hdr-icon" style="position:relative;" onclick="openNotifs()">
         🔔<div class="notif-badge" id="n-badge1">3</div>
@@ -586,7 +586,7 @@ textarea.inp{height:110px;resize:none}
     <div class="wallet-card" style="background:var(--accentG); border-radius:var(--r3); padding:30px 20px; color:#fff; text-align:center; box-shadow:0 12px 30px rgba(234,88,12,0.3); margin-bottom:24px;">
       <div style="font-size:14px; margin-bottom:8px; opacity:0.9; font-weight:500;">الرصيد المتاح</div>
       <div style="font-size:48px; font-weight:900; letter-spacing:1px; line-height:1;" id="wallet-balance">٠</div>
-      <div style="font-size:16px; opacity:0.9; font-weight:700; margin-top:4px;" id="wallet-currency">نقطة نُول</div>
+      <div style="font-size:16px; opacity:0.9; font-weight:700; margin-top:4px;" id="wallet-currency">نقطة غصون</div>
     </div>
     <div class="sec-t" style="padding:0 0 10px 0;">سجل العمليات</div>
     <div id="wallet-history"></div>
@@ -615,7 +615,7 @@ textarea.inp{height:110px;resize:none}
     </select>
     <span class="add-lbl">التفاصيل والمخرجات</span>
     <textarea class="inp" placeholder="اشرح ماذا ستقدم وماذا سيستفيد الطالب..."></textarea>
-    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في نُول</button>
+    <button class="btn btn-p" style="margin-top:22px" onclick="submitSkill()">اعتماد ونشر في غصون</button>
   </div>
 </div>
 
@@ -1201,7 +1201,7 @@ function buildWallet() {
   
   if(userType === 'student') {
     document.getElementById('wallet-balance').textContent = '٣٥٠';
-    document.getElementById('wallet-currency').textContent = 'نقطة نُول';
+    document.getElementById('wallet-currency').textContent = 'نقطة غصون';
     trans = [
       {t:'إنجاز مهمة (تصميم 3D)', d:'١٥ أكتوبر ٢٠٢٦', a:'+١٥٠', cls:'pos'},
       {t:'حجز جلسة (برمجة بايثون)', d:'١٢ أكتوبر ٢٠٢٦', a:'-٥٠', cls:'neg'},
@@ -1400,7 +1400,7 @@ function selType(el){
 }
 function submitSkill(){
   goBack();
-  setTimeout(()=>showToast('تم النشر في نُول بنجاح!'),300);
+  setTimeout(()=>showToast('تم النشر في غصون بنجاح!'),300);
 }
 
 function toggleTheme(){
