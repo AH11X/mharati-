@@ -115,7 +115,6 @@ textarea.inp{height:110px;resize:none}
 .tag{background:var(--input);border:1px solid var(--border2);color:var(--sub);padding:5px 11px;border-radius:9px;font-size:11px;font-weight:700}
 .post-acts{display:flex;gap:10px;margin-top:14px}
 .pa{flex:1;padding:13px;border-radius:12px;font-size:14px;font-weight:900;cursor:pointer;text-align:center;transition:.2s;border:none;}
-.pa:active{transform:scale(.97)}
 
 /* ===== SEARCH ===== */
 .sbox{margin:14px 18px;position:relative}
@@ -250,6 +249,7 @@ textarea.inp{height:110px;resize:none}
       </select>
       <input type="number" class="inp" id="sid" placeholder="الرقم الجامعي">
       <button class="btn btn-p" style="margin-top:18px" onclick="login()">دخول للمنصة 🚀</button>
+      <p style="font-size:12px;color:var(--sub);margin-top:14px">بالدخول أنت توافق على شروط الاستخدام</p>
     </div>
   </div>
 </div>
@@ -725,17 +725,25 @@ function searchDMs(q){
   });
 }
 
-// ===== OFFERS (تصحيح حساس للحروف) =====
+// ===== OFFERS (تم توحيد الحروف هنا بدقة عالية) =====
 const offerMap = {
   design:['lama','shahad','yasser','nouf','jana','weam','afnan'],
-  coding:['sara','ziyad','majed','bader','omar','sara2','sultan','yazeed','abdulaziz'],
+  coding:['sara','ziyad','majed','bader','omar','sultan','abdulaziz'],
   business:['faisal','raghad','hamad','dima','fahad'],
   lang:['mona','lujain','rana'],
   media:['tariq','huda','khalil'],
   math:['sami','amal','khaled','mohammed','hajar'],
   other:['raghad','saad','reem','nasser','nada','talal','reema']
 };
-const offerTitles = {design:'🎨 التصميم والهندسة',coding:'💻 البرمجة والبيانات',business:'📂 الإدارة والأعمال',lang:'🌍 اللغات والترجمة',media:'🎬 المونتاج والتصوير',math:'🔢 العلوم والرياضيات',other:'✨ تطوير شخصي'};
+const offerTitles = {
+  design:'🎨 التصميم والهندسة',
+  coding:'💻 البرمجة والبيانات',
+  business:'📂 الإدارة والأعمال',
+  lang:'🌍 اللغات والترجمة',
+  media:'🎬 المونتاج والتصوير',
+  math:'🔢 العلوم والرياضيات',
+  other:'✨ تطوير شخصي وأخرى'
+};
 
 function openOffers(cat){
   document.getElementById('offers-title').textContent = offerTitles[cat] || 'الخدمات المتاحة';
